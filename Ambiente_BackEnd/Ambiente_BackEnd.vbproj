@@ -160,6 +160,12 @@
     <Compile Include="View\FrmCadastroEntregador.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\FrmNotaFiscalEletronica.Designer.vb">
+      <DependentUpon>FrmNotaFiscalEletronica.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmNotaFiscalEletronica.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\FrmRelatorioOrcVendas.Designer.vb">
       <DependentUpon>FrmRelatorioOrcVendas.vb</DependentUpon>
     </Compile>
@@ -266,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmCadastroEntregador.resx">
       <DependentUpon>FrmCadastroEntregador.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmNotaFiscalEletronica.resx">
+      <DependentUpon>FrmNotaFiscalEletronica.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmRelatorioOrcVendas.resx">
       <DependentUpon>FrmRelatorioOrcVendas.vb</DependentUpon>

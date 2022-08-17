@@ -38,6 +38,16 @@ Partial Class FrmRelatorioOrcVendas
         Me.tbItensEcontrados = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.dgProdutosVendidos = New System.Windows.Forms.DataGridView()
+        Me.CODMOVIMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CODVENDADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OPERADOR = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CODCAIXADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DATADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HORADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FORMAPAGTODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TOTALMOVIMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VENDABindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsAmbiente = New Ambiente_BackEnd.dsAmbiente()
         Me.txtperiodo = New System.Windows.Forms.MaskedTextBox()
         Me.txtate = New System.Windows.Forms.MaskedTextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -49,23 +59,14 @@ Partial Class FrmRelatorioOrcVendas
         Me.cbxTipo = New System.Windows.Forms.ComboBox()
         Me.txtCodigoFormaPagto = New System.Windows.Forms.TextBox()
         Me.cbxFormaPagamento = New System.Windows.Forms.ComboBox()
-        Me.VENDABindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsAmbiente = New Ambiente_BackEnd.dsAmbiente()
-        Me.CODMOVIMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CODVENDADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OPERADOR = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CODCAIXADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DATADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.HORADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FORMAPAGTODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TOTALMOVIMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.Panel2.SuspendLayout()
         Me.tbItensEcontrados.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.dgProdutosVendidos, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel1.SuspendLayout()
         CType(Me.VENDABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel2
@@ -217,6 +218,75 @@ Partial Class FrmRelatorioOrcVendas
         Me.dgProdutosVendidos.Size = New System.Drawing.Size(843, 299)
         Me.dgProdutosVendidos.TabIndex = 1
         '
+        'CODMOVIMENTO
+        '
+        Me.CODMOVIMENTO.DataPropertyName = "CODMOVIMENTO"
+        Me.CODMOVIMENTO.HeaderText = "Codigo Movimento"
+        Me.CODMOVIMENTO.Name = "CODMOVIMENTO"
+        Me.CODMOVIMENTO.Width = 120
+        '
+        'CODVENDADataGridViewTextBoxColumn
+        '
+        Me.CODVENDADataGridViewTextBoxColumn.DataPropertyName = "CODVENDA"
+        Me.CODVENDADataGridViewTextBoxColumn.HeaderText = "Codigo Venda"
+        Me.CODVENDADataGridViewTextBoxColumn.Name = "CODVENDADataGridViewTextBoxColumn"
+        '
+        'OPERADOR
+        '
+        Me.OPERADOR.DataPropertyName = "OPERADOR"
+        Me.OPERADOR.HeaderText = "Vendedor"
+        Me.OPERADOR.Name = "OPERADOR"
+        Me.OPERADOR.Width = 130
+        '
+        'CODCAIXADataGridViewTextBoxColumn
+        '
+        Me.CODCAIXADataGridViewTextBoxColumn.DataPropertyName = "CODCAIXA"
+        Me.CODCAIXADataGridViewTextBoxColumn.HeaderText = "Caixa"
+        Me.CODCAIXADataGridViewTextBoxColumn.Name = "CODCAIXADataGridViewTextBoxColumn"
+        Me.CODCAIXADataGridViewTextBoxColumn.Width = 60
+        '
+        'DATADataGridViewTextBoxColumn
+        '
+        Me.DATADataGridViewTextBoxColumn.DataPropertyName = "DATA"
+        Me.DATADataGridViewTextBoxColumn.HeaderText = "Data"
+        Me.DATADataGridViewTextBoxColumn.Name = "DATADataGridViewTextBoxColumn"
+        Me.DATADataGridViewTextBoxColumn.Width = 80
+        '
+        'HORADataGridViewTextBoxColumn
+        '
+        Me.HORADataGridViewTextBoxColumn.DataPropertyName = "HORA"
+        Me.HORADataGridViewTextBoxColumn.HeaderText = "Hora"
+        Me.HORADataGridViewTextBoxColumn.Name = "HORADataGridViewTextBoxColumn"
+        Me.HORADataGridViewTextBoxColumn.Width = 80
+        '
+        'FORMAPAGTODataGridViewTextBoxColumn
+        '
+        Me.FORMAPAGTODataGridViewTextBoxColumn.DataPropertyName = "FORMAPAGTO"
+        Me.FORMAPAGTODataGridViewTextBoxColumn.HeaderText = "Forma Pagamento"
+        Me.FORMAPAGTODataGridViewTextBoxColumn.Name = "FORMAPAGTODataGridViewTextBoxColumn"
+        Me.FORMAPAGTODataGridViewTextBoxColumn.Width = 120
+        '
+        'TOTALMOVIMENTO
+        '
+        Me.TOTALMOVIMENTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.TOTALMOVIMENTO.DataPropertyName = "TOTALMOVIMENTO"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle3.Format = "C2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.TOTALMOVIMENTO.DefaultCellStyle = DataGridViewCellStyle3
+        Me.TOTALMOVIMENTO.HeaderText = "Total Movimento"
+        Me.TOTALMOVIMENTO.Name = "TOTALMOVIMENTO"
+        '
+        'VENDABindingSource
+        '
+        Me.VENDABindingSource.DataMember = "VENDA"
+        Me.VENDABindingSource.DataSource = Me.DsAmbiente
+        '
+        'DsAmbiente
+        '
+        Me.DsAmbiente.DataSetName = "dsAmbiente"
+        Me.DsAmbiente.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'txtperiodo
         '
         Me.txtperiodo.Location = New System.Drawing.Point(115, 107)
@@ -325,74 +395,12 @@ Partial Class FrmRelatorioOrcVendas
         Me.cbxFormaPagamento.Size = New System.Drawing.Size(205, 21)
         Me.cbxFormaPagamento.TabIndex = 253
         '
-        'VENDABindingSource
+        'ImageList1
         '
-        Me.VENDABindingSource.DataMember = "VENDA"
-        Me.VENDABindingSource.DataSource = Me.DsAmbiente
-        '
-        'DsAmbiente
-        '
-        Me.DsAmbiente.DataSetName = "dsAmbiente"
-        Me.DsAmbiente.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'CODMOVIMENTO
-        '
-        Me.CODMOVIMENTO.DataPropertyName = "CODMOVIMENTO"
-        Me.CODMOVIMENTO.HeaderText = "Codigo Movimento"
-        Me.CODMOVIMENTO.Name = "CODMOVIMENTO"
-        Me.CODMOVIMENTO.Width = 120
-        '
-        'CODVENDADataGridViewTextBoxColumn
-        '
-        Me.CODVENDADataGridViewTextBoxColumn.DataPropertyName = "CODVENDA"
-        Me.CODVENDADataGridViewTextBoxColumn.HeaderText = "Codigo Venda"
-        Me.CODVENDADataGridViewTextBoxColumn.Name = "CODVENDADataGridViewTextBoxColumn"
-        '
-        'OPERADOR
-        '
-        Me.OPERADOR.DataPropertyName = "OPERADOR"
-        Me.OPERADOR.HeaderText = "Vendedor"
-        Me.OPERADOR.Name = "OPERADOR"
-        Me.OPERADOR.Width = 130
-        '
-        'CODCAIXADataGridViewTextBoxColumn
-        '
-        Me.CODCAIXADataGridViewTextBoxColumn.DataPropertyName = "CODCAIXA"
-        Me.CODCAIXADataGridViewTextBoxColumn.HeaderText = "Caixa"
-        Me.CODCAIXADataGridViewTextBoxColumn.Name = "CODCAIXADataGridViewTextBoxColumn"
-        Me.CODCAIXADataGridViewTextBoxColumn.Width = 60
-        '
-        'DATADataGridViewTextBoxColumn
-        '
-        Me.DATADataGridViewTextBoxColumn.DataPropertyName = "DATA"
-        Me.DATADataGridViewTextBoxColumn.HeaderText = "Data"
-        Me.DATADataGridViewTextBoxColumn.Name = "DATADataGridViewTextBoxColumn"
-        Me.DATADataGridViewTextBoxColumn.Width = 80
-        '
-        'HORADataGridViewTextBoxColumn
-        '
-        Me.HORADataGridViewTextBoxColumn.DataPropertyName = "HORA"
-        Me.HORADataGridViewTextBoxColumn.HeaderText = "Hora"
-        Me.HORADataGridViewTextBoxColumn.Name = "HORADataGridViewTextBoxColumn"
-        Me.HORADataGridViewTextBoxColumn.Width = 80
-        '
-        'FORMAPAGTODataGridViewTextBoxColumn
-        '
-        Me.FORMAPAGTODataGridViewTextBoxColumn.DataPropertyName = "FORMAPAGTO"
-        Me.FORMAPAGTODataGridViewTextBoxColumn.HeaderText = "Forma Pagamento"
-        Me.FORMAPAGTODataGridViewTextBoxColumn.Name = "FORMAPAGTODataGridViewTextBoxColumn"
-        Me.FORMAPAGTODataGridViewTextBoxColumn.Width = 120
-        '
-        'TOTALMOVIMENTO
-        '
-        Me.TOTALMOVIMENTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.TOTALMOVIMENTO.DataPropertyName = "TOTALMOVIMENTO"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.TOTALMOVIMENTO.DefaultCellStyle = DataGridViewCellStyle3
-        Me.TOTALMOVIMENTO.HeaderText = "Total Movimento"
-        Me.TOTALMOVIMENTO.Name = "TOTALMOVIMENTO"
+        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList1.Images.SetKeyName(0, "icons8-pesquisar.gif")
+        Me.ImageList1.Images.SetKeyName(1, "icons8-pesquisar (1).gif")
         '
         'FrmRelatorioOrcVendas
         '
@@ -419,10 +427,10 @@ Partial Class FrmRelatorioOrcVendas
         Me.tbItensEcontrados.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         CType(Me.dgProdutosVendidos, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         CType(Me.VENDABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -461,4 +469,5 @@ Partial Class FrmRelatorioOrcVendas
     Friend WithEvents HORADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FORMAPAGTODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TOTALMOVIMENTO As DataGridViewTextBoxColumn
+    Friend WithEvents ImageList1 As ImageList
 End Class

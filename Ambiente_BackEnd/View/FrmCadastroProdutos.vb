@@ -280,9 +280,13 @@ Public Class FrmCadastroProdutos
 
     Private Sub txtPesquisar_TextChanged(sender As Object, e As EventArgs) Handles txtPesquisar.TextChanged
         Dim str As String = 0
+        Dim ds As New DataSet
 
-        If cbxFiltro.Text = "CODIGO" Then str = "SELECT PRODUTOS.CODPRODUTO,PRODUTOS.CODBARRA,PRODUTOS.DESCRICAO,PRODUTOS.PRECO_VENDA,PRODUTOS.ATIVO FROM PRODUTOS WHERE ATIVO = 'SIM' and CODBARRA LIKE  '%" & txtPesquisar.Text & "%'"
-        If cbxFiltro.Text = "DESCRICAO" Then str = "SELECT PRODUTOS.CODPRODUTO,PRODUTOS.CODBARRA,PRODUTOS.DESCRICAO,PRODUTOS.PRECO_VENDA,PRODUTOS.ATIVO FROM PRODUTOS WHERE ATIVO = 'SIM' and DESCRICAO  LIKE  '%" & txtPesquisar.Text & "%'"
+        If cbxFiltro.Text = "Codigo Barra" Then str = "SELECT PRODUTOS.CODPRODUTO,PRODUTOS.CODBARRA,PRODUTOS.DESCRICAO,PRODUTOS.PRECO_VENDA,PRODUTOS.ATIVO FROM PRODUTOS WHERE ATIVO = 'SIM' and CODBARRA LIKE  '%" & txtPesquisar.Text & "%'"
+        If cbxFiltro.Text = "Descricao" Then str = "SELECT PRODUTOS.CODPRODUTO,PRODUTOS.CODBARRA,PRODUTOS.DESCRICAO,PRODUTOS.PRECO_VENDA,PRODUTOS.ATIVO FROM PRODUTOS WHERE ATIVO = 'SIM' and DESCRICAO  LIKE  '%" & txtPesquisar.Text & "%'"
+
+        daLocal = New FbDataAdapter(str, conexaoLocal)
+        daLocal.Fill(ds)
 
         conexaoLocal.Close()
         conexaoLocal.ConnectionString = bancoLocal

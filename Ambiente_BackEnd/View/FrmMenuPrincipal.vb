@@ -244,7 +244,10 @@ Public Class FrmMenuPrincipal
             End If
             ' End If
         End While
-
         FrmLogin.ShowDialog()
+    End Sub
+
+    Private Sub btnNotaFiscalEletronica_Click(sender As Object, e As EventArgs) 
+        FrmNotaFiscalEletronica.ShowDialog()
     End Sub
 End Class
