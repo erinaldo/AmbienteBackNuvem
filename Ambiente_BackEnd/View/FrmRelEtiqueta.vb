@@ -3,7 +3,6 @@
 Public Class FrmRelEtiqueta
 
     Private Sub FrmRelEtiqueta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         Dim DTT As New DataTable
         conexaoLocal.Close()
         conexaoLocal.ConnectionString = bancoLocal

@@ -35,17 +35,6 @@ Partial Class FrmRelatorioOrcVendas
         Me.btnPesqusiar = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.btnCancelar = New System.Windows.Forms.Button()
-        Me.tbItensEcontrados = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.dgProdutosVendidos = New System.Windows.Forms.DataGridView()
-        Me.CODMOVIMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CODVENDADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OPERADOR = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CODCAIXADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DATADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.HORADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FORMAPAGTODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TOTALMOVIMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VENDABindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsAmbiente = New Ambiente_BackEnd.dsAmbiente()
         Me.txtperiodo = New System.Windows.Forms.MaskedTextBox()
@@ -60,13 +49,28 @@ Partial Class FrmRelatorioOrcVendas
         Me.txtCodigoFormaPagto = New System.Windows.Forms.TextBox()
         Me.cbxFormaPagamento = New System.Windows.Forms.ComboBox()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.tbItensEcontrados = New System.Windows.Forms.TabControl()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.dgProdutosVendidos = New System.Windows.Forms.DataGridView()
+        Me.CODMOVIMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CODVENDADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OPERADOR = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CODCAIXADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DATADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HORADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FORMAPAGTODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TOTALMOVIMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
-        Me.tbItensEcontrados.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
-        CType(Me.dgProdutosVendidos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VENDABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        Me.Panel6.SuspendLayout()
+        Me.tbItensEcontrados.SuspendLayout()
+        Me.TabPage1.SuspendLayout()
+        CType(Me.dgProdutosVendidos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel2
@@ -79,9 +83,9 @@ Partial Class FrmRelatorioOrcVendas
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Controls.Add(Me.btnCancelar)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(0, 464)
+        Me.Panel2.Location = New System.Drawing.Point(0, 501)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(857, 51)
+        Me.Panel2.Size = New System.Drawing.Size(873, 51)
         Me.Panel2.TabIndex = 234
         '
         'btnSair
@@ -90,7 +94,7 @@ Partial Class FrmRelatorioOrcVendas
         Me.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSair.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSair.Image = CType(resources.GetObject("btnSair.Image"), System.Drawing.Image)
-        Me.btnSair.Location = New System.Drawing.Point(727, 0)
+        Me.btnSair.Location = New System.Drawing.Point(743, 0)
         Me.btnSair.Name = "btnSair"
         Me.btnSair.Size = New System.Drawing.Size(130, 51)
         Me.btnSair.TabIndex = 6
@@ -168,115 +172,6 @@ Partial Class FrmRelatorioOrcVendas
         Me.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnCancelar.UseVisualStyleBackColor = True
         '
-        'tbItensEcontrados
-        '
-        Me.tbItensEcontrados.Controls.Add(Me.TabPage1)
-        Me.tbItensEcontrados.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.tbItensEcontrados.Location = New System.Drawing.Point(0, 133)
-        Me.tbItensEcontrados.Name = "tbItensEcontrados"
-        Me.tbItensEcontrados.SelectedIndex = 0
-        Me.tbItensEcontrados.Size = New System.Drawing.Size(857, 331)
-        Me.tbItensEcontrados.TabIndex = 235
-        '
-        'TabPage1
-        '
-        Me.TabPage1.Controls.Add(Me.dgProdutosVendidos)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(849, 305)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Itens Encontrados"
-        Me.TabPage1.UseVisualStyleBackColor = True
-        '
-        'dgProdutosVendidos
-        '
-        Me.dgProdutosVendidos.AllowUserToAddRows = False
-        Me.dgProdutosVendidos.AllowUserToDeleteRows = False
-        Me.dgProdutosVendidos.AllowUserToOrderColumns = True
-        Me.dgProdutosVendidos.AllowUserToResizeColumns = False
-        Me.dgProdutosVendidos.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver
-        Me.dgProdutosVendidos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgProdutosVendidos.AutoGenerateColumns = False
-        Me.dgProdutosVendidos.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ActiveBorder
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgProdutosVendidos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Me.dgProdutosVendidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgProdutosVendidos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CODMOVIMENTO, Me.CODVENDADataGridViewTextBoxColumn, Me.OPERADOR, Me.CODCAIXADataGridViewTextBoxColumn, Me.DATADataGridViewTextBoxColumn, Me.HORADataGridViewTextBoxColumn, Me.FORMAPAGTODataGridViewTextBoxColumn, Me.TOTALMOVIMENTO})
-        Me.dgProdutosVendidos.DataSource = Me.VENDABindingSource
-        Me.dgProdutosVendidos.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgProdutosVendidos.GridColor = System.Drawing.Color.White
-        Me.dgProdutosVendidos.Location = New System.Drawing.Point(3, 3)
-        Me.dgProdutosVendidos.Name = "dgProdutosVendidos"
-        Me.dgProdutosVendidos.Size = New System.Drawing.Size(843, 299)
-        Me.dgProdutosVendidos.TabIndex = 1
-        '
-        'CODMOVIMENTO
-        '
-        Me.CODMOVIMENTO.DataPropertyName = "CODMOVIMENTO"
-        Me.CODMOVIMENTO.HeaderText = "Codigo Movimento"
-        Me.CODMOVIMENTO.Name = "CODMOVIMENTO"
-        Me.CODMOVIMENTO.Width = 120
-        '
-        'CODVENDADataGridViewTextBoxColumn
-        '
-        Me.CODVENDADataGridViewTextBoxColumn.DataPropertyName = "CODVENDA"
-        Me.CODVENDADataGridViewTextBoxColumn.HeaderText = "Codigo Venda"
-        Me.CODVENDADataGridViewTextBoxColumn.Name = "CODVENDADataGridViewTextBoxColumn"
-        '
-        'OPERADOR
-        '
-        Me.OPERADOR.DataPropertyName = "OPERADOR"
-        Me.OPERADOR.HeaderText = "Vendedor"
-        Me.OPERADOR.Name = "OPERADOR"
-        Me.OPERADOR.Width = 130
-        '
-        'CODCAIXADataGridViewTextBoxColumn
-        '
-        Me.CODCAIXADataGridViewTextBoxColumn.DataPropertyName = "CODCAIXA"
-        Me.CODCAIXADataGridViewTextBoxColumn.HeaderText = "Caixa"
-        Me.CODCAIXADataGridViewTextBoxColumn.Name = "CODCAIXADataGridViewTextBoxColumn"
-        Me.CODCAIXADataGridViewTextBoxColumn.Width = 60
-        '
-        'DATADataGridViewTextBoxColumn
-        '
-        Me.DATADataGridViewTextBoxColumn.DataPropertyName = "DATA"
-        Me.DATADataGridViewTextBoxColumn.HeaderText = "Data"
-        Me.DATADataGridViewTextBoxColumn.Name = "DATADataGridViewTextBoxColumn"
-        Me.DATADataGridViewTextBoxColumn.Width = 80
-        '
-        'HORADataGridViewTextBoxColumn
-        '
-        Me.HORADataGridViewTextBoxColumn.DataPropertyName = "HORA"
-        Me.HORADataGridViewTextBoxColumn.HeaderText = "Hora"
-        Me.HORADataGridViewTextBoxColumn.Name = "HORADataGridViewTextBoxColumn"
-        Me.HORADataGridViewTextBoxColumn.Width = 80
-        '
-        'FORMAPAGTODataGridViewTextBoxColumn
-        '
-        Me.FORMAPAGTODataGridViewTextBoxColumn.DataPropertyName = "FORMAPAGTO"
-        Me.FORMAPAGTODataGridViewTextBoxColumn.HeaderText = "Forma Pagamento"
-        Me.FORMAPAGTODataGridViewTextBoxColumn.Name = "FORMAPAGTODataGridViewTextBoxColumn"
-        Me.FORMAPAGTODataGridViewTextBoxColumn.Width = 120
-        '
-        'TOTALMOVIMENTO
-        '
-        Me.TOTALMOVIMENTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.TOTALMOVIMENTO.DataPropertyName = "TOTALMOVIMENTO"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.TOTALMOVIMENTO.DefaultCellStyle = DataGridViewCellStyle3
-        Me.TOTALMOVIMENTO.HeaderText = "Total Movimento"
-        Me.TOTALMOVIMENTO.Name = "TOTALMOVIMENTO"
-        '
         'VENDABindingSource
         '
         Me.VENDABindingSource.DataMember = "VENDA"
@@ -332,7 +227,7 @@ Partial Class FrmRelatorioOrcVendas
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(857, 45)
+        Me.Panel1.Size = New System.Drawing.Size(873, 45)
         Me.Panel1.TabIndex = 237
         '
         'Label1
@@ -402,11 +297,154 @@ Partial Class FrmRelatorioOrcVendas
         Me.ImageList1.Images.SetKeyName(0, "icons8-pesquisar.gif")
         Me.ImageList1.Images.SetKeyName(1, "icons8-pesquisar (1).gif")
         '
+        'Panel6
+        '
+        Me.Panel6.Controls.Add(Me.Label2)
+        Me.Panel6.Controls.Add(Me.lblTotal)
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel6.Location = New System.Drawing.Point(0, 462)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(873, 39)
+        Me.Panel6.TabIndex = 254
+        '
+        'tbItensEcontrados
+        '
+        Me.tbItensEcontrados.Controls.Add(Me.TabPage1)
+        Me.tbItensEcontrados.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.tbItensEcontrados.Location = New System.Drawing.Point(0, 131)
+        Me.tbItensEcontrados.Name = "tbItensEcontrados"
+        Me.tbItensEcontrados.SelectedIndex = 0
+        Me.tbItensEcontrados.Size = New System.Drawing.Size(873, 331)
+        Me.tbItensEcontrados.TabIndex = 255
+        '
+        'TabPage1
+        '
+        Me.TabPage1.Controls.Add(Me.dgProdutosVendidos)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Size = New System.Drawing.Size(865, 305)
+        Me.TabPage1.TabIndex = 0
+        Me.TabPage1.Text = "Itens Encontrados"
+        Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'dgProdutosVendidos
+        '
+        Me.dgProdutosVendidos.AllowUserToAddRows = False
+        Me.dgProdutosVendidos.AllowUserToDeleteRows = False
+        Me.dgProdutosVendidos.AllowUserToOrderColumns = True
+        Me.dgProdutosVendidos.AllowUserToResizeColumns = False
+        Me.dgProdutosVendidos.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver
+        Me.dgProdutosVendidos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgProdutosVendidos.AutoGenerateColumns = False
+        Me.dgProdutosVendidos.BackgroundColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ActiveBorder
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgProdutosVendidos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.dgProdutosVendidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgProdutosVendidos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CODMOVIMENTO, Me.CODVENDADataGridViewTextBoxColumn, Me.OPERADOR, Me.CODCAIXADataGridViewTextBoxColumn, Me.DATADataGridViewTextBoxColumn, Me.HORADataGridViewTextBoxColumn, Me.FORMAPAGTODataGridViewTextBoxColumn, Me.TOTALMOVIMENTO})
+        Me.dgProdutosVendidos.DataSource = Me.VENDABindingSource
+        Me.dgProdutosVendidos.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgProdutosVendidos.GridColor = System.Drawing.Color.White
+        Me.dgProdutosVendidos.Location = New System.Drawing.Point(3, 3)
+        Me.dgProdutosVendidos.Name = "dgProdutosVendidos"
+        Me.dgProdutosVendidos.Size = New System.Drawing.Size(859, 299)
+        Me.dgProdutosVendidos.TabIndex = 1
+        '
+        'CODMOVIMENTO
+        '
+        Me.CODMOVIMENTO.DataPropertyName = "CODMOVIMENTO"
+        Me.CODMOVIMENTO.HeaderText = "Codigo Movimento"
+        Me.CODMOVIMENTO.Name = "CODMOVIMENTO"
+        Me.CODMOVIMENTO.Width = 120
+        '
+        'CODVENDADataGridViewTextBoxColumn
+        '
+        Me.CODVENDADataGridViewTextBoxColumn.DataPropertyName = "CODVENDA"
+        Me.CODVENDADataGridViewTextBoxColumn.HeaderText = "Codigo Venda"
+        Me.CODVENDADataGridViewTextBoxColumn.Name = "CODVENDADataGridViewTextBoxColumn"
+        '
+        'OPERADOR
+        '
+        Me.OPERADOR.DataPropertyName = "OPERADOR"
+        Me.OPERADOR.HeaderText = "Vendedor"
+        Me.OPERADOR.Name = "OPERADOR"
+        Me.OPERADOR.Width = 130
+        '
+        'CODCAIXADataGridViewTextBoxColumn
+        '
+        Me.CODCAIXADataGridViewTextBoxColumn.DataPropertyName = "CODCAIXA"
+        Me.CODCAIXADataGridViewTextBoxColumn.HeaderText = "Caixa"
+        Me.CODCAIXADataGridViewTextBoxColumn.Name = "CODCAIXADataGridViewTextBoxColumn"
+        Me.CODCAIXADataGridViewTextBoxColumn.Width = 60
+        '
+        'DATADataGridViewTextBoxColumn
+        '
+        Me.DATADataGridViewTextBoxColumn.DataPropertyName = "DATA"
+        Me.DATADataGridViewTextBoxColumn.HeaderText = "Data"
+        Me.DATADataGridViewTextBoxColumn.Name = "DATADataGridViewTextBoxColumn"
+        Me.DATADataGridViewTextBoxColumn.Width = 80
+        '
+        'HORADataGridViewTextBoxColumn
+        '
+        Me.HORADataGridViewTextBoxColumn.DataPropertyName = "HORA"
+        Me.HORADataGridViewTextBoxColumn.HeaderText = "Hora"
+        Me.HORADataGridViewTextBoxColumn.Name = "HORADataGridViewTextBoxColumn"
+        Me.HORADataGridViewTextBoxColumn.Width = 80
+        '
+        'FORMAPAGTODataGridViewTextBoxColumn
+        '
+        Me.FORMAPAGTODataGridViewTextBoxColumn.DataPropertyName = "FORMAPAGTO"
+        Me.FORMAPAGTODataGridViewTextBoxColumn.HeaderText = "Forma Pagamento"
+        Me.FORMAPAGTODataGridViewTextBoxColumn.Name = "FORMAPAGTODataGridViewTextBoxColumn"
+        Me.FORMAPAGTODataGridViewTextBoxColumn.Width = 120
+        '
+        'TOTALMOVIMENTO
+        '
+        Me.TOTALMOVIMENTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.TOTALMOVIMENTO.DataPropertyName = "TOTALMOVIMENTO"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle3.Format = "C2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.TOTALMOVIMENTO.DefaultCellStyle = DataGridViewCellStyle3
+        Me.TOTALMOVIMENTO.HeaderText = "Total Movimento"
+        Me.TOTALMOVIMENTO.Name = "TOTALMOVIMENTO"
+        '
+        'lblTotal
+        '
+        Me.lblTotal.AutoSize = True
+        Me.lblTotal.Dock = System.Windows.Forms.DockStyle.Right
+        Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotal.Location = New System.Drawing.Point(837, 0)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(36, 25)
+        Me.lblTotal.TabIndex = 0
+        Me.lblTotal.Text = "...."
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(765, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(72, 25)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Total: "
+        '
         'FrmRelatorioOrcVendas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(857, 515)
+        Me.ClientSize = New System.Drawing.Size(873, 552)
+        Me.Controls.Add(Me.tbItensEcontrados)
+        Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.cbxFormaPagamento)
         Me.Controls.Add(Me.cbxTipo)
         Me.Controls.Add(Me.Label6)
@@ -417,20 +455,21 @@ Partial Class FrmRelatorioOrcVendas
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.tbItensEcontrados)
         Me.Controls.Add(Me.Panel2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FrmRelatorioOrcVendas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Rel. Orçamentos/Vendas"
         Me.Panel2.ResumeLayout(False)
-        Me.tbItensEcontrados.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        CType(Me.dgProdutosVendidos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VENDABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.Panel6.ResumeLayout(False)
+        Me.Panel6.PerformLayout()
+        Me.tbItensEcontrados.ResumeLayout(False)
+        Me.TabPage1.ResumeLayout(False)
+        CType(Me.dgProdutosVendidos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -444,9 +483,6 @@ Partial Class FrmRelatorioOrcVendas
     Friend WithEvents btnPesqusiar As Button
     Friend WithEvents Panel3 As Panel
     Friend WithEvents btnCancelar As Button
-    Friend WithEvents tbItensEcontrados As TabControl
-    Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents dgProdutosVendidos As DataGridView
     Friend WithEvents txtperiodo As MaskedTextBox
     Friend WithEvents txtate As MaskedTextBox
     Friend WithEvents Label5 As Label
@@ -461,6 +497,13 @@ Partial Class FrmRelatorioOrcVendas
     Friend WithEvents cbxTipo As ComboBox
     Friend WithEvents txtCodigoFormaPagto As TextBox
     Friend WithEvents cbxFormaPagamento As ComboBox
+    Friend WithEvents ImageList1 As ImageList
+    Friend WithEvents Panel6 As Panel
+    Friend WithEvents Label2 As Label
+    Friend WithEvents lblTotal As Label
+    Friend WithEvents tbItensEcontrados As TabControl
+    Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents dgProdutosVendidos As DataGridView
     Friend WithEvents CODMOVIMENTO As DataGridViewTextBoxColumn
     Friend WithEvents CODVENDADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents OPERADOR As DataGridViewTextBoxColumn
@@ -469,5 +512,4 @@ Partial Class FrmRelatorioOrcVendas
     Friend WithEvents HORADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FORMAPAGTODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TOTALMOVIMENTO As DataGridViewTextBoxColumn
-    Friend WithEvents ImageList1 As ImageList
 End Class

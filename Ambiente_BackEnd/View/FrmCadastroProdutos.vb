@@ -660,6 +660,7 @@ Public Class FrmCadastroProdutos
     End Sub
 
     Private Sub btnGeraEtiqueta_Click(sender As Object, e As EventArgs) Handles btnGeraEtiqueta.Click
-        FrmRelEtiqueta.ShowDialog()
+        'FrmRelEtiqueta.ShowDialog()
+        FrmEscolheEtiqueta.ShowDialog()
     End Sub
 End Class

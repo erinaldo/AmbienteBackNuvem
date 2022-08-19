@@ -2,6 +2,18 @@
 
 Public Class FrmRelatorioOrcVendas
     Private FormasPagamento As Dictionary(Of String, String)
+    Public Sub calculaTotal()
+        Dim valor As Decimal
+
+        For Each col As DataGridViewRow In dgProdutosVendidos.Rows
+            valor = valor + col.Cells(7).Value ' numero 8 é a coluna "DC"
+        Next
+
+        lblTotal.Text = valor
+        lblTotal.Text = valor
+        lblTotal.Text = FormatCurrency(lblTotal.Text, 2)
+
+    End Sub
     Private Sub btnPesqusiar_Click(sender As Object, e As EventArgs) Handles btnPesqusiar.Click
         Dim ds As New DataSet
         Dim periodoConverte As String
@@ -46,8 +58,8 @@ Public Class FrmRelatorioOrcVendas
             End If
 
             daLocal.Fill(ds)
-
             dgProdutosVendidos.DataSource = ds.Tables(0)
+            calculaTotal()
             If dgProdutosVendidos.RowCount = 0 Then
                 MsgBox("Nenhum registro encontrado", MsgBoxStyle.Exclamation, "Aviso !")
             End If
