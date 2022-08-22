@@ -163,6 +163,7 @@ Partial Class FrmConsultaImposto
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
         Me.Name = "FrmConsultaImposto"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmConsultaImposto"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()

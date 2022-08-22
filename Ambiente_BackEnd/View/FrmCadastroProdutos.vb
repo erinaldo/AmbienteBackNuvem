@@ -256,9 +256,7 @@ Public Class FrmCadastroProdutos
         tbProduto.TabPages.Add(tpPesquisa)
         tbProduto.TabPages.Remove(tpCadastrar)
     End Sub
-
-    Private Sub btnpesquisar_Click(sender As Object, e As EventArgs) Handles btnpesquisar.Click
-
+    Private Sub carregaDados()
         If tbProduto.TabPages.Contains(tpPesquisa) Then
 
         Else
@@ -277,28 +275,34 @@ Public Class FrmCadastroProdutos
         dgProdutos.DataSource = ds.Tables(0)
         MudarOperacao(OperacoesCrud.Consulta)
     End Sub
+    Private Sub btnpesquisar_Click(sender As Object, e As EventArgs) Handles btnpesquisar.Click
+        carregaDados()
+    End Sub
 
     Private Sub txtPesquisar_TextChanged(sender As Object, e As EventArgs) Handles txtPesquisar.TextChanged
         Dim str As String = 0
         Dim ds As New DataSet
+        If (txtPesquisar.Text <> "") Then
+            If cbxFiltro.Text = "Codigo Barra" Then str = "SELECT PRODUTOS.CODPRODUTO,PRODUTOS.CODBARRA,PRODUTOS.DESCRICAO,PRODUTOS.PRECO_VENDA,PRODUTOS.ATIVO FROM PRODUTOS WHERE ATIVO = 'SIM' and CODBARRA = '" + txtPesquisar.Text + "'"
+            If cbxFiltro.Text = "Descricao" Then str = "Select PRODUTOS.CODPRODUTO,PRODUTOS.CODBARRA,PRODUTOS.DESCRICAO,PRODUTOS.PRECO_VENDA,PRODUTOS.ATIVO FROM PRODUTOS WHERE ATIVO = 'SIM' and DESCRICAO  LIKE  '%" & txtPesquisar.Text & "%'"
 
-        If cbxFiltro.Text = "Codigo Barra" Then str = "SELECT PRODUTOS.CODPRODUTO,PRODUTOS.CODBARRA,PRODUTOS.DESCRICAO,PRODUTOS.PRECO_VENDA,PRODUTOS.ATIVO FROM PRODUTOS WHERE ATIVO = 'SIM' and CODBARRA LIKE  '%" & txtPesquisar.Text & "%'"
-        If cbxFiltro.Text = "Descricao" Then str = "SELECT PRODUTOS.CODPRODUTO,PRODUTOS.CODBARRA,PRODUTOS.DESCRICAO,PRODUTOS.PRECO_VENDA,PRODUTOS.ATIVO FROM PRODUTOS WHERE ATIVO = 'SIM' and DESCRICAO  LIKE  '%" & txtPesquisar.Text & "%'"
+            daLocal = New FbDataAdapter(str, conexaoLocal)
+            daLocal.Fill(ds)
 
-        daLocal = New FbDataAdapter(str, conexaoLocal)
-        daLocal.Fill(ds)
+            conexaoLocal.Close()
+            conexaoLocal.ConnectionString = bancoLocal
+            conexaoLocal.Open()
 
-        conexaoLocal.Close()
-        conexaoLocal.ConnectionString = bancoLocal
-        conexaoLocal.Open()
+            Dim cmd As FbCommand = New FbCommand(str, conexaoLocal)
+            Dim da As FbDataAdapter = New FbDataAdapter(cmd)
+            Dim dt As DataTable = New DataTable
+            da.Fill(dt)
+            dgProdutos.DataSource = dt
 
-        Dim cmd As FbCommand = New FbCommand(str, conexaoLocal)
-        Dim da As FbDataAdapter = New FbDataAdapter(cmd)
-        Dim dt As DataTable = New DataTable
-        da.Fill(dt)
-        dgProdutos.DataSource = dt
-
-        conexaoLocal.Close()
+            conexaoLocal.Close()
+        Else
+            CarregaDados()
+        End If
     End Sub
 
     Private Sub btnFechar_Click(sender As Object, e As EventArgs) Handles btnFechar.Click

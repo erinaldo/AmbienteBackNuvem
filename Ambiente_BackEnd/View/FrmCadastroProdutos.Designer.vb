@@ -129,13 +129,7 @@ Partial Class FrmCadastroProdutos
         Me.Label26 = New System.Windows.Forms.Label()
         Me.txtPesquisar = New System.Windows.Forms.TextBox()
         Me.dgProdutos = New System.Windows.Forms.DataGridView()
-        Me.CODPRODUTODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CODBARRADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DESCRICAODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PRECO_VENDA = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ATIVODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PRODUTOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsAmbiente = New Ambiente_BackEnd.dsAmbiente()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btnGeraEtiqueta = New System.Windows.Forms.Button()
         Me.Panel12 = New System.Windows.Forms.Panel()
@@ -154,6 +148,12 @@ Partial Class FrmCadastroProdutos
         Me.btneditar = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btninserir = New System.Windows.Forms.Button()
+        Me.CODPRODUTODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CODBARRADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DESCRICAODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ATIVODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PRODUTOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsAmbiente = New Ambiente_BackEnd.dsAmbiente()
         Me.tbProduto.SuspendLayout()
         Me.tpCadastrar.SuspendLayout()
         Me.Panel7.SuspendLayout()
@@ -186,10 +186,10 @@ Partial Class FrmCadastroProdutos
         Me.Panel8.SuspendLayout()
         Me.tpPesquisa.SuspendLayout()
         CType(Me.dgProdutos, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PRODUTOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.Panel9.SuspendLayout()
+        CType(Me.PRODUTOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbProduto
@@ -502,12 +502,12 @@ Partial Class FrmCadastroProdutos
         'nvenda
         '
         Me.nvenda.DecimalPlaces = 2
-        Me.nvenda.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.nvenda.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.nvenda.Increment = New Decimal(New Integer() {5, 0, 0, 131072})
-        Me.nvenda.Location = New System.Drawing.Point(23, 89)
+        Me.nvenda.Location = New System.Drawing.Point(23, 86)
         Me.nvenda.Maximum = New Decimal(New Integer() {999999, 0, 0, 0})
         Me.nvenda.Name = "nvenda"
-        Me.nvenda.Size = New System.Drawing.Size(84, 21)
+        Me.nvenda.Size = New System.Drawing.Size(170, 29)
         Me.nvenda.TabIndex = 50
         Me.nvenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -588,11 +588,11 @@ Partial Class FrmCadastroProdutos
         '
         Me.Label18.AutoSize = True
         Me.Label18.BackColor = System.Drawing.Color.Transparent
-        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label18.ForeColor = System.Drawing.Color.Black
-        Me.Label18.Location = New System.Drawing.Point(20, 71)
+        Me.Label18.Location = New System.Drawing.Point(23, 62)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(75, 15)
+        Me.Label18.Size = New System.Drawing.Size(99, 20)
         Me.Label18.TabIndex = 42
         Me.Label18.Text = "Venda (R$) :"
         '
@@ -1398,33 +1398,6 @@ Partial Class FrmCadastroProdutos
         Me.dgProdutos.Size = New System.Drawing.Size(1079, 529)
         Me.dgProdutos.TabIndex = 48
         '
-        'CODPRODUTODataGridViewTextBoxColumn
-        '
-        Me.CODPRODUTODataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.CODPRODUTODataGridViewTextBoxColumn.DataPropertyName = "CODPRODUTO"
-        Me.CODPRODUTODataGridViewTextBoxColumn.HeaderText = "Codigo"
-        Me.CODPRODUTODataGridViewTextBoxColumn.Name = "CODPRODUTODataGridViewTextBoxColumn"
-        Me.CODPRODUTODataGridViewTextBoxColumn.ReadOnly = True
-        Me.CODPRODUTODataGridViewTextBoxColumn.Width = 70
-        '
-        'CODBARRADataGridViewTextBoxColumn
-        '
-        Me.CODBARRADataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.CODBARRADataGridViewTextBoxColumn.DataPropertyName = "CODBARRA"
-        Me.CODBARRADataGridViewTextBoxColumn.HeaderText = "Codigo Barra"
-        Me.CODBARRADataGridViewTextBoxColumn.Name = "CODBARRADataGridViewTextBoxColumn"
-        Me.CODBARRADataGridViewTextBoxColumn.ReadOnly = True
-        Me.CODBARRADataGridViewTextBoxColumn.Width = 160
-        '
-        'DESCRICAODataGridViewTextBoxColumn
-        '
-        Me.DESCRICAODataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DESCRICAODataGridViewTextBoxColumn.DataPropertyName = "DESCRICAO"
-        Me.DESCRICAODataGridViewTextBoxColumn.HeaderText = "Descrição"
-        Me.DESCRICAODataGridViewTextBoxColumn.Name = "DESCRICAODataGridViewTextBoxColumn"
-        Me.DESCRICAODataGridViewTextBoxColumn.ReadOnly = True
-        Me.DESCRICAODataGridViewTextBoxColumn.Width = 600
-        '
         'PRECO_VENDA
         '
         Me.PRECO_VENDA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
@@ -1437,23 +1410,6 @@ Partial Class FrmCadastroProdutos
         Me.PRECO_VENDA.Name = "PRECO_VENDA"
         Me.PRECO_VENDA.ReadOnly = True
         Me.PRECO_VENDA.Width = 125
-        '
-        'ATIVODataGridViewTextBoxColumn
-        '
-        Me.ATIVODataGridViewTextBoxColumn.DataPropertyName = "ATIVO"
-        Me.ATIVODataGridViewTextBoxColumn.HeaderText = "Ativo"
-        Me.ATIVODataGridViewTextBoxColumn.Name = "ATIVODataGridViewTextBoxColumn"
-        Me.ATIVODataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PRODUTOBindingSource
-        '
-        Me.PRODUTOBindingSource.DataMember = "PRODUTO"
-        Me.PRODUTOBindingSource.DataSource = Me.DsAmbiente
-        '
-        'DsAmbiente
-        '
-        Me.DsAmbiente.DataSetName = "dsAmbiente"
-        Me.DsAmbiente.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Panel2
         '
@@ -1691,6 +1647,50 @@ Partial Class FrmCadastroProdutos
         Me.btninserir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btninserir.UseVisualStyleBackColor = True
         '
+        'CODPRODUTODataGridViewTextBoxColumn
+        '
+        Me.CODPRODUTODataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.CODPRODUTODataGridViewTextBoxColumn.DataPropertyName = "CODPRODUTO"
+        Me.CODPRODUTODataGridViewTextBoxColumn.HeaderText = "Codigo"
+        Me.CODPRODUTODataGridViewTextBoxColumn.Name = "CODPRODUTODataGridViewTextBoxColumn"
+        Me.CODPRODUTODataGridViewTextBoxColumn.ReadOnly = True
+        Me.CODPRODUTODataGridViewTextBoxColumn.Width = 70
+        '
+        'CODBARRADataGridViewTextBoxColumn
+        '
+        Me.CODBARRADataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.CODBARRADataGridViewTextBoxColumn.DataPropertyName = "CODBARRA"
+        Me.CODBARRADataGridViewTextBoxColumn.HeaderText = "Codigo Barra"
+        Me.CODBARRADataGridViewTextBoxColumn.Name = "CODBARRADataGridViewTextBoxColumn"
+        Me.CODBARRADataGridViewTextBoxColumn.ReadOnly = True
+        Me.CODBARRADataGridViewTextBoxColumn.Width = 160
+        '
+        'DESCRICAODataGridViewTextBoxColumn
+        '
+        Me.DESCRICAODataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.DESCRICAODataGridViewTextBoxColumn.DataPropertyName = "DESCRICAO"
+        Me.DESCRICAODataGridViewTextBoxColumn.HeaderText = "Descrição"
+        Me.DESCRICAODataGridViewTextBoxColumn.Name = "DESCRICAODataGridViewTextBoxColumn"
+        Me.DESCRICAODataGridViewTextBoxColumn.ReadOnly = True
+        Me.DESCRICAODataGridViewTextBoxColumn.Width = 600
+        '
+        'ATIVODataGridViewTextBoxColumn
+        '
+        Me.ATIVODataGridViewTextBoxColumn.DataPropertyName = "ATIVO"
+        Me.ATIVODataGridViewTextBoxColumn.HeaderText = "Ativo"
+        Me.ATIVODataGridViewTextBoxColumn.Name = "ATIVODataGridViewTextBoxColumn"
+        Me.ATIVODataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PRODUTOBindingSource
+        '
+        Me.PRODUTOBindingSource.DataMember = "PRODUTO"
+        Me.PRODUTOBindingSource.DataSource = Me.DsAmbiente
+        '
+        'DsAmbiente
+        '
+        Me.DsAmbiente.DataSetName = "dsAmbiente"
+        Me.DsAmbiente.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'FrmCadastroProdutos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1740,10 +1740,10 @@ Partial Class FrmCadastroProdutos
         Me.tpPesquisa.ResumeLayout(False)
         Me.tpPesquisa.PerformLayout()
         CType(Me.dgProdutos, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PRODUTOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel9.ResumeLayout(False)
+        CType(Me.PRODUTOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

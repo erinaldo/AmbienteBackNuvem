@@ -24,7 +24,7 @@ Public Class FrmConsultaImposto
         ElseIf (tipoConsulta = "6") Then
             str = "SELECT GRUPO_IPI.COD,GRUPO_IPI.DESCRICAO FROM GRUPO_IPI"
         ElseIf (tipoConsulta = "7") Then
-            str = "SELECT PRODUTO_NCM.NCM,PRODUTO_NCM.DESCRICAO FROM PRODUTO_NCM"
+            str = "SELECT PRODUTOS.NCM,PRODUTOS.DESCRICAO FROM PRODUTOS"
         End If
 
         daLocal = New FbDataAdapter(str, conexaoLocal)
@@ -49,7 +49,7 @@ Public Class FrmConsultaImposto
         ElseIf (tipoConsulta = "5") Then
             str = "SELECT GRUPO_PIS.COD,GRUPO_PIS.DESCRICAO FROM GRUPO_PIS WHERE COD LIKE  '%" & txtpesquisar.Text & "%'"
         ElseIf (tipoConsulta = "7") Then
-            str = "SELECT PRODUTO_NCM.NCM,PRODUTO_NCM.DESCRICAO FROM PRODUTO_NCM WHERE NCM Like  '%" & txtpesquisar.Text & "%'"
+            str = "SELECT PRODUTOS.NCM,PRODUTOS.DESCRICAO FROM PRODUTOS WHERE DESCRICAO Like  '%" & txtpesquisar.Text & "%'"
         End If
 
         conexaoLocal.Close()
