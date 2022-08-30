@@ -51,6 +51,7 @@ Partial Class FrmMenuPrincipal
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnRelOrcVenda = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.imgConf, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
@@ -466,6 +467,7 @@ Partial Class FrmMenuPrincipal
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(71, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.btnRelOrcVenda)
         Me.Panel1.Controls.Add(Me.pMovimentacao)
         Me.Panel1.Controls.Add(Me.btnMoviementacao)
@@ -509,6 +511,26 @@ Partial Class FrmMenuPrincipal
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(1031, 876)
         Me.Panel5.TabIndex = 8
+        '
+        'Button1
+        '
+        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(113, Byte), Integer))
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.Location = New System.Drawing.Point(0, 659)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.Button1.Size = New System.Drawing.Size(269, 47)
+        Me.Button1.TabIndex = 29
+        Me.Button1.Text = "             Nota Fiscal Eletronica"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'FrmMenuPrincipal
         '
@@ -569,4 +591,5 @@ Partial Class FrmMenuPrincipal
     Friend WithEvents btnRelOrcVenda As Button
     Friend WithEvents btnEntregador As Button
     Friend WithEvents lblMenu As Label
+    Friend WithEvents Button1 As Button
 End Class

@@ -247,7 +247,12 @@ Public Class FrmMenuPrincipal
         FrmLogin.ShowDialog()
     End Sub
 
-    Private Sub btnNotaFiscalEletronica_Click(sender As Object, e As EventArgs) 
+    Private Sub btnNotaFiscalEletronica_Click(sender As Object, e As EventArgs)
         FrmNotaFiscalEletronica.ShowDialog()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        FrmNotaFiscalEletronica.ShowDialog()
+
     End Sub
 End Class
