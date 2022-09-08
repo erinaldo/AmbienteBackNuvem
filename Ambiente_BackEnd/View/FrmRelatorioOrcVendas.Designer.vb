@@ -50,6 +50,8 @@ Partial Class FrmRelatorioOrcVendas
         Me.cbxFormaPagamento = New System.Windows.Forms.ComboBox()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblTotal = New System.Windows.Forms.Label()
         Me.tbItensEcontrados = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.dgProdutosVendidos = New System.Windows.Forms.DataGridView()
@@ -61,8 +63,6 @@ Partial Class FrmRelatorioOrcVendas
         Me.HORADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FORMAPAGTODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TOTALMOVIMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.lblTotal = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         CType(Me.VENDABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -307,6 +307,28 @@ Partial Class FrmRelatorioOrcVendas
         Me.Panel6.Size = New System.Drawing.Size(873, 39)
         Me.Panel6.TabIndex = 254
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(765, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(72, 25)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Total: "
+        '
+        'lblTotal
+        '
+        Me.lblTotal.AutoSize = True
+        Me.lblTotal.Dock = System.Windows.Forms.DockStyle.Right
+        Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotal.Location = New System.Drawing.Point(837, 0)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(36, 25)
+        Me.lblTotal.TabIndex = 0
+        Me.lblTotal.Text = "...."
+        '
         'tbItensEcontrados
         '
         Me.tbItensEcontrados.Controls.Add(Me.TabPage1)
@@ -415,28 +437,6 @@ Partial Class FrmRelatorioOrcVendas
         Me.TOTALMOVIMENTO.DefaultCellStyle = DataGridViewCellStyle3
         Me.TOTALMOVIMENTO.HeaderText = "Total Movimento"
         Me.TOTALMOVIMENTO.Name = "TOTALMOVIMENTO"
-        '
-        'lblTotal
-        '
-        Me.lblTotal.AutoSize = True
-        Me.lblTotal.Dock = System.Windows.Forms.DockStyle.Right
-        Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotal.Location = New System.Drawing.Point(837, 0)
-        Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(36, 25)
-        Me.lblTotal.TabIndex = 0
-        Me.lblTotal.Text = "...."
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(765, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(72, 25)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Total: "
         '
         'FrmRelatorioOrcVendas
         '

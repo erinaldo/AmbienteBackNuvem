@@ -24,11 +24,11 @@ Partial Class FrmNotaFiscalEletronica
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmNotaFiscalEletronica))
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnNovaNota = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -160,7 +160,7 @@ Partial Class FrmNotaFiscalEletronica
         Me.btnDeletarItem.Name = "btnDeletarItem"
         Me.btnDeletarItem.Size = New System.Drawing.Size(280, 63)
         Me.btnDeletarItem.TabIndex = 40
-        Me.btnDeletarItem.Text = "DELETE - Lançar Item"
+        Me.btnDeletarItem.Text = "Lançar Item (DELETE)"
         Me.btnDeletarItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnDeletarItem.UseVisualStyleBackColor = True
         '
@@ -186,7 +186,7 @@ Partial Class FrmNotaFiscalEletronica
         Me.btnEditarItem.Name = "btnEditarItem"
         Me.btnEditarItem.Size = New System.Drawing.Size(280, 63)
         Me.btnEditarItem.TabIndex = 38
-        Me.btnEditarItem.Text = "CTRL + A - Editar Item"
+        Me.btnEditarItem.Text = "Editar Item (F4)"
         Me.btnEditarItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnEditarItem.UseVisualStyleBackColor = True
         '
@@ -221,7 +221,7 @@ Partial Class FrmNotaFiscalEletronica
         Me.btnLancarItem.Name = "btnLancarItem"
         Me.btnLancarItem.Size = New System.Drawing.Size(280, 63)
         Me.btnLancarItem.TabIndex = 36
-        Me.btnLancarItem.Text = "CTRL + L - Lançar Item"
+        Me.btnLancarItem.Text = "Lançar Item (F3)"
         Me.btnLancarItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnLancarItem.UseVisualStyleBackColor = True
         '
@@ -247,7 +247,7 @@ Partial Class FrmNotaFiscalEletronica
         Me.btnImportarItem.Name = "btnImportarItem"
         Me.btnImportarItem.Size = New System.Drawing.Size(279, 63)
         Me.btnImportarItem.TabIndex = 34
-        Me.btnImportarItem.Text = "CTRL + I - Importar"
+        Me.btnImportarItem.Text = "Importar Venda (F2)"
         Me.btnImportarItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnImportarItem.UseVisualStyleBackColor = True
         '
@@ -298,7 +298,7 @@ Partial Class FrmNotaFiscalEletronica
         Me.GroupBox1.Controls.Add(Me.Label12)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.GroupBox1.Location = New System.Drawing.Point(24, 262)
+        Me.GroupBox1.Location = New System.Drawing.Point(24, 259)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(296, 54)
         Me.GroupBox1.TabIndex = 59
@@ -558,14 +558,14 @@ Partial Class FrmNotaFiscalEletronica
         Me.dg_funcionario.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.dg_funcionario.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dg_funcionario.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
-        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.HotTrack
-        DataGridViewCellStyle21.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle21.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_funcionario.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.HotTrack
+        DataGridViewCellStyle31.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle31.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_funcionario.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle31
         Me.dg_funcionario.ColumnHeadersHeight = 20
         Me.dg_funcionario.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.cod, Me.descricao, Me.CFOP, Me.CSOSN, Me.NCM, Me.CEST, Me.UNITARIO, Me.QTDE, Me.TOTAL})
         Me.dg_funcionario.Cursor = System.Windows.Forms.Cursors.Hand
@@ -626,8 +626,8 @@ Partial Class FrmNotaFiscalEletronica
         'CEST
         '
         Me.CEST.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.CEST.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.CEST.DefaultCellStyle = DataGridViewCellStyle32
         Me.CEST.FillWeight = 31.49606!
         Me.CEST.HeaderText = "CEST"
         Me.CEST.Name = "CEST"
@@ -636,10 +636,10 @@ Partial Class FrmNotaFiscalEletronica
         'UNITARIO
         '
         Me.UNITARIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle23.Format = "C2"
-        DataGridViewCellStyle23.NullValue = Nothing
-        Me.UNITARIO.DefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle33.Format = "C2"
+        DataGridViewCellStyle33.NullValue = Nothing
+        Me.UNITARIO.DefaultCellStyle = DataGridViewCellStyle33
         Me.UNITARIO.FillWeight = 31.49606!
         Me.UNITARIO.HeaderText = "UNITARIO(R$)"
         Me.UNITARIO.Name = "UNITARIO"
@@ -649,10 +649,10 @@ Partial Class FrmNotaFiscalEletronica
         'QTDE
         '
         Me.QTDE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle24.Format = "N2"
-        DataGridViewCellStyle24.NullValue = Nothing
-        Me.QTDE.DefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle34.Format = "N2"
+        DataGridViewCellStyle34.NullValue = Nothing
+        Me.QTDE.DefaultCellStyle = DataGridViewCellStyle34
         Me.QTDE.FillWeight = 31.49606!
         Me.QTDE.HeaderText = "QTDE(x)"
         Me.QTDE.Name = "QTDE"
@@ -662,10 +662,10 @@ Partial Class FrmNotaFiscalEletronica
         'TOTAL
         '
         Me.TOTAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle25.Format = "C2"
-        DataGridViewCellStyle25.NullValue = Nothing
-        Me.TOTAL.DefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle35.Format = "C2"
+        DataGridViewCellStyle35.NullValue = Nothing
+        Me.TOTAL.DefaultCellStyle = DataGridViewCellStyle35
         Me.TOTAL.FillWeight = 31.49606!
         Me.TOTAL.HeaderText = "TOTAL(R$)"
         Me.TOTAL.Name = "TOTAL"

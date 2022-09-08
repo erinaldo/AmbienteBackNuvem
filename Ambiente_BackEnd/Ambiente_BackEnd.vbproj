@@ -166,6 +166,12 @@
     <Compile Include="View\FrmEscolheEtiqueta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\FrmLancarProduto.Designer.vb">
+      <DependentUpon>FrmLancarProduto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmLancarProduto.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\FrmNotaFiscalEletronica.Designer.vb">
       <DependentUpon>FrmNotaFiscalEletronica.vb</DependentUpon>
     </Compile>
@@ -281,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmEscolheEtiqueta.resx">
       <DependentUpon>FrmEscolheEtiqueta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmLancarProduto.resx">
+      <DependentUpon>FrmLancarProduto.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmNotaFiscalEletronica.resx">
       <DependentUpon>FrmNotaFiscalEletronica.vb</DependentUpon>

@@ -15,26 +15,27 @@
 
 
     Private Sub FrmNotaFiscalEletronica_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
-        If e.KeyData = Keys.Control + Keys.I Then
-            btnImportarItem.PerformClick()
-        End If
-        If e.KeyData = Keys.Control + Keys.L Then
-            btnLancarItem.PerformClick()
-        End If
-        If e.KeyData = Keys.Control + Keys.A Then
-            btnEditarItem.PerformClick()
-        End If
-        If e.KeyData = Keys.Delete Then
-            btnDeletarItem.PerformClick()
-        End If
+        Select Case e.KeyCode
+            Case Keys.F2
+                btnImportarItem.PerformClick()
+            Case Keys.F3
+                btnLancarItem.PerformClick()
+            Case Keys.F4
+                btnEditarItem.PerformClick()
+            Case Keys.Delete
+                btnDeletarItem.PerformClick()
+        End Select
     End Sub
 
     Private Sub btnImportarItem_Click(sender As Object, e As EventArgs) Handles btnImportarItem.Click
-        MsgBox("Em Desenvolvimento")
+        'MsgBox("Em Desenvolvimento")
+
     End Sub
 
     Private Sub btnLancarItem_Click(sender As Object, e As EventArgs) Handles btnLancarItem.Click
-        MsgBox("Em Desenvolvimento")
+        'MsgBox("Em Desenvolvimento")
+        Dim FrmLancaProduto As New FrmLancarProduto
+        FrmLancarProduto.ShowDialog()
     End Sub
 
     Private Sub btnEditarItem_Click(sender As Object, e As EventArgs) Handles btnEditarItem.Click
