@@ -100,7 +100,7 @@ Partial Class FrmLogin
         Me.btnentrar.FlatAppearance.BorderSize = 0
         Me.btnentrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnentrar.Image = CType(resources.GetObject("btnentrar.Image"), System.Drawing.Image)
-        Me.btnentrar.Location = New System.Drawing.Point(291, 275)
+        Me.btnentrar.Location = New System.Drawing.Point(306, 275)
         Me.btnentrar.Name = "btnentrar"
         Me.btnentrar.Size = New System.Drawing.Size(75, 55)
         Me.btnentrar.TabIndex = 47
