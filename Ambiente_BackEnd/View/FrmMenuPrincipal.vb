@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports FirebirdSql.Data.FirebirdClient
 Imports MySql.Data.MySqlClient
 
 Public Class FrmMenuPrincipal
@@ -202,7 +203,7 @@ Public Class FrmMenuPrincipal
 
         Dim str As String
         Dim codCliente As String = LerIni("Empresa", "CodigoCliente")
-
+        Dim importaProdutos As String = LerIni("Banco", "ImportaNuvem")
         str = "SELECT * FROM Cliente WHERE CODCLIENTE = " & codCliente
 
         conexaoNuvem.Close()
@@ -242,17 +243,149 @@ Public Class FrmMenuPrincipal
                     MsgBox("Erro ao atualizar sistema: " + ex.Message, MsgBoxStyle.Exclamation)
                 End Try
             End If
-            ' End If
+            If (importaProdutos = "SIM") Then
+                btnImportarProdutos.Visible = True
+            ElseIf (importaProdutos = "NAO") Then
+                btnImportarProdutos.Visible = False
+            End If
         End While
         FrmLogin.ShowDialog()
     End Sub
 
-    Private Sub btnNotaFiscalEletronica_Click(sender As Object, e As EventArgs)
+    Private Sub btnNotaFiscalEletronica_Click(sender As Object, e As EventArgs) Handles btnNotaFiscalEletronica.Click
         FrmNotaFiscalEletronica.ShowDialog()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        FrmNotaFiscalEletronica.ShowDialog()
+    Public Sub LimpaProdutos()
+        Dim sql As String
 
+        sql = "DELETE FROM PRODUTOS"
+
+        comandoLocal = New FbCommand(sql, conexaoLocal)
+
+        conexaoLocal.Close()
+        conexaoLocal.Open()
+        comandoLocal.ExecuteNonQuery()
+        conexaoLocal.Close()
+        pImportarProdutos.Value = 50
+    End Sub
+    Public Sub ImportaProdutos()
+        Dim str As String
+        Dim descricaoPdv As String
+        str = "SELECT * FROM ProdutosNuvem WHERE ATIVO = 'SIM'"
+
+        conexaoAtualiza.Close()
+        conexaoAtualiza.ConnectionString = bancoAtualiza
+        conexaoAtualiza.Open()
+
+        Dim cmd As MySqlCommand = New MySqlCommand(str, conexaoAtualiza)
+        drNuvem = cmd.ExecuteReader
+        Try
+
+            While drNuvem.Read()
+                Dim sql As String
+
+                'sql = "INSERT INTO PRODUTOS (CODPRODUTO,DESCRICAO) VALUES (@CODPRODUTO,@DESCRICAO)"
+                sql = "INSERT INTO PRODUTOS (CODPRODUTO,CODBARRA,DESCRICAO,DESCRICAOPDV,SALDOATUAL,CODCFOP,CODCSOSN,CODICMSCST,CODCOFINSCST,CODPISCST,CODIPI,NCM,ALIQICMS,ALIQICMSBC,ALIQCOFINS,ALIQPIS,ALIQIPI,ALIQNCMFEDERAL,ALIQNCMESTADUAL,ALIQNCMMUNICIPAL,ALIQTOTAL,ATIVO,DATACADASTRO,PRECO_COMPRA,DESCONTO_MAXIMO,PRECO_CUSTO,CUSTO_PERCENTUAL,LUCRO,PRECO_VENDA,BALANCA) VALUES
+                                          (@CODPRODUTO,@CODBARRA,@DESCRICAO,@DESCRICAOPDV,@SALDOATUAL,@CODCFOP,@CODCSOSN,@CODICMSCST,@CODCOFINSCST,@CODPISCST,@CODIPI,@NCM,@ALIQICMS,@ALIQICMSBC,@ALIQCOFINS,@ALIQPIS,@ALIQIPI,@ALIQNCMFEDERAL,@ALIQNCMESTADUAL,@ALIQNCMMUNICIPAL,@ALIQTOTAL,@ATIVO,@DATACADASTRO,@PRECO_COMPRA,@DESCONTO_MAXIMO,@PRECO_CUSTO,@CUSTO_PERCENTUAL,@LUCRO,@PRECO_VENDA,@BALANCA)"
+
+
+                comandoLocal = New FbCommand(sql, conexaoLocal)
+
+                comandoLocal.Parameters.AddWithValue("@CODPRODUTO", drNuvem("idProdutos").ToString)
+                comandoLocal.Parameters.AddWithValue("@CODBARRA", drNuvem("codigobarra").ToString)
+                comandoLocal.Parameters.AddWithValue("@DESCRICAO", drNuvem("produto").ToString)
+                descricaoPdv = drNuvem("produto").ToString
+                If descricaoPdv.Length > 19 Then
+                    descricaoPdv = descricaoPdv.Substring(0, 20)
+                End If
+                comandoLocal.Parameters.AddWithValue("@DESCRICAOPDV", descricaoPdv)
+                comandoLocal.Parameters.AddWithValue("@SALDOATUAL", "0")
+                If (drNuvem("cfop").ToString = "") Then
+                    comandoLocal.Parameters.AddWithValue("@CODCFOP", "0")
+                Else
+                    comandoLocal.Parameters.AddWithValue("@CODCFOP", drNuvem("cfop").ToString)
+                End If
+
+                If (drNuvem("csons").ToString = "") Then
+                    comandoLocal.Parameters.AddWithValue("@CODCSOSN", "0")
+                Else
+                    comandoLocal.Parameters.AddWithValue("@CODCSOSN", drNuvem("csons").ToString)
+                End If
+
+                If (drNuvem("icms").ToString = "") Then
+                    comandoLocal.Parameters.AddWithValue("@CODICMSCST", "0")
+                Else
+                    comandoLocal.Parameters.AddWithValue("@CODICMSCST", drNuvem("icms").ToString)
+                End If
+
+                If (drNuvem("cofins").ToString = "") Then
+                    comandoLocal.Parameters.AddWithValue("@CODCOFINSCST", "0")
+                Else
+                    comandoLocal.Parameters.AddWithValue("@CODCOFINSCST", drNuvem("cofins").ToString)
+                End If
+
+                If (drNuvem("pis").ToString = "") Then
+                    comandoLocal.Parameters.AddWithValue("@CODPISCST", "0")
+                Else
+                    comandoLocal.Parameters.AddWithValue("@CODPISCST", drNuvem("pis").ToString)
+                End If
+
+                If (drNuvem("ncm").ToString = "") Then
+                    comandoLocal.Parameters.AddWithValue("@NCM", "0")
+                Else
+                    comandoLocal.Parameters.AddWithValue("@NCM", drNuvem("NCM").ToString)
+                End If
+
+                If (drNuvem("aliquota").ToString = "") Then
+                    comandoLocal.Parameters.AddWithValue("@ALIQTOTAL", "0")
+                Else
+                    comandoLocal.Parameters.AddWithValue("@ALIQTOTAL", drNuvem("aliquota").ToString)
+                End If
+
+                comandoLocal.Parameters.AddWithValue("@CODIPI", "0")
+                comandoLocal.Parameters.AddWithValue("@ALIQICMS", "0")
+                comandoLocal.Parameters.AddWithValue("@ALIQICMSBC", "0")
+                comandoLocal.Parameters.AddWithValue("@ALIQCOFINS", "0")
+                comandoLocal.Parameters.AddWithValue("@ALIQPIS", "0")
+                comandoLocal.Parameters.AddWithValue("@ALIQIPI", "0")
+                comandoLocal.Parameters.AddWithValue("@ALIQNCMFEDERAL", "0")
+                comandoLocal.Parameters.AddWithValue("@ALIQNCMESTADUAL", "0")
+                comandoLocal.Parameters.AddWithValue("@ALIQNCMMUNICIPAL", "0")
+                comandoLocal.Parameters.AddWithValue("@ATIVO", drNuvem("ativo").ToString)
+                comandoLocal.Parameters.AddWithValue("@DATACADASTRO", "15/09/2022")
+                comandoLocal.Parameters.AddWithValue("@PRECO_VENDA", CDec(drNuvem("precovenda")))
+                comandoLocal.Parameters.AddWithValue("@PRECO_COMPRA", "0")
+                comandoLocal.Parameters.AddWithValue("@DESCONTO_MAXIMO", "0")
+                comandoLocal.Parameters.AddWithValue("@PRECO_CUSTO", CDec(drNuvem("precocusto")))
+                comandoLocal.Parameters.AddWithValue("@CUSTO_PERCENTUAL", "0")
+                comandoLocal.Parameters.AddWithValue("@LUCRO", "0")
+                comandoLocal.Parameters.AddWithValue("@BALANCA", drNuvem("balanca").ToString)
+
+                conexaoLocal.Close()
+                conexaoLocal.Open()
+                comandoLocal.ExecuteNonQuery()
+                conexaoLocal.Close()
+            End While
+            tImportarProdutos.Enabled = False
+            MsgBox("Produtos importados com sucesso", MsgBoxStyle.Information, "Ambiente Soft")
+            pImportarProdutos.Value = 100
+        Catch ex As Exception
+            MsgBox("Erro ao importar produtos: " + ex.Message, MsgBoxStyle.Information)
+        End Try
+    End Sub
+    Private Sub btnImportarProdutos_Click(sender As Object, e As EventArgs) Handles btnImportarProdutos.Click
+        pImportarProdutos.Visible = True
+        pImportarProdutos.Value = 10
+        System.Threading.Thread.Sleep(2500)
+        LimpaProdutos()
+        System.Threading.Thread.Sleep(2000)
+        pImportarProdutos.Value = 75
+        System.Threading.Thread.Sleep(1000)
+        tImportarProdutos.Enabled = True
+    End Sub
+
+    Private Sub tImportarProdutos_Tick(sender As Object, e As EventArgs) Handles tImportarProdutos.Tick
+        ImportaProdutos()
     End Sub
 End Class

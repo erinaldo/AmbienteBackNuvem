@@ -22,6 +22,7 @@ Partial Class FrmMenuPrincipal
     'Não o modifique usando o editor de códigos.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMenuPrincipal))
         Me.imgConf = New System.Windows.Forms.PictureBox()
         Me.lblFuncLogado = New System.Windows.Forms.Label()
@@ -49,9 +50,12 @@ Partial Class FrmMenuPrincipal
         Me.pMovimentacao = New System.Windows.Forms.Panel()
         Me.btnPendencias = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.pImportarProdutos = New System.Windows.Forms.ProgressBar()
+        Me.btnImportarProdutos = New System.Windows.Forms.Button()
+        Me.btnNotaFiscalEletronica = New System.Windows.Forms.Button()
         Me.btnRelOrcVenda = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.tImportarProdutos = New System.Windows.Forms.Timer(Me.components)
         CType(Me.imgConf, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
@@ -467,7 +471,9 @@ Partial Class FrmMenuPrincipal
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(71, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.Button1)
+        Me.Panel1.Controls.Add(Me.pImportarProdutos)
+        Me.Panel1.Controls.Add(Me.btnImportarProdutos)
+        Me.Panel1.Controls.Add(Me.btnNotaFiscalEletronica)
         Me.Panel1.Controls.Add(Me.btnRelOrcVenda)
         Me.Panel1.Controls.Add(Me.pMovimentacao)
         Me.Panel1.Controls.Add(Me.btnMoviementacao)
@@ -480,6 +486,55 @@ Partial Class FrmMenuPrincipal
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(269, 920)
         Me.Panel1.TabIndex = 6
+        '
+        'pImportarProdutos
+        '
+        Me.pImportarProdutos.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pImportarProdutos.Location = New System.Drawing.Point(0, 753)
+        Me.pImportarProdutos.Name = "pImportarProdutos"
+        Me.pImportarProdutos.Size = New System.Drawing.Size(269, 15)
+        Me.pImportarProdutos.TabIndex = 31
+        Me.pImportarProdutos.Visible = False
+        '
+        'btnImportarProdutos
+        '
+        Me.btnImportarProdutos.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnImportarProdutos.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnImportarProdutos.FlatAppearance.BorderSize = 0
+        Me.btnImportarProdutos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(113, Byte), Integer))
+        Me.btnImportarProdutos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnImportarProdutos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnImportarProdutos.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.btnImportarProdutos.Image = CType(resources.GetObject("btnImportarProdutos.Image"), System.Drawing.Image)
+        Me.btnImportarProdutos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnImportarProdutos.Location = New System.Drawing.Point(0, 706)
+        Me.btnImportarProdutos.Name = "btnImportarProdutos"
+        Me.btnImportarProdutos.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.btnImportarProdutos.Size = New System.Drawing.Size(269, 47)
+        Me.btnImportarProdutos.TabIndex = 30
+        Me.btnImportarProdutos.Text = "             Importar Produtos"
+        Me.btnImportarProdutos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnImportarProdutos.UseVisualStyleBackColor = False
+        '
+        'btnNotaFiscalEletronica
+        '
+        Me.btnNotaFiscalEletronica.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnNotaFiscalEletronica.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnNotaFiscalEletronica.FlatAppearance.BorderSize = 0
+        Me.btnNotaFiscalEletronica.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(113, Byte), Integer))
+        Me.btnNotaFiscalEletronica.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnNotaFiscalEletronica.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNotaFiscalEletronica.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.btnNotaFiscalEletronica.Image = CType(resources.GetObject("btnNotaFiscalEletronica.Image"), System.Drawing.Image)
+        Me.btnNotaFiscalEletronica.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnNotaFiscalEletronica.Location = New System.Drawing.Point(0, 659)
+        Me.btnNotaFiscalEletronica.Name = "btnNotaFiscalEletronica"
+        Me.btnNotaFiscalEletronica.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.btnNotaFiscalEletronica.Size = New System.Drawing.Size(269, 47)
+        Me.btnNotaFiscalEletronica.TabIndex = 29
+        Me.btnNotaFiscalEletronica.Text = "             Nota Fiscal Eletronica"
+        Me.btnNotaFiscalEletronica.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnNotaFiscalEletronica.UseVisualStyleBackColor = True
         '
         'btnRelOrcVenda
         '
@@ -512,25 +567,9 @@ Partial Class FrmMenuPrincipal
         Me.Panel5.Size = New System.Drawing.Size(1031, 876)
         Me.Panel5.TabIndex = 8
         '
-        'Button1
+        'tImportarProdutos
         '
-        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(113, Byte), Integer))
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(0, 659)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
-        Me.Button1.Size = New System.Drawing.Size(269, 47)
-        Me.Button1.TabIndex = 29
-        Me.Button1.Text = "             Nota Fiscal Eletronica"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.tImportarProdutos.Interval = 1000
         '
         'FrmMenuPrincipal
         '
@@ -591,5 +630,8 @@ Partial Class FrmMenuPrincipal
     Friend WithEvents btnRelOrcVenda As Button
     Friend WithEvents btnEntregador As Button
     Friend WithEvents lblMenu As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnNotaFiscalEletronica As Button
+    Friend WithEvents pImportarProdutos As ProgressBar
+    Friend WithEvents btnImportarProdutos As Button
+    Friend WithEvents tImportarProdutos As Timer
 End Class

@@ -18,6 +18,7 @@
               <xs:element name="CODCOLABORADOR" msprop:Generator_ColumnPropNameInTable="CODCOLABORADORColumn" msprop:Generator_ColumnPropNameInRow="CODCOLABORADOR" msprop:Generator_UserColumnName="CODCOLABORADOR" msprop:Generator_ColumnVarNameInTable="columnCODCOLABORADOR" type="xs:string" minOccurs="0" />
               <xs:element name="RAZAOSOCIAL" msprop:Generator_ColumnPropNameInTable="RAZAOSOCIALColumn" msprop:Generator_ColumnPropNameInRow="RAZAOSOCIAL" msprop:Generator_UserColumnName="RAZAOSOCIAL" msprop:Generator_ColumnVarNameInTable="columnRAZAOSOCIAL" type="xs:string" minOccurs="0" />
               <xs:element name="ATIVO" msprop:Generator_ColumnPropNameInTable="ATIVOColumn" msprop:Generator_ColumnPropNameInRow="ATIVO" msprop:Generator_UserColumnName="ATIVO" msprop:Generator_ColumnVarNameInTable="columnATIVO" type="xs:string" minOccurs="0" />
+              <xs:element name="NOMEFANTASIA" msprop:Generator_ColumnPropNameInRow="NOMEFANTASIA" msprop:Generator_ColumnPropNameInTable="NOMEFANTASIAColumn" msprop:Generator_ColumnVarNameInTable="columnNOMEFANTASIA" msprop:Generator_UserColumnName="NOMEFANTASIA" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -28,7 +29,7 @@
               <xs:element name="DESCRICAO" msprop:Generator_ColumnPropNameInTable="DESCRICAOColumn" msprop:Generator_ColumnPropNameInRow="DESCRICAO" msprop:Generator_UserColumnName="DESCRICAO" msprop:Generator_ColumnVarNameInTable="columnDESCRICAO" type="xs:string" minOccurs="0" />
               <xs:element name="CODBARRA" msprop:Generator_ColumnPropNameInTable="CODBARRAColumn" msprop:Generator_ColumnPropNameInRow="CODBARRA" msprop:Generator_UserColumnName="CODBARRA" msprop:Generator_ColumnVarNameInTable="columnCODBARRA" type="xs:string" minOccurs="0" />
               <xs:element name="ATIVO" msprop:Generator_ColumnPropNameInTable="ATIVOColumn" msprop:Generator_ColumnPropNameInRow="ATIVO" msprop:Generator_UserColumnName="ATIVO" msprop:Generator_ColumnVarNameInTable="columnATIVO" type="xs:string" minOccurs="0" />
-              <xs:element name="PRECO_VENDA" msprop:Generator_ColumnPropNameInRow="PRECO_VENDA" msprop:Generator_ColumnPropNameInTable="PRECO_VENDAColumn" msprop:Generator_ColumnVarNameInTable="columnPRECO_VENDA" msprop:Generator_UserColumnName="PRECO_VENDA" type="xs:string" minOccurs="0" />
+              <xs:element name="PRECO_VENDA" msprop:Generator_UserColumnName="PRECO_VENDA" msprop:Generator_ColumnPropNameInTable="PRECO_VENDAColumn" msprop:Generator_ColumnPropNameInRow="PRECO_VENDA" msprop:Generator_ColumnVarNameInTable="columnPRECO_VENDA" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -74,14 +75,14 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ENTREGADOR" msprop:Generator_RowClassName="ENTREGADORRow" msprop:Generator_RowEvHandlerName="ENTREGADORRowChangeEventHandler" msprop:Generator_RowDeletedName="ENTREGADORRowDeleted" msprop:Generator_RowDeletingName="ENTREGADORRowDeleting" msprop:Generator_RowEvArgName="ENTREGADORRowChangeEvent" msprop:Generator_TablePropName="ENTREGADOR" msprop:Generator_RowChangedName="ENTREGADORRowChanged" msprop:Generator_UserTableName="ENTREGADOR" msprop:Generator_RowChangingName="ENTREGADORRowChanging" msprop:Generator_TableClassName="ENTREGADORDataTable" msprop:Generator_TableVarName="tableENTREGADOR">
+        <xs:element name="ENTREGADOR" msprop:Generator_RowEvHandlerName="ENTREGADORRowChangeEventHandler" msprop:Generator_RowDeletedName="ENTREGADORRowDeleted" msprop:Generator_RowDeletingName="ENTREGADORRowDeleting" msprop:Generator_RowEvArgName="ENTREGADORRowChangeEvent" msprop:Generator_TablePropName="ENTREGADOR" msprop:Generator_RowChangedName="ENTREGADORRowChanged" msprop:Generator_UserTableName="ENTREGADOR" msprop:Generator_RowChangingName="ENTREGADORRowChanging" msprop:Generator_RowClassName="ENTREGADORRow" msprop:Generator_TableClassName="ENTREGADORDataTable" msprop:Generator_TableVarName="tableENTREGADOR">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="CODENTREGADOR" msprop:Generator_UserColumnName="CODENTREGADOR" msprop:Generator_ColumnPropNameInTable="CODENTREGADORColumn" msprop:Generator_ColumnPropNameInRow="CODENTREGADOR" msprop:Generator_ColumnVarNameInTable="columnCODENTREGADOR" type="xs:string" minOccurs="0" />
-              <xs:element name="NOME" msprop:Generator_UserColumnName="NOME" msprop:Generator_ColumnPropNameInTable="NOMEColumn" msprop:Generator_ColumnPropNameInRow="NOME" msprop:Generator_ColumnVarNameInTable="columnNOME" type="xs:string" minOccurs="0" />
-              <xs:element name="EMPRESA" msprop:Generator_UserColumnName="EMPRESA" msprop:Generator_ColumnPropNameInTable="EMPRESAColumn" msprop:Generator_ColumnPropNameInRow="EMPRESA" msprop:Generator_ColumnVarNameInTable="columnEMPRESA" type="xs:string" minOccurs="0" />
-              <xs:element name="TELEFONE" msprop:Generator_UserColumnName="TELEFONE" msprop:Generator_ColumnPropNameInTable="TELEFONEColumn" msprop:Generator_ColumnPropNameInRow="TELEFONE" msprop:Generator_ColumnVarNameInTable="columnTELEFONE" type="xs:string" minOccurs="0" />
-              <xs:element name="ATIVO" msprop:Generator_UserColumnName="ATIVO" msprop:Generator_ColumnPropNameInTable="ATIVOColumn" msprop:Generator_ColumnPropNameInRow="ATIVO" msprop:Generator_ColumnVarNameInTable="columnATIVO" type="xs:string" minOccurs="0" />
+              <xs:element name="CODENTREGADOR" msprop:Generator_ColumnPropNameInTable="CODENTREGADORColumn" msprop:Generator_ColumnPropNameInRow="CODENTREGADOR" msprop:Generator_UserColumnName="CODENTREGADOR" msprop:Generator_ColumnVarNameInTable="columnCODENTREGADOR" type="xs:string" minOccurs="0" />
+              <xs:element name="NOME" msprop:Generator_ColumnPropNameInTable="NOMEColumn" msprop:Generator_ColumnPropNameInRow="NOME" msprop:Generator_UserColumnName="NOME" msprop:Generator_ColumnVarNameInTable="columnNOME" type="xs:string" minOccurs="0" />
+              <xs:element name="EMPRESA" msprop:Generator_ColumnPropNameInTable="EMPRESAColumn" msprop:Generator_ColumnPropNameInRow="EMPRESA" msprop:Generator_UserColumnName="EMPRESA" msprop:Generator_ColumnVarNameInTable="columnEMPRESA" type="xs:string" minOccurs="0" />
+              <xs:element name="TELEFONE" msprop:Generator_ColumnPropNameInTable="TELEFONEColumn" msprop:Generator_ColumnPropNameInRow="TELEFONE" msprop:Generator_UserColumnName="TELEFONE" msprop:Generator_ColumnVarNameInTable="columnTELEFONE" type="xs:string" minOccurs="0" />
+              <xs:element name="ATIVO" msprop:Generator_ColumnPropNameInTable="ATIVOColumn" msprop:Generator_ColumnPropNameInRow="ATIVO" msprop:Generator_UserColumnName="ATIVO" msprop:Generator_ColumnVarNameInTable="columnATIVO" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

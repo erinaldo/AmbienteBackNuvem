@@ -681,7 +681,33 @@
         q91QoAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="Button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnImportarProdutos.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH5gkPDSoPrrZi8gAABHhJREFU
+        WEe9l1molVUUgK+aaQ4PVuasUGChWYk5hympPRgOmKFFSgSpgWRhQRgqokaCqagpKiFBBZXgUDhhZaRS
+        DmWTlqllidlgRC8V5PX79l3/8fz3ntu9N44u+Dh7r732PmsPa+39V1SXysrK22AF/AQX4F84DvOhY5iV
+        Xxj8algJX8E62Aer4Rk4BUvid0Z0KZ8w6FWwDXSgOXwLXWEZTIFRsBnawA5YGP0GwRC4BRqnwf6P0Pl5
+        WB9l/2xrlF2BadAYfoAboBm4OmNgHmyCj8AtexPuhfo7g3EX+A46wFRw9r/CefgNHPj34H0YBz3hSyj8
+        EeUWMBa2wycwKJoKgs6JjIpqlaCYBVtBJ1aBnQdGW9qCIru34FXwnHwIg22rLuiHhc0caBRq9TfDnqhW
+        CYrD8Dm0jfrX0DnKxQ7cDxui3APOwVLrpYS21uDE1kNygt+JsCwZZILib/gUdgV/we4ofw9fRPkg+KeZ
+        3Wk4GcOUFNo93G/DvKh71h5JjZmgcFCXtU9wBlxCy6/B3Cg/CUaK5TtBp7fHMLUKNq3A7RgA9u8dTVWC
+        4mVwpmvhVjgAPaKteAseBcP0LnCgY/CwbcWCri20iGoS6neDZ8tVaxbqKkExHPbATDgKf4JbYOL5AN4A
+        HfHU/wHaPgBGy7UxTEHQuWInwVm7giaykbAXToXZJUHZCIzrcVF/Dt6Bp2A/ePJnwDcwNGxmwxLLtQnt
+        Ji230oltAB3eG815ocHwcBv6QXs4AR6gLBN2Ax3Q2QngcraO7uURBuwPLp1LZug8DZkDboMzsf4xdIpu
+        5RUG9gB5E56FLBP+AkaGF5HONQ/zOgVbM1+7qNZf6GS+vwdeAQ+jYdegywb7wWDuMJWbYa+Lpssr/FFn
+        MK8cAQ+ht+tCMLpeh3wYlkvij4wgD/Pj0CT0D4H3jCvphWYoj0idyiUM+CAYJcuhTehuBG/G98CVcDvN
+        ITp0CLbA7WmATFB4t5uMXgSTTZdoqlWwca//AffZK9nwfQIMZSPIK94VeAyyS6kXeOmdS4NkgsKLx5nY
+        8SUw3l3SjTAxzHKC3txh4vJxYvR46NaA6ddEZhK6PmxNTq6S4e71fiQNolDRe3P1ThgdavUtwcFGhion
+        6HVgS5QXgw4Yvs56WOhdFVfAUNZRz8tNkHPAP3GmZkVfwWkv6xLsih2YDgvA/s7Si248fAauRIfUCaFc
+        w4FnYVaUfQd6eOoMGWyqO7AUfC11hxfgZ+ibjIsEXQ0HPJWFJxZlZ+LD4z9XgvZiB3wde4h91PjWvAPe
+        TYbVBH0NB36Ea6KahLor4YAl91+hreCAQrkpTIIm0CAH7otiTtAbMr6GPZy+enN3AfWcA8WCvv4O1CUY
+        +xHiQfJw+X7wsbEIHMjoGROmBUFX0gF0hqPfHNtC1TCho++D9FUUdQ+cucCXVK9khFDOOUDZ23EyOIkU
+        jtFUHmFAv5Y8MyklQ8EBfg1zPwFMyZf1I9er3JA2EblFZkM/2Xzspg+eKyL8WScwtA1JX9Ql3hMVFRcB
+        mjy8dc1t+MwAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnNotaFiscalEletronica.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH5gUaEToExK25kwAAAvZJREFU
@@ -719,4 +745,7 @@
         vhPid0U6C/3sdu6iEX0BG2ArjLH4n+J+JWyHGkh0XlT0B5bTla4IX+dGAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="tImportarProdutos.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

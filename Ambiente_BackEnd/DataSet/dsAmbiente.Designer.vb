@@ -499,6 +499,8 @@ Partial Public Class dsAmbiente
         
         Private columnATIVO As Global.System.Data.DataColumn
         
+        Private columnNOMEFANTASIA As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -559,6 +561,14 @@ Partial Public Class dsAmbiente
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property NOMEFANTASIAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNOMEFANTASIA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -595,9 +605,9 @@ Partial Public Class dsAmbiente
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddCOLABORADORRow(ByVal CODCOLABORADOR As String, ByVal RAZAOSOCIAL As String, ByVal ATIVO As String) As COLABORADORRow
+        Public Overloads Function AddCOLABORADORRow(ByVal CODCOLABORADOR As String, ByVal RAZAOSOCIAL As String, ByVal ATIVO As String, ByVal NOMEFANTASIA As String) As COLABORADORRow
             Dim rowCOLABORADORRow As COLABORADORRow = CType(Me.NewRow,COLABORADORRow)
-            Dim columnValuesArray() As Object = New Object() {CODCOLABORADOR, RAZAOSOCIAL, ATIVO}
+            Dim columnValuesArray() As Object = New Object() {CODCOLABORADOR, RAZAOSOCIAL, ATIVO, NOMEFANTASIA}
             rowCOLABORADORRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCOLABORADORRow)
             Return rowCOLABORADORRow
@@ -623,6 +633,7 @@ Partial Public Class dsAmbiente
             Me.columnCODCOLABORADOR = MyBase.Columns("CODCOLABORADOR")
             Me.columnRAZAOSOCIAL = MyBase.Columns("RAZAOSOCIAL")
             Me.columnATIVO = MyBase.Columns("ATIVO")
+            Me.columnNOMEFANTASIA = MyBase.Columns("NOMEFANTASIA")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -634,6 +645,8 @@ Partial Public Class dsAmbiente
             MyBase.Columns.Add(Me.columnRAZAOSOCIAL)
             Me.columnATIVO = New Global.System.Data.DataColumn("ATIVO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnATIVO)
+            Me.columnNOMEFANTASIA = New Global.System.Data.DataColumn("NOMEFANTASIA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNOMEFANTASIA)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2625,6 +2638,21 @@ Partial Public Class dsAmbiente
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property NOMEFANTASIA() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCOLABORADOR.NOMEFANTASIAColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("O valor da coluna 'NOMEFANTASIA' na tabela 'COLABORADOR' é DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCOLABORADOR.NOMEFANTASIAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsCODCOLABORADORNull() As Boolean
             Return Me.IsNull(Me.tableCOLABORADOR.CODCOLABORADORColumn)
         End Function
@@ -2657,6 +2685,18 @@ Partial Public Class dsAmbiente
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetATIVONull()
             Me(Me.tableCOLABORADOR.ATIVOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsNOMEFANTASIANull() As Boolean
+            Return Me.IsNull(Me.tableCOLABORADOR.NOMEFANTASIAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetNOMEFANTASIANull()
+            Me(Me.tableCOLABORADOR.NOMEFANTASIAColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

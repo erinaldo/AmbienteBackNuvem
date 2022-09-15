@@ -45,4 +45,9 @@
     Private Sub btnDeletarItem_Click(sender As Object, e As EventArgs) Handles btnDeletarItem.Click
         MsgBox("Em Desenvolvimento")
     End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        Dim FrmConsultaCliente As New FrmConsultaCliente
+        FrmConsultaCliente.ShowDialog()
+    End Sub
 End Class
