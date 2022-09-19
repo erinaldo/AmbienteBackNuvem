@@ -59,7 +59,7 @@ Public Class FrmMenuPrincipal
         Close()
     End Sub
     Private Sub btnCadastroColaborador_Click(sender As Object, e As EventArgs) Handles btnCadastroColaborador.Click
-        With FrmCadastroColaboradores
+        With FrmListaColaborador
             '.TopLevel = False
             'Panel5.Controls.Add(FrmCadastroColaboradores)
             '.Left = (Panel5.Width - .Width) / 2

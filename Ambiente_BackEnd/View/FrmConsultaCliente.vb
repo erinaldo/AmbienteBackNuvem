@@ -28,9 +28,9 @@ Public Class FrmConsultaCliente
         Dim cmd As FbCommand = New FbCommand(str, conexaoLocal)
         drLocal = cmd.ExecuteReader
 
-
         Dim FrmVisualizaCliente As New FrmVisualizaCliente
-        While drLocal.Read()
+
+            While drLocal.Read()
             FrmVisualizaCliente.txtCodigoCliente.Text = drLocal("CODCOLABORADOR").ToString
             FrmVisualizaCliente.txtRazaoSocial.Text = drLocal("RAZAOSOCIAL").ToString
             FrmVisualizaCliente.txtNomeFantasia.Text = drLocal("NOMEFANTASIA").ToString

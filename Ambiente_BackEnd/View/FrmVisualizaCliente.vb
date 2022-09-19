@@ -33,7 +33,6 @@ Public Class FrmVisualizaCliente
         If txtUf.Text = "" Or txtUf.Text = "0" Then mensagem += "CAMPO UF ESTÁ INCORRETO" + Environment.NewLine
 
         If txtCodigoIbge.Text = "" Or txtCodigoIbge.Text = "0" Then mensagem += "CAMPO CODIGO IBGE ESTÁ INCORRETO" + Environment.NewLine
-
         If (mensagem <> "") Then
             btnConfirmar.Enabled = False
             Exit Sub
