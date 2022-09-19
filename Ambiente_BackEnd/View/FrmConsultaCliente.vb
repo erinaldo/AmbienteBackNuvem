@@ -45,12 +45,8 @@ Public Class FrmConsultaCliente
             FrmVisualizaCliente.txtCidade.Text = drLocal("MUNICIPIO").ToString
             'FrmVisualizaCliente.txtUf.Text = drLocal("MUNICIPIO").ToString
             FrmVisualizaCliente.txtCodigoIbge.Text = drLocal("CODIGOIBGE").ToString
-
         End While
         FrmVisualizaCliente.ShowDialog()
-        ' If (mensagem <> "") Then
-        'MsgBox("Dados do Cliente" + Environment.NewLine + mensagem, MsgBoxStyle.Information, "AVISO")
-        ' Exit Sub
-        ' End If
+        Close()
     End Sub
 End Class

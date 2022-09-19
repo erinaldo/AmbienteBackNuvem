@@ -310,11 +310,11 @@ Partial Class FrmNotaFiscalEletronica
         Me.Label12.AutoSize = True
         Me.Label12.Dock = System.Windows.Forms.DockStyle.Right
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(171, 22)
+        Me.Label12.Location = New System.Drawing.Point(199, 22)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(122, 29)
+        Me.Label12.Size = New System.Drawing.Size(94, 29)
         Me.Label12.TabIndex = 0
-        Me.Label12.Text = "R$140,25"
+        Me.Label12.Text = "R$0,00"
         '
         'btnLimpar
         '

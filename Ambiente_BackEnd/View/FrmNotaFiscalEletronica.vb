@@ -1,5 +1,6 @@
 ﻿Public Class FrmNotaFiscalEletronica
     Dim funcao As String = ""
+    Public codCliente As String
     Private Sub btnLimpar_Click(sender As Object, e As EventArgs) Handles btnLimpar.Click
         If funcao = "" Then
             rtbInformaçõesComplementares.Text = ""

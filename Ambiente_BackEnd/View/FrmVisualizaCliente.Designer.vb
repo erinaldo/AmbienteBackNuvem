@@ -57,6 +57,7 @@ Partial Class FrmVisualizaCliente
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.btnConfirmar = New System.Windows.Forms.Button()
+        Me.btnAtualizarDados = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -360,11 +361,24 @@ Partial Class FrmVisualizaCliente
         Me.btnConfirmar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnConfirmar.UseVisualStyleBackColor = True
         '
+        'btnAtualizarDados
+        '
+        Me.btnAtualizarDados.Image = CType(resources.GetObject("btnAtualizarDados.Image"), System.Drawing.Image)
+        Me.btnAtualizarDados.Location = New System.Drawing.Point(582, 386)
+        Me.btnAtualizarDados.Name = "btnAtualizarDados"
+        Me.btnAtualizarDados.Size = New System.Drawing.Size(138, 45)
+        Me.btnAtualizarDados.TabIndex = 33
+        Me.btnAtualizarDados.Text = "Atualizar Dados"
+        Me.btnAtualizarDados.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAtualizarDados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnAtualizarDados.UseVisualStyleBackColor = True
+        '
         'FrmVisualizaCliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(965, 482)
+        Me.Controls.Add(Me.btnAtualizarDados)
         Me.Controls.Add(Me.btnConfirmar)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.TextBox1)
@@ -443,4 +457,5 @@ Partial Class FrmVisualizaCliente
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents btnConfirmar As Button
+    Friend WithEvents btnAtualizarDados As Button
 End Class
