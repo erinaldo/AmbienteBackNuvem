@@ -58,6 +58,8 @@ Partial Class FrmVisualizaCliente
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.btnConfirmar = New System.Windows.Forms.Button()
         Me.btnAtualizarDados = New System.Windows.Forms.Button()
+        Me.lblvalida = New System.Windows.Forms.Label()
+        Me.btnValidar = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -103,7 +105,7 @@ Partial Class FrmVisualizaCliente
         '
         'txtRazaoSocial
         '
-        Me.txtRazaoSocial.Location = New System.Drawing.Point(464, 131)
+        Me.txtRazaoSocial.Location = New System.Drawing.Point(464, 171)
         Me.txtRazaoSocial.Name = "txtRazaoSocial"
         Me.txtRazaoSocial.Size = New System.Drawing.Size(400, 20)
         Me.txtRazaoSocial.TabIndex = 4
@@ -112,7 +114,7 @@ Partial Class FrmVisualizaCliente
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(364, 135)
+        Me.Label2.Location = New System.Drawing.Point(364, 175)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(94, 16)
         Me.Label2.TabIndex = 3
@@ -120,7 +122,7 @@ Partial Class FrmVisualizaCliente
         '
         'txtNomeFantasia
         '
-        Me.txtNomeFantasia.Location = New System.Drawing.Point(464, 157)
+        Me.txtNomeFantasia.Location = New System.Drawing.Point(464, 197)
         Me.txtNomeFantasia.Name = "txtNomeFantasia"
         Me.txtNomeFantasia.Size = New System.Drawing.Size(400, 20)
         Me.txtNomeFantasia.TabIndex = 6
@@ -129,7 +131,7 @@ Partial Class FrmVisualizaCliente
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(353, 161)
+        Me.Label3.Location = New System.Drawing.Point(353, 201)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(105, 16)
         Me.Label3.TabIndex = 5
@@ -139,7 +141,7 @@ Partial Class FrmVisualizaCliente
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(339, 184)
+        Me.Label5.Location = New System.Drawing.Point(339, 224)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(119, 16)
         Me.Label5.TabIndex = 7
@@ -147,7 +149,7 @@ Partial Class FrmVisualizaCliente
         '
         'txtTelefoneCelular
         '
-        Me.txtTelefoneCelular.Location = New System.Drawing.Point(464, 183)
+        Me.txtTelefoneCelular.Location = New System.Drawing.Point(464, 223)
         Me.txtTelefoneCelular.Name = "txtTelefoneCelular"
         Me.txtTelefoneCelular.Size = New System.Drawing.Size(143, 20)
         Me.txtTelefoneCelular.TabIndex = 8
@@ -156,7 +158,7 @@ Partial Class FrmVisualizaCliente
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(411, 209)
+        Me.Label6.Location = New System.Drawing.Point(411, 249)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(47, 16)
         Me.Label6.TabIndex = 9
@@ -164,14 +166,14 @@ Partial Class FrmVisualizaCliente
         '
         'txtEmail
         '
-        Me.txtEmail.Location = New System.Drawing.Point(464, 209)
+        Me.txtEmail.Location = New System.Drawing.Point(464, 249)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(230, 20)
         Me.txtEmail.TabIndex = 10
         '
         'txtCpfCnpj
         '
-        Me.txtCpfCnpj.Location = New System.Drawing.Point(464, 235)
+        Me.txtCpfCnpj.Location = New System.Drawing.Point(464, 131)
         Me.txtCpfCnpj.Name = "txtCpfCnpj"
         Me.txtCpfCnpj.Size = New System.Drawing.Size(143, 20)
         Me.txtCpfCnpj.TabIndex = 12
@@ -180,7 +182,7 @@ Partial Class FrmVisualizaCliente
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(374, 236)
+        Me.Label7.Location = New System.Drawing.Point(374, 132)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(84, 16)
         Me.Label7.TabIndex = 11
@@ -188,16 +190,16 @@ Partial Class FrmVisualizaCliente
         '
         'txtInscEstadual
         '
-        Me.txtInscEstadual.Location = New System.Drawing.Point(706, 235)
+        Me.txtInscEstadual.Location = New System.Drawing.Point(464, 274)
         Me.txtInscEstadual.Name = "txtInscEstadual"
-        Me.txtInscEstadual.Size = New System.Drawing.Size(158, 20)
+        Me.txtInscEstadual.Size = New System.Drawing.Size(143, 20)
         Me.txtInscEstadual.TabIndex = 14
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(607, 236)
+        Me.Label8.Location = New System.Drawing.Point(365, 275)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(96, 16)
         Me.Label8.TabIndex = 13
@@ -205,7 +207,7 @@ Partial Class FrmVisualizaCliente
         '
         'txtCep
         '
-        Me.txtCep.Location = New System.Drawing.Point(464, 261)
+        Me.txtCep.Location = New System.Drawing.Point(465, 300)
         Me.txtCep.Name = "txtCep"
         Me.txtCep.Size = New System.Drawing.Size(143, 20)
         Me.txtCep.TabIndex = 16
@@ -214,7 +216,7 @@ Partial Class FrmVisualizaCliente
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(418, 262)
+        Me.Label9.Location = New System.Drawing.Point(421, 301)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(40, 16)
         Me.Label9.TabIndex = 15
@@ -222,7 +224,7 @@ Partial Class FrmVisualizaCliente
         '
         'txtEndereco
         '
-        Me.txtEndereco.Location = New System.Drawing.Point(464, 287)
+        Me.txtEndereco.Location = New System.Drawing.Point(465, 326)
         Me.txtEndereco.Name = "txtEndereco"
         Me.txtEndereco.Size = New System.Drawing.Size(296, 20)
         Me.txtEndereco.TabIndex = 18
@@ -231,7 +233,7 @@ Partial Class FrmVisualizaCliente
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(386, 288)
+        Me.Label10.Location = New System.Drawing.Point(389, 327)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(72, 16)
         Me.Label10.TabIndex = 17
@@ -241,7 +243,7 @@ Partial Class FrmVisualizaCliente
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(766, 288)
+        Me.Label11.Location = New System.Drawing.Point(767, 327)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(28, 16)
         Me.Label11.TabIndex = 19
@@ -249,14 +251,14 @@ Partial Class FrmVisualizaCliente
         '
         'txtNumero
         '
-        Me.txtNumero.Location = New System.Drawing.Point(801, 287)
+        Me.txtNumero.Location = New System.Drawing.Point(802, 326)
         Me.txtNumero.Name = "txtNumero"
         Me.txtNumero.Size = New System.Drawing.Size(63, 20)
         Me.txtNumero.TabIndex = 20
         '
         'txtBairro
         '
-        Me.txtBairro.Location = New System.Drawing.Point(464, 313)
+        Me.txtBairro.Location = New System.Drawing.Point(465, 352)
         Me.txtBairro.Name = "txtBairro"
         Me.txtBairro.Size = New System.Drawing.Size(166, 20)
         Me.txtBairro.TabIndex = 21
@@ -265,7 +267,7 @@ Partial Class FrmVisualizaCliente
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(409, 314)
+        Me.Label12.Location = New System.Drawing.Point(412, 353)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(49, 16)
         Me.Label12.TabIndex = 22
@@ -275,7 +277,7 @@ Partial Class FrmVisualizaCliente
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(636, 314)
+        Me.Label13.Location = New System.Drawing.Point(637, 353)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(57, 16)
         Me.Label13.TabIndex = 24
@@ -283,7 +285,7 @@ Partial Class FrmVisualizaCliente
         '
         'txtCidade
         '
-        Me.txtCidade.Location = New System.Drawing.Point(699, 313)
+        Me.txtCidade.Location = New System.Drawing.Point(700, 352)
         Me.txtCidade.Name = "txtCidade"
         Me.txtCidade.Size = New System.Drawing.Size(165, 20)
         Me.txtCidade.TabIndex = 23
@@ -292,7 +294,7 @@ Partial Class FrmVisualizaCliente
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(550, 340)
+        Me.Label14.Location = New System.Drawing.Point(551, 379)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(91, 16)
         Me.Label14.TabIndex = 28
@@ -300,7 +302,7 @@ Partial Class FrmVisualizaCliente
         '
         'txtCodigoIbge
         '
-        Me.txtCodigoIbge.Location = New System.Drawing.Point(647, 339)
+        Me.txtCodigoIbge.Location = New System.Drawing.Point(648, 378)
         Me.txtCodigoIbge.Name = "txtCodigoIbge"
         Me.txtCodigoIbge.Size = New System.Drawing.Size(107, 20)
         Me.txtCodigoIbge.TabIndex = 27
@@ -309,7 +311,7 @@ Partial Class FrmVisualizaCliente
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(427, 340)
+        Me.Label15.Location = New System.Drawing.Point(430, 379)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(31, 16)
         Me.Label15.TabIndex = 26
@@ -317,7 +319,7 @@ Partial Class FrmVisualizaCliente
         '
         'txtUf
         '
-        Me.txtUf.Location = New System.Drawing.Point(464, 339)
+        Me.txtUf.Location = New System.Drawing.Point(465, 378)
         Me.txtUf.Name = "txtUf"
         Me.txtUf.Size = New System.Drawing.Size(80, 20)
         Me.txtUf.TabIndex = 25
@@ -326,7 +328,7 @@ Partial Class FrmVisualizaCliente
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(371, 365)
+        Me.Label16.Location = New System.Drawing.Point(374, 404)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(87, 16)
         Me.Label16.TabIndex = 29
@@ -334,7 +336,7 @@ Partial Class FrmVisualizaCliente
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(464, 364)
+        Me.TextBox1.Location = New System.Drawing.Point(465, 403)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(80, 20)
         Me.TextBox1.TabIndex = 30
@@ -352,7 +354,7 @@ Partial Class FrmVisualizaCliente
         'btnConfirmar
         '
         Me.btnConfirmar.Image = CType(resources.GetObject("btnConfirmar.Image"), System.Drawing.Image)
-        Me.btnConfirmar.Location = New System.Drawing.Point(726, 386)
+        Me.btnConfirmar.Location = New System.Drawing.Point(727, 425)
         Me.btnConfirmar.Name = "btnConfirmar"
         Me.btnConfirmar.Size = New System.Drawing.Size(138, 45)
         Me.btnConfirmar.TabIndex = 32
@@ -364,7 +366,7 @@ Partial Class FrmVisualizaCliente
         'btnAtualizarDados
         '
         Me.btnAtualizarDados.Image = CType(resources.GetObject("btnAtualizarDados.Image"), System.Drawing.Image)
-        Me.btnAtualizarDados.Location = New System.Drawing.Point(582, 386)
+        Me.btnAtualizarDados.Location = New System.Drawing.Point(583, 425)
         Me.btnAtualizarDados.Name = "btnAtualizarDados"
         Me.btnAtualizarDados.Size = New System.Drawing.Size(138, 45)
         Me.btnAtualizarDados.TabIndex = 33
@@ -373,11 +375,31 @@ Partial Class FrmVisualizaCliente
         Me.btnAtualizarDados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnAtualizarDados.UseVisualStyleBackColor = True
         '
+        'lblvalida
+        '
+        Me.lblvalida.AutoSize = True
+        Me.lblvalida.Location = New System.Drawing.Point(465, 154)
+        Me.lblvalida.Name = "lblvalida"
+        Me.lblvalida.Size = New System.Drawing.Size(22, 13)
+        Me.lblvalida.TabIndex = 202
+        Me.lblvalida.Text = "....."
+        '
+        'btnValidar
+        '
+        Me.btnValidar.Location = New System.Drawing.Point(610, 131)
+        Me.btnValidar.Name = "btnValidar"
+        Me.btnValidar.Size = New System.Drawing.Size(64, 20)
+        Me.btnValidar.TabIndex = 203
+        Me.btnValidar.Text = "Validar"
+        Me.btnValidar.UseVisualStyleBackColor = True
+        '
         'FrmVisualizaCliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(965, 482)
+        Me.Controls.Add(Me.btnValidar)
+        Me.Controls.Add(Me.lblvalida)
         Me.Controls.Add(Me.btnAtualizarDados)
         Me.Controls.Add(Me.btnConfirmar)
         Me.Controls.Add(Me.PictureBox1)
@@ -458,4 +480,6 @@ Partial Class FrmVisualizaCliente
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents btnConfirmar As Button
     Friend WithEvents btnAtualizarDados As Button
+    Friend WithEvents lblvalida As Label
+    Friend WithEvents btnValidar As Button
 End Class

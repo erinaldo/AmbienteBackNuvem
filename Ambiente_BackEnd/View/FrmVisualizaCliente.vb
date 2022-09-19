@@ -1,6 +1,10 @@
-﻿Imports FirebirdSql.Data.FirebirdClient
+﻿Imports System.Web.Script.Serialization
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports FirebirdSql.Data.FirebirdClient
 
 Public Class FrmVisualizaCliente
+    Dim pessoaFisica As Boolean
+    Dim ser As JavaScriptSerializer = New JavaScriptSerializer()
     Private Sub ValidaCampos()
         Dim mensagem As String = String.Empty
 
@@ -133,4 +137,87 @@ Public Class FrmVisualizaCliente
     Private Sub FrmVisualizaCliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ValidaCampos()
     End Sub
+    Private Sub ValidaPessoaJuridicaFisica(Optional carregandoFormulario As Boolean = False)
+        Dim documento As String
+
+        documento = txtCpfCnpj.Text.Replace(".", "").Replace("-", "").Replace("/", "").Trim()
+        If Len(documento) <> 14 AndAlso Len(documento) <> 11 Then
+            lblvalida.Text = "DOCUMENTO INVÁLIDO"
+            lblvalida.ForeColor = ForeColor.Red
+            Exit Sub
+        End If
+
+        If Len(documento) = 14 Then
+            If ValidaCNPJ(documento) = False Then
+                lblvalida.Text = "CNPJ INVÁLIDO"
+                lblvalida.ForeColor = ForeColor.Red
+                txtCpfCnpj.Text = ""
+                txtCpfCnpj.Focus()
+
+                Exit Sub
+            Else
+                lblvalida.Text = "PESSOA JURÍDICA"
+                lblvalida.ForeColor = ForeColor.Green
+                txtInscEstadual.Enabled = True
+                pessoaFisica = False
+
+                If carregandoFormulario = False Then
+
+                    txtInscEstadual.Text = ""
+                End If
+
+                Exit Sub
+            End If
+        Else
+
+            If FU_ValidaCPF(documento) = False Then
+                lblvalida.Text = "CPF INVÁLIDO"
+                lblvalida.ForeColor = ForeColor.Red
+                txtCpfCnpj.Text = ""
+                txtCpfCnpj.Focus()
+
+                Exit Sub
+
+            Else
+                lblvalida.Text = "PESSOA FÍSICA"
+                lblvalida.ForeColor = ForeColor.Blue
+                txtInscEstadual.Enabled = False
+                pessoaFisica = True
+
+                If carregandoFormulario = False Then
+
+                    txtInscEstadual.Text = ""
+                End If
+                Exit Sub
+            End If
+        End If
+    End Sub
+    Private Sub btnValidar_Click(sender As Object, e As EventArgs) Handles btnValidar.Click
+        ValidaPessoaJuridicaFisica(False)
+        If pessoaFisica = False Then
+            Dim consultas As consulta = New consulta()
+
+            Dim jsonString As String = New System.Net.WebClient().DownloadString("https://receitaws.com.br/v1/cnpj/" + txtCpfCnpj.Text)
+            consultas = ser.Deserialize(Of consulta)(jsonString)
+
+            txtRazaoSocial.Text = consultas.nome
+            txtNomeFantasia.Text = consultas.nome
+            txtCep.Text = consultas.cep
+            txtEndereco.Text = consultas.logradouro
+            txtNumero.Text = consultas.numero
+            txtBairro.Text = consultas.bairro
+            txtCidade.Text = consultas.municipio
+            txtUf.Text = consultas.uf
+        End If
+    End Sub
+    Class consulta
+        Public Property nome As String
+        Public Property tipo As String
+        Public Property cep As String
+        Public Property logradouro As String
+        Public Property numero As String
+        Public Property bairro As String
+        Public Property municipio As String
+        Public Property uf As String
+    End Class
 End Class
