@@ -70,6 +70,7 @@ Public Class FrmMenuPrincipal
         End With
     End Sub
     Private Sub btnCadastroProdutos_Click(sender As Object, e As EventArgs) Handles btnCadastroProdutos.Click
+        Dim FrmCadastroProdutos As New FrmCadastroProdutos
         With FrmCadastroProdutos
             '.TopLevel = False
             'Panel5.Controls.Add(FrmCadastroProdutos)
@@ -353,7 +354,7 @@ Public Class FrmMenuPrincipal
                 comandoLocal.Parameters.AddWithValue("@ALIQNCMESTADUAL", "0")
                 comandoLocal.Parameters.AddWithValue("@ALIQNCMMUNICIPAL", "0")
                 comandoLocal.Parameters.AddWithValue("@ATIVO", drNuvem("ativo").ToString)
-                comandoLocal.Parameters.AddWithValue("@DATACADASTRO", "15/09/2022")
+                comandoLocal.Parameters.AddWithValue("@DATACADASTRO", Date.now)
                 comandoLocal.Parameters.AddWithValue("@PRECO_VENDA", CDec(drNuvem("precovenda")))
                 comandoLocal.Parameters.AddWithValue("@PRECO_COMPRA", "0")
                 comandoLocal.Parameters.AddWithValue("@DESCONTO_MAXIMO", "0")

@@ -8,5 +8,7 @@
         Habilitar
         LiberarVenda
         BloquearVenda
+        IniciarNota
+        BloquearNota
     End Enum
 End Module

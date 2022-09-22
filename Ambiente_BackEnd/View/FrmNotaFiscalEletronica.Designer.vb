@@ -72,7 +72,7 @@ Partial Class FrmNotaFiscalEletronica
         Me.txtCodigoVenda = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtNumeroNota = New System.Windows.Forms.TextBox()
-        Me.dg_funcionario = New System.Windows.Forms.DataGridView()
+        Me.dgNotaFiscal = New System.Windows.Forms.DataGridView()
         Me.cod = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.descricao = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CFOP = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -90,7 +90,7 @@ Partial Class FrmNotaFiscalEletronica
         Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dg_funcionario, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgNotaFiscal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -425,6 +425,7 @@ Partial Class FrmNotaFiscalEletronica
         Me.txtCfop.Name = "txtCfop"
         Me.txtCfop.Size = New System.Drawing.Size(78, 20)
         Me.txtCfop.TabIndex = 46
+        Me.txtCfop.Text = "5102"
         '
         'txtNomeCliente
         '
@@ -550,14 +551,13 @@ Partial Class FrmNotaFiscalEletronica
         Me.txtNumeroNota.Size = New System.Drawing.Size(92, 20)
         Me.txtNumeroNota.TabIndex = 32
         '
-        'dg_funcionario
+        'dgNotaFiscal
         '
-        Me.dg_funcionario.AllowUserToAddRows = False
-        Me.dg_funcionario.AllowUserToDeleteRows = False
-        Me.dg_funcionario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dg_funcionario.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.dg_funcionario.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dg_funcionario.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.dgNotaFiscal.AllowUserToAddRows = False
+        Me.dgNotaFiscal.AllowUserToDeleteRows = False
+        Me.dgNotaFiscal.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.dgNotaFiscal.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgNotaFiscal.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -565,20 +565,20 @@ Partial Class FrmNotaFiscalEletronica
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_funcionario.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.dg_funcionario.ColumnHeadersHeight = 20
-        Me.dg_funcionario.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.cod, Me.descricao, Me.CFOP, Me.CSOSN, Me.NCM, Me.CEST, Me.UNITARIO, Me.QTDE, Me.TOTAL})
-        Me.dg_funcionario.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.dg_funcionario.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dg_funcionario.GridColor = System.Drawing.SystemColors.HighlightText
-        Me.dg_funcionario.Location = New System.Drawing.Point(0, 385)
-        Me.dg_funcionario.MultiSelect = False
-        Me.dg_funcionario.Name = "dg_funcionario"
-        Me.dg_funcionario.ReadOnly = True
-        Me.dg_funcionario.RowHeadersVisible = False
-        Me.dg_funcionario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dg_funcionario.Size = New System.Drawing.Size(1215, 165)
-        Me.dg_funcionario.TabIndex = 52
+        Me.dgNotaFiscal.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgNotaFiscal.ColumnHeadersHeight = 20
+        Me.dgNotaFiscal.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.cod, Me.descricao, Me.CFOP, Me.CSOSN, Me.NCM, Me.CEST, Me.UNITARIO, Me.QTDE, Me.TOTAL})
+        Me.dgNotaFiscal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.dgNotaFiscal.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgNotaFiscal.GridColor = System.Drawing.SystemColors.HighlightText
+        Me.dgNotaFiscal.Location = New System.Drawing.Point(0, 385)
+        Me.dgNotaFiscal.MultiSelect = False
+        Me.dgNotaFiscal.Name = "dgNotaFiscal"
+        Me.dgNotaFiscal.ReadOnly = True
+        Me.dgNotaFiscal.RowHeadersVisible = False
+        Me.dgNotaFiscal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
+        Me.dgNotaFiscal.Size = New System.Drawing.Size(1215, 165)
+        Me.dgNotaFiscal.TabIndex = 52
         '
         'cod
         '
@@ -632,6 +632,7 @@ Partial Class FrmNotaFiscalEletronica
         Me.CEST.HeaderText = "CEST"
         Me.CEST.Name = "CEST"
         Me.CEST.ReadOnly = True
+        Me.CEST.Width = 80
         '
         'UNITARIO
         '
@@ -682,7 +683,7 @@ Partial Class FrmNotaFiscalEletronica
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1215, 613)
-        Me.Controls.Add(Me.dg_funcionario)
+        Me.Controls.Add(Me.dgNotaFiscal)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
@@ -701,7 +702,7 @@ Partial Class FrmNotaFiscalEletronica
         Me.GroupBox1.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dg_funcionario, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgNotaFiscal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -741,16 +742,7 @@ Partial Class FrmNotaFiscalEletronica
     Friend WithEvents txtCodigoVenda As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents txtNumeroNota As TextBox
-    Friend WithEvents dg_funcionario As DataGridView
-    Friend WithEvents cod As DataGridViewTextBoxColumn
-    Friend WithEvents descricao As DataGridViewTextBoxColumn
-    Friend WithEvents CFOP As DataGridViewTextBoxColumn
-    Friend WithEvents CSOSN As DataGridViewTextBoxColumn
-    Friend WithEvents NCM As DataGridViewTextBoxColumn
-    Friend WithEvents CEST As DataGridViewTextBoxColumn
-    Friend WithEvents UNITARIO As DataGridViewTextBoxColumn
-    Friend WithEvents QTDE As DataGridViewTextBoxColumn
-    Friend WithEvents TOTAL As DataGridViewTextBoxColumn
+    Friend WithEvents dgNotaFiscal As DataGridView
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents btnDeletarItem As Button
     Friend WithEvents Panel8 As Panel
@@ -760,4 +752,13 @@ Partial Class FrmNotaFiscalEletronica
     Friend WithEvents btnLancarItem As Button
     Friend WithEvents Panel5 As Panel
     Friend WithEvents btnImportarItem As Button
+    Friend WithEvents cod As DataGridViewTextBoxColumn
+    Friend WithEvents descricao As DataGridViewTextBoxColumn
+    Friend WithEvents CFOP As DataGridViewTextBoxColumn
+    Friend WithEvents CSOSN As DataGridViewTextBoxColumn
+    Friend WithEvents NCM As DataGridViewTextBoxColumn
+    Friend WithEvents CEST As DataGridViewTextBoxColumn
+    Friend WithEvents UNITARIO As DataGridViewTextBoxColumn
+    Friend WithEvents QTDE As DataGridViewTextBoxColumn
+    Friend WithEvents TOTAL As DataGridViewTextBoxColumn
 End Class

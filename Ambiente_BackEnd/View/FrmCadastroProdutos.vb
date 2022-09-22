@@ -1,9 +1,23 @@
-﻿Imports FirebirdSql.Data.FirebirdClient
+﻿Imports System.Net
+Imports System.Web.Script.Serialization
+Imports FirebirdSql.Data.FirebirdClient
 
 Public Class FrmCadastroProdutos
     Private Operacao As OperacoesCrud
     Dim INDEX As Integer
+    Dim ser As JavaScriptSerializer = New JavaScriptSerializer()
     Dim estoqueAnterior As String
+    Public Class CosmosWebClient
+        Inherits WebClient
+
+        Protected Overrides Function GetWebRequest(ByVal address As Uri) As WebRequest
+            Dim request As HttpWebRequest = CType(MyBase.GetWebRequest(address), HttpWebRequest)
+            request.UserAgent = "Cosmos-API-Request"
+            request.Headers("X-Cosmos-Token") = "qzi8TYPHxgU8TnV3045y0w"
+            MyBase.Encoding = System.Text.Encoding.UTF8
+            Return request
+        End Function
+    End Class
     Private Sub MudarOperacao(ByVal novaOperacao As OperacoesCrud)
         If novaOperacao = OperacoesCrud.Consulta Then
             btnpesquisar.Enabled = True
@@ -158,6 +172,8 @@ Public Class FrmCadastroProdutos
 
         If cbxBalanca.Text = "" Then mensagem += "CAMPO BALANCA ESTÁ VAZIO" + Environment.NewLine
 
+        If txtNcm.Text = "" Then mensagem += "CAMPO NCM ESTÁ VAZIO" + Environment.NewLine
+
         If cbxBalanca.Text = "SIM" Then
             If txtDiasValido.Text = "" Then mensagem += "CAMPO DIAS VALIDOS ESTÁ VAZIO" + Environment.NewLine
 
@@ -301,7 +317,7 @@ Public Class FrmCadastroProdutos
 
             conexaoLocal.Close()
         Else
-            CarregaDados()
+            carregaDados()
         End If
     End Sub
 
@@ -359,10 +375,28 @@ Public Class FrmCadastroProdutos
             End If
         End If
     End Sub
+
     Private Sub txtcodbarra_Leave(sender As Object, e As EventArgs) Handles txtcodbarra.Leave
+        'If MessageBox.Show("Deseja utilizar informções de cadastro do cosmos?", "Ambiente Soft", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) = vbYes Then
+        'Dim url = "https://api.cosmos.bluesoft.com.br/gtins/" & txtcodbarra.Text & ".json"
+        '    Dim wc As CosmosWebClient = New CosmosWebClient()
+        '    Dim response As String = wc.DownloadString(url)
+        '    Dim consultas As consulta = New consulta()
+
+        '    consultas = ser.Deserialize(Of consulta)(response)
+
+        '    txtDescricao.Text = consultas.description
+        '    txtNcm.Text = consultas.code
+        'Else
+
+        'End If
         ValidaCodBarra()
     End Sub
+    Class consulta
+        Public Property description As String
+        Public Property code As String
 
+    End Class
     Private Sub txtDescricao_Leave(sender As Object, e As EventArgs) Handles txtDescricao.Leave
         txtdescricaopdv.Text = txtDescricao.Text
     End Sub
@@ -502,6 +536,7 @@ Public Class FrmCadastroProdutos
         Else
 
             Dim str As String
+            txtNcm.Text = Replace(txtNcm.Text, ".", "")
             str = "SELECT * From PRODUTO_NCM where NCM = " & txtNcm.Text
 
             conexaoLocal.Close()

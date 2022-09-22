@@ -117,47 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnCancelar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAAOsAAADrASts18IAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
-        AAADNElEQVRYR7WXz0sUYRjH19T8sWuX0tXdS4cOZd26aFltUJZtSxBYdCgI15DIP0DQIjsWBBFRHSoK
-        jSgI/4DKukSHSFsLBSu1Uyrhzi6ra+bT88y87/b6zjOzs4oPfEAY9/l8Z+b9NT6vBRerAxAPnYZ4+B7E
-        6z7g39PI4lyjD5J7N/w1IiXp9KGyL5mo/2aqOVAjfrb2gnhNEEW3kTQCOnMNPhvJxqLl9OGyoeyJQL1o
-        U3hB57YyaAtdRklKl6pwASTJPUXLmeaKVxCpDoi23grOhTfjY37DCXU4sY4RKTWy0cAu0d694HxtPTae
-        0EVOcEIOY1/xn4VoZVRo+LLuPPyNEznByZygEI7jAi7sLkX5ICdxgxO5kTpYmmTHBDa7ojeXLHVHYO7j
-        W5h/1GW7pgt+PrsPY0OfYebSUds1SfpI+TuhtUpMNXa0L3U1we8f4zA7mzTJPL224rraeOrFQ0gkRk2+
-        jozCTGfLius5GotgPlbVJPTm3dM8X9GY0OVcCNlUlXsJgevEiCU/G/RjI/bu6bHrckmm72ouwOTLJza5
-        ZOzTsE1O4BoB6TP+IN09Lq92OUHvnJNLKISbnKAxwQUgMi3+GxiA1nY+AJF53M3KJZxUMjnQx4oltHdg
-        AHNjYeUStxCcmMgnJ4wDJQa9ghlV5oRTiNXKCdpFKUBWlznBhVit3ASnY4EBevIGmBjo52UcIoDHV2CX
-        cwEKCSFegZdByMsJLgDhJYQ1CNvr7upCFTc5wckl+UKYqyG0h09xYmL9F6KK6+u/FOPOqIsJOjfmDq/Y
-        6JYqljhuRv29uf+RDaeeP7DJ82xGCVNOBR3BGmxmyKYqtu1YkRNqUzVEvu04c3JTg9BbhXtCj9pYxTqQ
-        DHo+kIwOJ9wPJM3lg0L7v6wjmbeTsAoncMPxSEZlHUpD47rEDU7ihHkojVVtFzq+8CnswMbfdZETnIjD
-        2F+8uHC88pjQuJf5JNpDrzmhDifTocde8GcatO7ciIJeZEEV6nDCHDjaacBBLFQp2hZe0FG7FUV3EHaa
-        cmL6JqR5bptqaylzxWwLt6KUwrxHfiFZukvxeZ4ypbi8GrGqLeJnecrn+wfihabw6nX70AAAAABJRU5E
-        rkJggg==
-</value>
-  </data>
-  <data name="btnConfirmar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAAOsAAADrASts18IAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
-        AAADUUlEQVRYR6WXTU8TURSGu1ETZaeBrUsl/gAX/gJdqwsqiItaNY0L3fhBe6akhFiUgMbYhSiJ/gGj
-        S5VoFFssCNMPGsAQo3SGVgwfC8HI9ZzpTFvvnOkM5STPom16nnfuvXPnjs9rwTK0hDXlbESDRERTkqAp
-        y8hWRzIiuj7D3+5JZSOgQvZSDgaD8/FW82+7r5t6rA105QHKNlAsZDqSYOPchLIdUJUvoSy0m212XqG5
-        4X2gR8MoWZel9XABLPwTsB3MwOvLWWgx23qrG9/7Dka06FtOKMOJZbqnlLVgLnbMbN+4oAjtONyLnIyD
-        E3LgOvkTysVOmRq+KleuLMiSRnAyJ7rSGMJpXQREYg9e+RgnaQQnasSFKVhl10RYVyKcwA1O4sbFGXhn
-        aitFtxo2a7janeAE7kQEjsIJU48LD+9zrrkX5Oadqaj4lJ8War4gbk0mbL9bBKYhY8iva/ED2Kipqyfq
-        m5I8OTsjVHXWIJMtiB6HEP5URFxVY22+yvbKN/eC1VCWewmB0zDgM/d2trkXqBHJU3nVJrdI53M2ORGY
-        gSwGUJJy03ruaUOiX7vD/ka4ydVMQTxWX7AB8JZcowAluanFiD4q9PJP8a28JIb0+7bfFQ2H3UX+RH3J
-        yolOfIpSgE25MWHJy+VVAzkEyT+UkrwYyRjyV6y4RkSwAUb0pyhfqcotFss/xCBOCck/llLGd85y5yuv
-        UQlgm4L3y+M2uQWFSJXS1c/Ny2tTYFuEtOhmSwv/iZ2wy92GvYaxCPEB9EgOsJMQzcoJYzeEYvQMF4Dw
-        EqJZOYEbUdx1K3YL0ayczo3VwytOwzAnt3AKoZd/eV5wMrgLqoacCjRoxRBrnNxCDkHyUf0529wNfwpE
-        aA6Om/pK4YGkhxPX06/FRQFD6KUVlD8zvuMEbgRVGDO1taIjmZeTcK8WEwP63epnTtAIxyMZFR1KcSrm
-        64VucBIn6GQcKPQdMXV83V7qPYohvnIyDk7EcT6tbF3JwUlT07jMkXjDCWU4mQwN+45f0yALe6GoRDHI
-        b05swQktaLXTggssJfabbXde+KZ0GIM8dLpNWTG+E9J9brvVdlO0Y4aLymkKg+JxREc2/SikpxoO8zpJ
-        aXu9VoBD5t9cyuf7B7fOk2hKZaszAAAAAElFTkSuQmCC
-</value>
-  </data>
+  <metadata name="CODPRODUTO.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="PRODUTOBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>135, 17</value>
+  </metadata>
+  <metadata name="DsAmbiente.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

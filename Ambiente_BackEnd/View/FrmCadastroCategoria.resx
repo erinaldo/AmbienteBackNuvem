@@ -123,14 +123,11 @@
   <metadata name="DsAmbiente.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="DsAmbiente.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnpesquisar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAC
-        6wAAAusBv3cShQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAO4SURBVFhHtddZ
+        6gAAAuoBbTDwYQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAO4SURBVFhHtddZ
         qE1RHMfxZZ6HzJmHIooMKTJkCpmKDFEylQdzQh5IQuFBERESxYMUGR4M4cGYeRZRZiVj5vH6/s5e6561
         91333B3df31O+6z1P2vtc/aajsnLywsiKqI/VmEvTuMe3uE7XuAajmEnZqFNqK1cChYY0w8noE6eYgfm
         YxKGoAvaoTdGYRqW4Ti+4jnWoWay7ZDshTH1sAfvsQgt/cQ0iPLog4N4g6mhPF/2wpjdOIBUd14Uohc+
@@ -177,7 +174,7 @@
   <data name="btnsalvar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        vQAAAL0BHVrG+gAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEZSURBVEhLpZbR
+        vAAAALwBzx0kHgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEZSURBVEhLpZbR
         zcIwDIQ7AC+IDsAT7NdZ2Aj2ADFCFwh2krMupyJCE+mT7uyz89Dw65/sLMZqpJ28jZtxTClNip+R5czT
         OG9dkANUwIAyU2am+sV4VP0ymkv85CAVslfQ11zVB+Nea80lfiJYC9kr6GuO/OYlfjSYvYK+5qTGl/g3
         ORptEF5BX3Mbdb8E38RfVxuE34A/8gl11Bg719r3J9wG7fzzbFfMKZQpghq9PzzPLJhTKFeEBkbB3hAa

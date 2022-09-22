@@ -1,6 +1,18 @@
-﻿Public Class FrmNotaFiscalEletronica
+﻿Imports FirebirdSql.Data.FirebirdClient
+
+Public Class FrmNotaFiscalEletronica
     Dim funcao As String = ""
     Public codCliente As String
+    Private Operacao As OperacoesCrud
+    Private Sub MudarOperacao(ByVal novaOperacao As OperacoesCrud)
+        If novaOperacao = OperacoesCrud.IniciarNota Then
+            mdl_bloquearcampos.funcao = "LIBERAR"
+        ElseIf novaOperacao = OperacoesCrud.BloquearNota Then
+            mdl_bloquearcampos.funcao = "BLOQUEAR"
+        End If
+        bloquearcampos(Me)
+        Operacao = novaOperacao
+    End Sub
     Private Sub btnLimpar_Click(sender As Object, e As EventArgs) Handles btnLimpar.Click
         If funcao = "" Then
             rtbInformaçõesComplementares.Text = ""
@@ -35,8 +47,8 @@
 
     Private Sub btnLancarItem_Click(sender As Object, e As EventArgs) Handles btnLancarItem.Click
         'MsgBox("Em Desenvolvimento")
-        Dim FrmLancaProduto As New FrmLancarProduto
-        FrmLancarProduto.ShowDialog()
+        'Dim FrmConsultaProduto As New FrmConsultaProduto
+        FrmConsultaProduto.ShowDialog()
     End Sub
 
     Private Sub btnEditarItem_Click(sender As Object, e As EventArgs) Handles btnEditarItem.Click
@@ -50,5 +62,55 @@
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
         Dim FrmConsultaCliente As New FrmConsultaCliente
         FrmConsultaCliente.ShowDialog()
+    End Sub
+
+    Private Sub btnNovaNota_Click(sender As Object, e As EventArgs) Handles btnNovaNota.Click
+        MudarOperacao(Operacao.IniciarNota)
+    End Sub
+
+    Private Sub FrmNotaFiscalEletronica_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        MudarOperacao(Operacao.BloquearNota)
+        btnNovaNota.Enabled = True
+    End Sub
+
+    Private Sub txtCodCliente_TextChanged(sender As Object, e As EventArgs) Handles txtCodCliente.TextChanged
+        Dim sql As String
+        If (txtCodCliente.Text = "") Then
+            txtNomeCliente.Text = ""
+        Else
+            sql = "SELECT * FROM COLABORADOR WHERE CODCOLABORADOR = " & txtCodCliente.Text
+
+            conexaoLocal.Close()
+            conexaoLocal.ConnectionString = bancoLocal
+            conexaoLocal.Open()
+
+            Dim cmd As FbCommand = New FbCommand(sql, conexaoLocal)
+            drLocal = cmd.ExecuteReader
+
+            While drLocal.Read()
+                txtNomeCliente.Text = drLocal("RAZAOSOCIAL").ToString
+            End While
+        End If
+    End Sub
+
+    Private Sub txtCfop_TextChanged(sender As Object, e As EventArgs) Handles txtCfop.TextChanged
+        If txtCfop.Text = "" Then
+            txtDescricaoCfop.Text = ""
+        Else
+            Dim str As String
+            str = "SELECT * From CFOP where CODCFOP =" & txtCfop.Text
+
+            conexaoLocal.Close()
+            conexaoLocal.ConnectionString = bancoLocal
+            conexaoLocal.Open()
+
+            Dim cmd As FbCommand = New FbCommand(str, conexaoLocal)
+
+            drLocal = cmd.ExecuteReader
+
+            While drLocal.Read()
+                txtDescricaoCfop.Text = drLocal("NOME_CFO").ToString
+            End While
+        End If
     End Sub
 End Class
