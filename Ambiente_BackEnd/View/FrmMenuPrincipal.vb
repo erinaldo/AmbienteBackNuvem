@@ -60,11 +60,6 @@ Public Class FrmMenuPrincipal
     End Sub
     Private Sub btnCadastroColaborador_Click(sender As Object, e As EventArgs) Handles btnCadastroColaborador.Click
         With FrmListaColaborador
-            '.TopLevel = False
-            'Panel5.Controls.Add(FrmCadastroColaboradores)
-            '.Left = (Panel5.Width - .Width) / 2
-            '.Top = (Panel5.Height - .Height) / 2
-            '.BringToFront()
             DiminuiMenu()
             .ShowDialog()
         End With
@@ -72,11 +67,6 @@ Public Class FrmMenuPrincipal
     Private Sub btnCadastroProdutos_Click(sender As Object, e As EventArgs) Handles btnCadastroProdutos.Click
         Dim FrmCadastroProdutos As New FrmCadastroProdutos
         With FrmCadastroProdutos
-            '.TopLevel = False
-            'Panel5.Controls.Add(FrmCadastroProdutos)
-            '.Left = (Panel5.Width - .Width) / 2
-            '.Top = (Panel5.Height - .Height) / 2
-            '.BringToFront()
             DiminuiMenu()
             .ShowDialog()
             DiminuiMenu()
@@ -84,11 +74,6 @@ Public Class FrmMenuPrincipal
     End Sub
     Private Sub btnOperadoresCartao_Click(sender As Object, e As EventArgs) Handles btnOperadoresCartao.Click
         With FrmCadastroOperadoresCartao
-            '.TopLevel = False
-            'Panel5.Controls.Add(FrmCadastroOperadoresCartao)
-            '.Left = (Panel5.Width - .Width) / 2
-            '.Top = (Panel5.Height - .Height) / 2
-            '.BringToFront()
             DiminuiMenu()
             .ShowDialog()
             DiminuiMenu()
@@ -96,11 +81,6 @@ Public Class FrmMenuPrincipal
     End Sub
     Private Sub btnCusto_Click(sender As Object, e As EventArgs) Handles btnCusto.Click
         With FrmCadastroCusto
-            '.TopLevel = False
-            'Panel5.Controls.Add(FrmCadastroCusto)
-            '.Left = (Panel5.Width - .Width) / 2
-            '.Top = (Panel5.Height - .Height) / 2
-            '.BringToFront()
             DiminuiMenu()
             .ShowDialog()
             DiminuiMenu()
@@ -108,11 +88,6 @@ Public Class FrmMenuPrincipal
     End Sub
     Private Sub btnFuncionarios_Click(sender As Object, e As EventArgs) Handles btnFuncionarios.Click
         With FrmCadastroFuncionario
-            '.TopLevel = False
-            'Panel5.Controls.Add(FrmCadastroFuncionario)
-            '.Left = (Panel5.Width - .Width) / 2
-            '.Top = (Panel5.Height - .Height) / 2
-            '.BringToFront()
             DiminuiMenu()
             .ShowDialog()
             DiminuiMenu()
@@ -120,11 +95,6 @@ Public Class FrmMenuPrincipal
     End Sub
     Private Sub btnFuncao_Click(sender As Object, e As EventArgs) Handles btnFuncao.Click
         With FrmCadastroFuncao
-            '.TopLevel = False
-            'Panel5.Controls.Add(FrmCadastroFuncao)
-            '.Left = (Panel5.Width - .Width) / 2
-            '.Top = (Panel5.Height - .Height) / 2
-            '.BringToFront()
             DiminuiMenu()
             .ShowDialog()
             DiminuiMenu()
@@ -132,11 +102,6 @@ Public Class FrmMenuPrincipal
     End Sub
     Private Sub btnCategoria_Click(sender As Object, e As EventArgs) Handles btnCategoria.Click
         With FrmCadastroCategoria
-            '.TopLevel = False
-            'Panel5.Controls.Add(FrmCadastroCategoria)
-            '.Left = (Panel5.Width - .Width) / 2
-            '.Top = (Panel5.Height - .Height) / 2
-            '.BringToFront()
             DiminuiMenu()
             .ShowDialog()
             DiminuiMenu()
@@ -144,46 +109,24 @@ Public Class FrmMenuPrincipal
     End Sub
     Private Sub btnFormasPagamento_Click(sender As Object, e As EventArgs) Handles btnFormasPagamento.Click
         With FrmCadastroFormaPagamento
-            '.TopLevel = False
-            'Panel5.Controls.Add(FrmCadastroFormaPagamento)
-            '.Left = (Panel5.Width - .Width) / 2
-            '.Top = (Panel5.Height - .Height) / 2
-            '.BringToFront()
             DiminuiMenu()
-            'DiminuiMenu()
             .ShowDialog()
             DiminuiMenu()
         End With
     End Sub
-
     Private Sub imgMenu_Click(sender As Object, e As EventArgs) Handles imgMenu.Click
         DiminuiMenu()
     End Sub
-
     Private Sub btnRelOrcVenda_Click(sender As Object, e As EventArgs) Handles btnRelOrcVenda.Click
         With FrmRelatorioOrcVendas
-            '.TopLevel = False
-            'Panel5.Controls.Add(FrmRelatorioOrcVendas)
-            '.Left = (Panel5.Width - .Width) / 2
-            '.Top = (Panel5.Height - .Height) / 2
-            '.BringToFront()
             DiminuiMenu()
-            'DiminuiMenu()
             .ShowDialog()
             DiminuiMenu()
-
         End With
     End Sub
-
     Private Sub btnEntregador_Click(sender As Object, e As EventArgs) Handles btnEntregador.Click
         With FrmCadastroEntregador
-            '.TopLevel = False
-            'Panel5.Controls.Add(FrmCadastroEntregador)
-            '.Left = (Panel5.Width - .Width) / 2
-            '.Top = (Panel5.Height - .Height) / 2
-            '.BringToFront()
             DiminuiMenu()
-            'DiminuiMenu()
             .ShowDialog()
             DiminuiMenu()
         End With
@@ -192,10 +135,8 @@ Public Class FrmMenuPrincipal
         Try
             Dim uriOrigem As New Uri(Arquivo)
             download.DownloadFileAsync(uriOrigem, Destino)
-
         Catch ex As Exception
             MessageBox.Show(ex.Message)
-
         End Try
     End Sub
     Private Sub FrmMenuPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -216,7 +157,6 @@ Public Class FrmMenuPrincipal
 
         While drNuvem.Read()
             If drNuvem("ATERPBACK").ToString = "SIM" Then
-                'If MessageBox.Show("Uma nova versão foi encontrada, deseja atualizar ?", "Nova Versão", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1) = vbYes Then
                 MsgBox("Inciando Atualização Clique em OK e aguarde alguns instantes.....", MsgBoxStyle.Information, "Aviso Importante!")
                 File.Delete(Environment.CurrentDirectory + "\Ambiente_BackEnd_Backup.exe")
                 My.Computer.FileSystem.RenameFile(Environment.CurrentDirectory + "\Ambiente_BackEnd.exe", "Ambiente_BackEnd_Backup.exe")
@@ -252,11 +192,9 @@ Public Class FrmMenuPrincipal
         End While
         FrmLogin.ShowDialog()
     End Sub
-
-    Private Sub btnNotaFiscalEletronica_Click(sender As Object, e As EventArgs) Handles btnNotaFiscalEletronica.Click
+    Private Sub btnNotaFiscalEletronica_Click(sender As Object, e As EventArgs)
         FrmNotaFiscalEletronica.ShowDialog()
     End Sub
-
     Public Sub LimpaProdutos()
         Dim sql As String
 
@@ -285,10 +223,8 @@ Public Class FrmMenuPrincipal
 
             While drNuvem.Read()
                 Dim sql As String
-
-                'sql = "INSERT INTO PRODUTOS (CODPRODUTO,DESCRICAO) VALUES (@CODPRODUTO,@DESCRICAO)"
-                sql = "INSERT INTO PRODUTOS (CODPRODUTO,CODBARRA,DESCRICAO,DESCRICAOPDV,SALDOATUAL,CODCFOP,CODCSOSN,CODICMSCST,CODCOFINSCST,CODPISCST,CODIPI,NCM,ALIQICMS,ALIQICMSBC,ALIQCOFINS,ALIQPIS,ALIQIPI,ALIQNCMFEDERAL,ALIQNCMESTADUAL,ALIQNCMMUNICIPAL,ALIQTOTAL,ATIVO,DATACADASTRO,PRECO_COMPRA,DESCONTO_MAXIMO,PRECO_CUSTO,CUSTO_PERCENTUAL,LUCRO,PRECO_VENDA,BALANCA) VALUES
-                                          (@CODPRODUTO,@CODBARRA,@DESCRICAO,@DESCRICAOPDV,@SALDOATUAL,@CODCFOP,@CODCSOSN,@CODICMSCST,@CODCOFINSCST,@CODPISCST,@CODIPI,@NCM,@ALIQICMS,@ALIQICMSBC,@ALIQCOFINS,@ALIQPIS,@ALIQIPI,@ALIQNCMFEDERAL,@ALIQNCMESTADUAL,@ALIQNCMMUNICIPAL,@ALIQTOTAL,@ATIVO,@DATACADASTRO,@PRECO_COMPRA,@DESCONTO_MAXIMO,@PRECO_CUSTO,@CUSTO_PERCENTUAL,@LUCRO,@PRECO_VENDA,@BALANCA)"
+                sql = "INSERT INTO PRODUTOS (CODPRODUTO,CODBARRA,DESCRICAO,DESCRICAOPDV,SALDOATUAL,CODCFOP,CODCSOSN,CODICMSCST,CODCOFINSCST,CODPISCST,CODIPI,NCM,ALIQICMS,ALIQICMSBC,ALIQCOFINS,ALIQPIS,ALIQIPI,ALIQNCMFEDERAL,ALIQNCMESTADUAL,ALIQNCMMUNICIPAL,ALIQTOTAL,ATIVO,DATACADASTRO,PRECO_COMPRA,DESCONTO_MAXIMO,PRECO_CUSTO,CUSTO_PERCENTUAL,LUCRO,PRECO_VENDA,BALANCA,CARGABALANCA,VALIDADEATUAL) VALUES
+                                          (@CODPRODUTO,@CODBARRA,@DESCRICAO,@DESCRICAOPDV,@SALDOATUAL,@CODCFOP,@CODCSOSN,@CODICMSCST,@CODCOFINSCST,@CODPISCST,@CODIPI,@NCM,@ALIQICMS,@ALIQICMSBC,@ALIQCOFINS,@ALIQPIS,@ALIQIPI,@ALIQNCMFEDERAL,@ALIQNCMESTADUAL,@ALIQNCMMUNICIPAL,@ALIQTOTAL,@ATIVO,@DATACADASTRO,@PRECO_COMPRA,@DESCONTO_MAXIMO,@PRECO_CUSTO,@CUSTO_PERCENTUAL,@LUCRO,@PRECO_VENDA,@BALANCA,@CARGABALANCA,@VALIDADEATUAL)"
 
 
                 comandoLocal = New FbCommand(sql, conexaoLocal)
@@ -343,7 +279,11 @@ Public Class FrmMenuPrincipal
                 Else
                     comandoLocal.Parameters.AddWithValue("@ALIQTOTAL", drNuvem("aliquota").ToString)
                 End If
-
+                If (drNuvem("validade").ToString = "") Then
+                    comandoLocal.Parameters.AddWithValue("@VALIDADEATUAL", "0")
+                Else
+                    comandoLocal.Parameters.AddWithValue("@VALIDADEATUAL", drNuvem("validade").ToString)
+                End If
                 comandoLocal.Parameters.AddWithValue("@CODIPI", "0")
                 comandoLocal.Parameters.AddWithValue("@ALIQICMS", "0")
                 comandoLocal.Parameters.AddWithValue("@ALIQICMSBC", "0")
@@ -354,7 +294,7 @@ Public Class FrmMenuPrincipal
                 comandoLocal.Parameters.AddWithValue("@ALIQNCMESTADUAL", "0")
                 comandoLocal.Parameters.AddWithValue("@ALIQNCMMUNICIPAL", "0")
                 comandoLocal.Parameters.AddWithValue("@ATIVO", drNuvem("ativo").ToString)
-                comandoLocal.Parameters.AddWithValue("@DATACADASTRO", Date.now)
+                comandoLocal.Parameters.AddWithValue("@DATACADASTRO", Date.Now)
                 comandoLocal.Parameters.AddWithValue("@PRECO_VENDA", CDec(drNuvem("precovenda")))
                 comandoLocal.Parameters.AddWithValue("@PRECO_COMPRA", "0")
                 comandoLocal.Parameters.AddWithValue("@DESCONTO_MAXIMO", "0")
@@ -362,6 +302,9 @@ Public Class FrmMenuPrincipal
                 comandoLocal.Parameters.AddWithValue("@CUSTO_PERCENTUAL", "0")
                 comandoLocal.Parameters.AddWithValue("@LUCRO", "0")
                 comandoLocal.Parameters.AddWithValue("@BALANCA", drNuvem("balanca").ToString)
+                comandoLocal.Parameters.AddWithValue("@CARGABALANCA", drNuvem("cargabalanca").ToString)
+
+
 
                 conexaoLocal.Close()
                 conexaoLocal.Open()
@@ -385,8 +328,11 @@ Public Class FrmMenuPrincipal
         System.Threading.Thread.Sleep(1000)
         tImportarProdutos.Enabled = True
     End Sub
-
     Private Sub tImportarProdutos_Tick(sender As Object, e As EventArgs) Handles tImportarProdutos.Tick
         ImportaProdutos()
+    End Sub
+    Private Sub btnAgruparPendencia_Click(sender As Object, e As EventArgs) Handles btnAgruparPendencia.Click
+        Dim FrmAgruparPendencias As New FrmAgruparPendencias
+        FrmAgruparPendencias.ShowDialog()
     End Sub
 End Class

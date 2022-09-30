@@ -174,10 +174,23 @@
       <DependentUpon>dsAmbiente.xsd</DependentUpon>
     </Compile>
     <Compile Include="Modulo\mdl_bloquearcampos.vb" />
+    <Compile Include="Modulo\mdl_emitirnfe.vb" />
+    <Compile Include="View\FrmAgruparPendencias.Designer.vb">
+      <DependentUpon>FrmAgruparPendencias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmAgruparPendencias.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\FrmConsultaProduto.Designer.vb">
       <DependentUpon>FrmConsultaProduto.vb</DependentUpon>
     </Compile>
     <Compile Include="View\FrmConsultaProduto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmImportarVenda.Designer.vb">
+      <DependentUpon>FrmImportarVenda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmImportarVenda.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FrmLancarProduto.Designer.vb">
@@ -341,8 +354,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="View\FrmAgruparPendencias.resx">
+      <DependentUpon>FrmAgruparPendencias.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmConsultaProduto.resx">
       <DependentUpon>FrmConsultaProduto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmImportarVenda.resx">
+      <DependentUpon>FrmImportarVenda.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmLancarProduto.resx">
       <DependentUpon>FrmLancarProduto.vb</DependentUpon>

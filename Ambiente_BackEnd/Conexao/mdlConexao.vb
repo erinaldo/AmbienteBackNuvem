@@ -13,6 +13,7 @@ Module mdlConexao
 
     Public conexaoLocal As New FbConnection(bancoLocal)
     Public drLocal As FbDataReader
+    Public drLocalVenda As FbDataReader
     Public comandoLocal As New FbCommand
     Public daLocal As FbDataAdapter
 

@@ -3,7 +3,10 @@
 Public Class FrmNotaFiscalEletronica
     Dim funcao As String = ""
     Public codCliente As String
+    Public tipoFuncao As String
     Private Operacao As OperacoesCrud
+    Private FormaPagamento As String
+
     Private Sub MudarOperacao(ByVal novaOperacao As OperacoesCrud)
         If novaOperacao = OperacoesCrud.IniciarNota Then
             mdl_bloquearcampos.funcao = "LIBERAR"
@@ -30,32 +33,30 @@ Public Class FrmNotaFiscalEletronica
     Private Sub FrmNotaFiscalEletronica_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         Select Case e.KeyCode
             Case Keys.F2
-                btnImportarItem.PerformClick()
+                'btnImportarItem.PerformClick()
             Case Keys.F3
-                btnLancarItem.PerformClick()
+                'btnLancarItem.PerformClick()
             Case Keys.F4
-                btnEditarItem.PerformClick()
+                'btnEditarItem.PerformClick()
             Case Keys.Delete
-                btnDeletarItem.PerformClick()
+                'btnDeletarItem.PerformClick()
         End Select
     End Sub
 
-    Private Sub btnImportarItem_Click(sender As Object, e As EventArgs) Handles btnImportarItem.Click
-        'MsgBox("Em Desenvolvimento")
-
+    Private Sub btnImportarItem_Click(sender As Object, e As EventArgs)
+        Dim FrmImportaVenda As New FrmImportarVenda
+        FrmImportarVenda.ShowDialog()
     End Sub
 
-    Private Sub btnLancarItem_Click(sender As Object, e As EventArgs) Handles btnLancarItem.Click
-        'MsgBox("Em Desenvolvimento")
-        'Dim FrmConsultaProduto As New FrmConsultaProduto
+    Private Sub btnLancarItem_Click(sender As Object, e As EventArgs)
         FrmConsultaProduto.ShowDialog()
     End Sub
 
-    Private Sub btnEditarItem_Click(sender As Object, e As EventArgs) Handles btnEditarItem.Click
+    Private Sub btnEditarItem_Click(sender As Object, e As EventArgs)
         MsgBox("Em Desenvolvimento")
     End Sub
 
-    Private Sub btnDeletarItem_Click(sender As Object, e As EventArgs) Handles btnDeletarItem.Click
+    Private Sub btnDeletarItem_Click(sender As Object, e As EventArgs)
         MsgBox("Em Desenvolvimento")
     End Sub
 
@@ -69,8 +70,34 @@ Public Class FrmNotaFiscalEletronica
     End Sub
 
     Private Sub FrmNotaFiscalEletronica_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        MudarOperacao(Operacao.BloquearNota)
-        btnNovaNota.Enabled = True
+        Dim FormasPagamento As Dictionary(Of String, String)
+        If (tipoFuncao <> "2") Then
+            MudarOperacao(Operacao.BloquearNota)
+            btnNovaNota.Enabled = True
+        End If
+
+        FormasPagamento = New Dictionary(Of String, String) From {
+            {"01", "Dinheiro"},
+            {"02", "Cheque"},
+            {"03", "Cartão de Crédito"},
+            {"04", "Cartão de Débito"},
+            {"05", "Crédito Loja"},
+            {"10", "Vale Alimentação"},
+            {"11", "Vale Refeição"},
+            {"12", "Vale Presente"},
+            {"13", "Vale Combustível"},
+            {"14", "Duplicata Mercantil"},
+            {"15", "Boleto Bancário"},
+            {"16", "Deposito Bancario"},
+            {"17", "Pagamento PIX"},
+            {"18", "Transf bancaria,Carteira Digital"},
+            {"19", "Programa de finalidade,CashBack"},
+            {"90", "Sem Pagamentos"},
+            {"99", "Outros"}
+        }
+        cbxFormaPagamento.DataSource = New BindingSource(FormasPagamento, Nothing)
+        cbxFormaPagamento.ValueMember = "Key"
+        cbxFormaPagamento.DisplayMember = "Value"
     End Sub
 
     Private Sub txtCodCliente_TextChanged(sender As Object, e As EventArgs) Handles txtCodCliente.TextChanged
@@ -112,5 +139,13 @@ Public Class FrmNotaFiscalEletronica
                 txtDescricaoCfop.Text = drLocal("NOME_CFO").ToString
             End While
         End If
+    End Sub
+
+    Private Sub cbxFormaPagamento_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxFormaPagamento.SelectedIndexChanged
+        FormaPagamento = CInt((CType(cbxFormaPagamento.SelectedItem, KeyValuePair(Of String, String)).Key))
+    End Sub
+
+    Private Sub btnEmitir_Click(sender As Object, e As EventArgs) Handles btnEmitir.Click
+
     End Sub
 End Class

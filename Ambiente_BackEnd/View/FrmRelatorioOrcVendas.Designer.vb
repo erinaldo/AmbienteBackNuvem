@@ -55,14 +55,14 @@ Partial Class FrmRelatorioOrcVendas
         Me.tbItensEcontrados = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.dgProdutosVendidos = New System.Windows.Forms.DataGridView()
-        Me.CODMOVIMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CODVENDADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OPERADOR = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CODCAIXADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DATADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.HORADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FORMAPAGTODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TOTALMOVIMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FORMAPAGTODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HORADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DATADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CODCAIXADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OPERADOR = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CODVENDADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CODMOVIMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel2.SuspendLayout()
         CType(Me.VENDABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -379,54 +379,6 @@ Partial Class FrmRelatorioOrcVendas
         Me.dgProdutosVendidos.Size = New System.Drawing.Size(859, 299)
         Me.dgProdutosVendidos.TabIndex = 1
         '
-        'CODMOVIMENTO
-        '
-        Me.CODMOVIMENTO.DataPropertyName = "CODMOVIMENTO"
-        Me.CODMOVIMENTO.HeaderText = "Codigo Movimento"
-        Me.CODMOVIMENTO.Name = "CODMOVIMENTO"
-        Me.CODMOVIMENTO.Width = 120
-        '
-        'CODVENDADataGridViewTextBoxColumn
-        '
-        Me.CODVENDADataGridViewTextBoxColumn.DataPropertyName = "CODVENDA"
-        Me.CODVENDADataGridViewTextBoxColumn.HeaderText = "Codigo Venda"
-        Me.CODVENDADataGridViewTextBoxColumn.Name = "CODVENDADataGridViewTextBoxColumn"
-        '
-        'OPERADOR
-        '
-        Me.OPERADOR.DataPropertyName = "OPERADOR"
-        Me.OPERADOR.HeaderText = "Vendedor"
-        Me.OPERADOR.Name = "OPERADOR"
-        Me.OPERADOR.Width = 130
-        '
-        'CODCAIXADataGridViewTextBoxColumn
-        '
-        Me.CODCAIXADataGridViewTextBoxColumn.DataPropertyName = "CODCAIXA"
-        Me.CODCAIXADataGridViewTextBoxColumn.HeaderText = "Caixa"
-        Me.CODCAIXADataGridViewTextBoxColumn.Name = "CODCAIXADataGridViewTextBoxColumn"
-        Me.CODCAIXADataGridViewTextBoxColumn.Width = 60
-        '
-        'DATADataGridViewTextBoxColumn
-        '
-        Me.DATADataGridViewTextBoxColumn.DataPropertyName = "DATA"
-        Me.DATADataGridViewTextBoxColumn.HeaderText = "Data"
-        Me.DATADataGridViewTextBoxColumn.Name = "DATADataGridViewTextBoxColumn"
-        Me.DATADataGridViewTextBoxColumn.Width = 80
-        '
-        'HORADataGridViewTextBoxColumn
-        '
-        Me.HORADataGridViewTextBoxColumn.DataPropertyName = "HORA"
-        Me.HORADataGridViewTextBoxColumn.HeaderText = "Hora"
-        Me.HORADataGridViewTextBoxColumn.Name = "HORADataGridViewTextBoxColumn"
-        Me.HORADataGridViewTextBoxColumn.Width = 80
-        '
-        'FORMAPAGTODataGridViewTextBoxColumn
-        '
-        Me.FORMAPAGTODataGridViewTextBoxColumn.DataPropertyName = "FORMAPAGTO"
-        Me.FORMAPAGTODataGridViewTextBoxColumn.HeaderText = "Forma Pagamento"
-        Me.FORMAPAGTODataGridViewTextBoxColumn.Name = "FORMAPAGTODataGridViewTextBoxColumn"
-        Me.FORMAPAGTODataGridViewTextBoxColumn.Width = 120
-        '
         'TOTALMOVIMENTO
         '
         Me.TOTALMOVIMENTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
@@ -437,6 +389,54 @@ Partial Class FrmRelatorioOrcVendas
         Me.TOTALMOVIMENTO.DefaultCellStyle = DataGridViewCellStyle3
         Me.TOTALMOVIMENTO.HeaderText = "Total Movimento"
         Me.TOTALMOVIMENTO.Name = "TOTALMOVIMENTO"
+        '
+        'FORMAPAGTODataGridViewTextBoxColumn
+        '
+        Me.FORMAPAGTODataGridViewTextBoxColumn.DataPropertyName = "FORMAPAGTO"
+        Me.FORMAPAGTODataGridViewTextBoxColumn.HeaderText = "Forma Pagamento"
+        Me.FORMAPAGTODataGridViewTextBoxColumn.Name = "FORMAPAGTODataGridViewTextBoxColumn"
+        Me.FORMAPAGTODataGridViewTextBoxColumn.Width = 120
+        '
+        'HORADataGridViewTextBoxColumn
+        '
+        Me.HORADataGridViewTextBoxColumn.DataPropertyName = "HORA"
+        Me.HORADataGridViewTextBoxColumn.HeaderText = "Hora"
+        Me.HORADataGridViewTextBoxColumn.Name = "HORADataGridViewTextBoxColumn"
+        Me.HORADataGridViewTextBoxColumn.Width = 80
+        '
+        'DATADataGridViewTextBoxColumn
+        '
+        Me.DATADataGridViewTextBoxColumn.DataPropertyName = "DATA"
+        Me.DATADataGridViewTextBoxColumn.HeaderText = "Data"
+        Me.DATADataGridViewTextBoxColumn.Name = "DATADataGridViewTextBoxColumn"
+        Me.DATADataGridViewTextBoxColumn.Width = 80
+        '
+        'CODCAIXADataGridViewTextBoxColumn
+        '
+        Me.CODCAIXADataGridViewTextBoxColumn.DataPropertyName = "CODCAIXA"
+        Me.CODCAIXADataGridViewTextBoxColumn.HeaderText = "Caixa"
+        Me.CODCAIXADataGridViewTextBoxColumn.Name = "CODCAIXADataGridViewTextBoxColumn"
+        Me.CODCAIXADataGridViewTextBoxColumn.Width = 60
+        '
+        'OPERADOR
+        '
+        Me.OPERADOR.DataPropertyName = "OPERADOR"
+        Me.OPERADOR.HeaderText = "Vendedor"
+        Me.OPERADOR.Name = "OPERADOR"
+        Me.OPERADOR.Width = 130
+        '
+        'CODVENDADataGridViewTextBoxColumn
+        '
+        Me.CODVENDADataGridViewTextBoxColumn.DataPropertyName = "CODVENDA"
+        Me.CODVENDADataGridViewTextBoxColumn.HeaderText = "Codigo Venda"
+        Me.CODVENDADataGridViewTextBoxColumn.Name = "CODVENDADataGridViewTextBoxColumn"
+        '
+        'CODMOVIMENTO
+        '
+        Me.CODMOVIMENTO.DataPropertyName = "CODMOVIMENTO"
+        Me.CODMOVIMENTO.HeaderText = "Codigo Movimento"
+        Me.CODMOVIMENTO.Name = "CODMOVIMENTO"
+        Me.CODMOVIMENTO.Width = 120
         '
         'FrmRelatorioOrcVendas
         '
