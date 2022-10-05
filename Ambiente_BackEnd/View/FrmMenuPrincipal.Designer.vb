@@ -57,6 +57,7 @@ Partial Class FrmMenuPrincipal
         Me.btnRelOrcVenda = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.tImportarProdutos = New System.Windows.Forms.Timer(Me.components)
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.imgConf, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
@@ -472,6 +473,7 @@ Partial Class FrmMenuPrincipal
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(71, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.pImportarProdutos)
         Me.Panel1.Controls.Add(Me.btnImportarProdutos)
         Me.Panel1.Controls.Add(Me.btnNotaFiscalEletronica)
@@ -537,7 +539,6 @@ Partial Class FrmMenuPrincipal
         Me.btnNotaFiscalEletronica.Text = "             Nota Fiscal Eletronica"
         Me.btnNotaFiscalEletronica.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnNotaFiscalEletronica.UseVisualStyleBackColor = True
-        Me.btnNotaFiscalEletronica.Visible = False
         '
         'btnAgruparPendencia
         '
@@ -558,7 +559,6 @@ Partial Class FrmMenuPrincipal
         Me.btnAgruparPendencia.Text = "             Agrupar Pendências"
         Me.btnAgruparPendencia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnAgruparPendencia.UseVisualStyleBackColor = True
-        Me.btnAgruparPendencia.Visible = False
         '
         'btnRelOrcVenda
         '
@@ -594,6 +594,15 @@ Partial Class FrmMenuPrincipal
         'tImportarProdutos
         '
         Me.tImportarProdutos.Interval = 1000
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(88, 821)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 38
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'FrmMenuPrincipal
         '
@@ -659,4 +668,5 @@ Partial Class FrmMenuPrincipal
     Friend WithEvents btnImportarProdutos As Button
     Friend WithEvents btnNotaFiscalEletronica As Button
     Friend WithEvents btnAgruparPendencia As Button
+    Friend WithEvents Button1 As Button
 End Class

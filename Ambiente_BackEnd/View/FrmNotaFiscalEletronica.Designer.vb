@@ -104,6 +104,7 @@ Partial Class FrmNotaFiscalEletronica
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.nTotalNFe = New System.Windows.Forms.NumericUpDown()
         Me.Panel1.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -113,6 +114,7 @@ Partial Class FrmNotaFiscalEletronica
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgNotaFiscal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
+        CType(Me.nTotalNFe, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -505,6 +507,7 @@ Partial Class FrmNotaFiscalEletronica
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.nTotalNFe)
         Me.GroupBox1.Controls.Add(Me.Label12)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.Color.MidnightBlue
@@ -904,6 +907,16 @@ Partial Class FrmNotaFiscalEletronica
         Me.ToolStripStatusLabel4.Text = " DELETE - Deletar Item "
         Me.ToolStripStatusLabel4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
+        'nTotalNFe
+        '
+        Me.nTotalNFe.DecimalPlaces = 2
+        Me.nTotalNFe.Location = New System.Drawing.Point(6, 22)
+        Me.nTotalNFe.Maximum = New Decimal(New Integer() {-1530494977, 232830, 0, 0})
+        Me.nTotalNFe.Name = "nTotalNFe"
+        Me.nTotalNFe.Size = New System.Drawing.Size(25, 26)
+        Me.nTotalNFe.TabIndex = 63
+        Me.nTotalNFe.Visible = False
+        '
         'FrmNotaFiscalEletronica
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -934,6 +947,7 @@ Partial Class FrmNotaFiscalEletronica
         CType(Me.dgNotaFiscal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        CType(Me.nTotalNFe, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1014,4 +1028,5 @@ Partial Class FrmNotaFiscalEletronica
     Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel4 As ToolStripStatusLabel
+    Friend WithEvents nTotalNFe As NumericUpDown
 End Class

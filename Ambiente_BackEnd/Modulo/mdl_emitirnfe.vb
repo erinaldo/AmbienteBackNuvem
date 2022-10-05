@@ -19,6 +19,7 @@ Module mdl_emitirnfe
     Dim inscEstadual As String
     Dim email As String
     Dim ufDest As String
+    Dim aliquotaProdutos As Decimal
 
     Private Sub BuscaCliente()
         Dim strColaborador As String
@@ -48,8 +49,23 @@ Module mdl_emitirnfe
             email = drLocal("EMAIL").ToString
         End While
     End Sub
+    Private Sub ConsultaProduto(codProduto As String)
+        Dim strProduto As String
+        strProduto = "SELECT * FROM PRODUTOS WHERE CODPRODUTO = " & codProduto
 
-    Public Sub EmitirRegimeSimplesNacional(chaveAcesso As String, tipoNfe As String, codCfop As String)
+        conexaoLocal.Close()
+        conexaoLocal.ConnectionString = bancoLocal
+        conexaoLocal.Open()
+
+        Dim cmdItens As FbCommand = New FbCommand(strProduto, conexaoLocal)
+        drLocal = cmdItens.ExecuteReader
+
+        While drLocal.Read()
+            aliquotaProdutos = CDec(drLocal("ALIQUOTA").ToString)
+        End While
+    End Sub
+    Public Sub EmitirRegimeSimplesNacional(chaveAcesso As String, chaveAcessoDevolucao As String, numeroNota As String, cNF As String, tipoNfe As String, codCfop As String, indPres As String, indInter As String, totalImpostos As String
+                                           )
         Dim cnpjEmitente As String = LerIni("Empresa", "Cnpj")
         Dim dataAtual As DateTime = DateTime.Now
         Dim data As String = dataAtual.ToString("yyyy-MM-dd")
@@ -93,7 +109,7 @@ Module mdl_emitirnfe
         xWriter.WriteEndElement()
 
         xWriter.WriteStartElement("cNF")
-        'xWriter.WriteValue(txtCNF.Text)
+        xWriter.WriteValue(cNF)
         xWriter.WriteEndElement()
 
         xWriter.WriteStartElement("natOp")
@@ -109,8 +125,519 @@ Module mdl_emitirnfe
         xWriter.WriteEndElement()
 
         xWriter.WriteStartElement("nNF")
-        'xWriter.WriteValue(txtNumeroNota.Text)
+        xWriter.WriteValue(numeroNota)
         xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("dhEmi")
+        xWriter.WriteValue(data + "T" + FormatDateTime(dataAtual, DateFormat.LongTime) + "-03:00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("dhSaiEnt")
+        xWriter.WriteValue(data + "T" + FormatDateTime(dataAtual, DateFormat.LongTime) + "-03:00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("tpNF")
+        'xWriter.WriteValue(LerIni("ide", "tpNF"))
+        xWriter.WriteValue(tipoNfe)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("idDest")
+        xWriter.WriteValue(dest)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("cMunFG")
+        xWriter.WriteValue(LerIni("ide", "cMunFG"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("tpImp")
+        xWriter.WriteValue(LerIni("ide", "tpimp"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("tpEmis")
+        xWriter.WriteValue(LerIni("ide", "tpemis"))
+        xWriter.WriteEndElement()
+
+
+        xWriter.WriteStartElement("cDV")
+        xWriter.WriteValue(chaveAcesso)
+        xWriter.WriteEndElement()
+
+
+        xWriter.WriteStartElement("tpAmb")
+        xWriter.WriteValue(LerIni("ide", "tpamb"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("finNFe")
+        xWriter.WriteValue(LerIni("ide", "finNFe"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("indFinal")
+        xWriter.WriteValue(LerIni("ide", "indfinal"))
+        xWriter.WriteEndElement()
+
+        If (indPres = "0") Or (indPres = "1") Or (indPres = "5") Then
+            xWriter.WriteStartElement("indPres")
+            xWriter.WriteValue(indPres)
+            xWriter.WriteEndElement()
+        Else
+            xWriter.WriteStartElement("indPres")
+            xWriter.WriteValue(indPres)
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("indIntermed")
+            'xWriter.WriteValue(CInt((CType(cbxIndIntermed.SelectedItem, KeyValuePair(Of String, String)).Key)))
+            xWriter.WriteValue(indInter)
+            xWriter.WriteEndElement()
+        End If
+
+        xWriter.WriteStartElement("procEmi")
+        xWriter.WriteValue(LerIni("ide", "procEmi"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("verProc")
+        xWriter.WriteValue("4.00")
+        xWriter.WriteEndElement()
+
+        If chaveAcessoDevolucao <> "" Then
+            xWriter.WriteStartElement("NFref")
+            xWriter.WriteStartElement("refNFe")
+            xWriter.WriteValue(chaveAcessoDevolucao)
+            xWriter.WriteEndElement()
+            xWriter.WriteEndElement()
+
+            xWriter.WriteEndElement()
+        Else
+            xWriter.WriteEndElement()
+        End If
+
+        xWriter.WriteStartElement("emit")
+        xWriter.WriteStartElement("CNPJ")
+        xWriter.WriteValue(LerIni("emit", "cnpj"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("xNome")
+        xWriter.WriteValue(LerIni("emit", "xNome"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("xFant")
+        xWriter.WriteValue(LerIni("emit", "xFantasia"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("enderEmit")
+
+        xWriter.WriteStartElement("xLgr")
+        xWriter.WriteValue(LerIni("emit", "xLgr"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("nro")
+        xWriter.WriteValue(LerIni("emit", "nro"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("xBairro")
+        xWriter.WriteValue(LerIni("emit", "xBairro"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("cMun")
+        xWriter.WriteValue(LerIni("emit", "cMun"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("xMun")
+        xWriter.WriteValue(LerIni("emit", "xMun"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("UF")
+        xWriter.WriteValue(LerIni("emit", "uf"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("CEP")
+        xWriter.WriteValue(LerIni("emit", "CEP"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("cPais")
+        xWriter.WriteValue(LerIni("emit", "cPais"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("xPais")
+        xWriter.WriteValue(LerIni("emit", "xPais"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("fone")
+        xWriter.WriteValue(LerIni("emit", "fone"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("IE")
+        xWriter.WriteValue(LerIni("emit", "IE"))
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("CRT")
+        xWriter.WriteValue(LerIni("emit", "CRT"))
+        xWriter.WriteEndElement()
+        xWriter.WriteEndElement()
+
+        'INICIO DEST--------------------------------------------------------------
+
+        xWriter.WriteStartElement("dest")
+
+        Dim doc As String
+        doc = cnpjCpf
+        If Len(doc) > "11" Then
+            xWriter.WriteStartElement("CNPJ")
+            xWriter.WriteValue(cnpjCpf)
+            xWriter.WriteEndElement()
+        Else
+            xWriter.WriteStartElement("CPF")
+            xWriter.WriteValue(cnpjCpf)
+            xWriter.WriteEndElement()
+        End If
+
+        xWriter.WriteStartElement("xNome")
+        xWriter.WriteValue(razaoSocial)
+        xWriter.WriteEndElement()
+
+        'INICIO ENDERDEST------------------------------------------------------------
+        xWriter.WriteStartElement("enderDest")
+
+        xWriter.WriteStartElement("xLgr")
+        xWriter.WriteValue(logradouro)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("nro")
+        xWriter.WriteValue(numero)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("xCpl")
+        xWriter.WriteValue("1")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("xBairro")
+        xWriter.WriteValue(Bairro)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("cMun")
+        xWriter.WriteValue(cMunicipio)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("xMun")
+        xWriter.WriteValue(xMunicipio)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("UF")
+        xWriter.WriteValue(UF)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("CEP")
+        xWriter.WriteValue(cep)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("cPais")
+        xWriter.WriteValue(cPais)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("xPais")
+        xWriter.WriteValue(xPais)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("fone")
+        xWriter.WriteValue(fone)
+        xWriter.WriteEndElement()
+        xWriter.WriteEndElement()
+
+        If inscEstadual = "ISENTO" Then
+            xWriter.WriteStartElement("indIEDest")
+            xWriter.WriteValue(9)
+            xWriter.WriteEndElement()
+
+        Else
+            xWriter.WriteStartElement("indIEDest")
+            xWriter.WriteValue(1)
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("IE")
+            xWriter.WriteValue(inscEstadual)
+            xWriter.WriteEndElement()
+        End If
+
+        xWriter.WriteStartElement("email")
+        xWriter.WriteValue(email)
+        xWriter.WriteEndElement()
+        xWriter.WriteEndElement()
+
+
+        Dim item As String = 1
+
+        For Each linha As DataGridViewRow In FrmNotaFiscalEletronica.dgNotaFiscal.Rows
+            ConsultaProduto(linha.Cells(0).Value)
+            xWriter.WriteStartElement("det")
+            xWriter.WriteAttributeString("nItem", item)
+
+            xWriter.WriteStartElement("prod")
+
+            xWriter.WriteStartElement("cProd")
+            xWriter.WriteValue(linha.Cells(0).Value)
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement(CStr("cEAN"))
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("xProd")
+            xWriter.WriteValue(linha.Cells(1).Value)
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("NCM")
+            xWriter.WriteValue(linha.Cells(4).Value)
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("CFOP")
+            xWriter.WriteValue(linha.Cells(2).Value)
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("uCom")
+            xWriter.WriteValue(linha.Cells(4).Value)
+            xWriter.WriteEndElement()
+
+            Dim QCom As Decimal
+            QCom = linha.Cells(6).Value
+            Dim complemento As Decimal
+            Dim dec As Decimal
+            dec = CType(QCom, Decimal)
+            complemento = FormatNumber(dec, 4)
+            QCom = complemento.ToString("###.0000")
+
+            xWriter.WriteStartElement("qCom")
+            xWriter.WriteValue(QCom)
+            xWriter.WriteEndElement()
+
+
+            Dim vUnCom As Decimal
+            vUnCom = linha.Cells(5).Value
+            Dim complemento_Vuncom As Decimal
+            Dim dec_vUnCom As Decimal
+            dec_vUnCom = CType(vUnCom, Decimal)
+            complemento_Vuncom = FormatNumber(dec_vUnCom, 4)
+            vUnCom = complemento_Vuncom.ToString("###.0000000000")
+
+            xWriter.WriteStartElement("vUnCom")
+            xWriter.WriteValue(vUnCom)
+            xWriter.WriteEndElement()
+
+            Dim vProd As Decimal
+            vProd = linha.Cells(7).Value
+            Dim complemento_vprod As Decimal
+            Dim dec_vProd As Decimal
+            dec_vProd = CType(vProd, Decimal)
+            complemento_vprod = FormatNumber(dec_vProd, 4)
+            vProd = complemento_vprod.ToString("##.00")
+
+            xWriter.WriteStartElement("vProd")
+            xWriter.WriteValue(vProd)
+            xWriter.WriteEndElement()
+
+
+            xWriter.WriteStartElement(CStr("cEANTrib"))
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("uTrib")
+            xWriter.WriteValue(linha.Cells(4).Value)
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("qTrib")
+            xWriter.WriteValue(QCom)
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("vUnTrib")
+            xWriter.WriteValue(vUnCom)
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("indTot")
+            xWriter.WriteValue("1")
+            xWriter.WriteEndElement()
+
+            item = item + 1
+            xWriter.WriteEndElement()
+
+            '-----------------IMPOSTOS----------+
+            xWriter.WriteStartElement("imposto")
+
+            Dim impvTrotTrib As Decimal
+
+            impvTrotTrib = (linha.Cells(6).Value * aliquotaProdutos) / 100
+            impvTrotTrib = impvTrotTrib.ToString("##.00")
+            'impvTrotTrib = Replace(impvTrotTrib, ",", ".")
+            xWriter.WriteStartElement("vTotTrib")
+
+            xWriter.WriteValue(impvTrotTrib)
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("ICMS")
+            If linha.Cells(3).Value = 500 Then
+                xWriter.WriteStartElement("ICMSSN500")
+                xWriter.WriteStartElement("orig")
+                xWriter.WriteValue("0")
+                xWriter.WriteEndElement()
+
+                xWriter.WriteStartElement("CSOSN")
+                xWriter.WriteValue("500")
+                xWriter.WriteEndElement()
+            Else
+                xWriter.WriteStartElement("ICMSSN102")
+                xWriter.WriteStartElement("orig")
+                xWriter.WriteValue("0")
+                xWriter.WriteEndElement()
+
+                xWriter.WriteStartElement("CSOSN")
+                xWriter.WriteValue("102")
+                xWriter.WriteEndElement()
+            End If
+
+            xWriter.WriteEndElement()
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("PIS")
+            xWriter.WriteStartElement("PISOutr")
+
+            xWriter.WriteStartElement("CST")
+            xWriter.WriteValue("49")
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("vBC")
+            xWriter.WriteValue("0.00")
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("pPIS")
+            xWriter.WriteValue("0.0000")
+            xWriter.WriteEndElement()
+
+
+            xWriter.WriteStartElement("vPIS")
+            xWriter.WriteValue("0.00")
+            xWriter.WriteEndElement()
+
+            xWriter.WriteEndElement()
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("COFINS")
+            xWriter.WriteStartElement("COFINSOutr")
+
+            xWriter.WriteStartElement("CST")
+            xWriter.WriteValue("49")
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("vBC")
+            xWriter.WriteValue("0.00")
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("pCOFINS")
+            xWriter.WriteValue("0.00")
+            xWriter.WriteEndElement()
+
+            xWriter.WriteStartElement("vCOFINS")
+            xWriter.WriteValue("0.00")
+            xWriter.WriteEndElement()
+
+            xWriter.WriteEndElement()
+
+            xWriter.WriteEndElement()
+            xWriter.WriteEndElement()
+            xWriter.WriteEndElement()
+
+        Next
+
+        xWriter.WriteStartElement("total")
+        xWriter.WriteStartElement("ICMSTot")
+        xWriter.WriteStartElement("vBC")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vICMS")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vICMSDeson")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vFCP")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vBCST")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vST")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vFCPST")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+
+        xWriter.WriteStartElement("vFCPSTRet")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+        Dim TotalNf As Decimal
+        TotalNf = FrmNotaFiscalEletronica.nTotalNFe.Value
+        xWriter.WriteStartElement("vProd")
+        xWriter.WriteValue(TotalNf)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vFrete")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vSeg")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vDesc")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vII")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vIPI")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vIPIDevol")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vPIS")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vCOFINS")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vOutro")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vNF")
+        xWriter.WriteValue(TotalNf)
+        xWriter.WriteEndElement()
+
+        Dim totalimposto As Decimal
+
+        totalimposto = totalImpostos
+        totalimposto = totalimposto.ToString("##.00")
+        xWriter.WriteStartElement("vTotTrib")
+        xWriter.WriteValue(totalimpostos)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteEndElement()
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("transp")
     End Sub
+
 
 End Module
