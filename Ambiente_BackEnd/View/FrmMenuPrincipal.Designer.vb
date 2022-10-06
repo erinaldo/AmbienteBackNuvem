@@ -50,6 +50,7 @@ Partial Class FrmMenuPrincipal
         Me.pMovimentacao = New System.Windows.Forms.Panel()
         Me.btnPendencias = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.pImportarProdutos = New System.Windows.Forms.ProgressBar()
         Me.btnImportarProdutos = New System.Windows.Forms.Button()
         Me.btnNotaFiscalEletronica = New System.Windows.Forms.Button()
@@ -57,7 +58,6 @@ Partial Class FrmMenuPrincipal
         Me.btnRelOrcVenda = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.tImportarProdutos = New System.Windows.Forms.Timer(Me.components)
-        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.imgConf, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
@@ -491,6 +491,15 @@ Partial Class FrmMenuPrincipal
         Me.Panel1.Size = New System.Drawing.Size(269, 920)
         Me.Panel1.TabIndex = 6
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(88, 821)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 38
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'pImportarProdutos
         '
         Me.pImportarProdutos.Dock = System.Windows.Forms.DockStyle.Top
@@ -539,6 +548,7 @@ Partial Class FrmMenuPrincipal
         Me.btnNotaFiscalEletronica.Text = "             Nota Fiscal Eletronica"
         Me.btnNotaFiscalEletronica.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnNotaFiscalEletronica.UseVisualStyleBackColor = True
+        Me.btnNotaFiscalEletronica.Visible = False
         '
         'btnAgruparPendencia
         '
@@ -559,6 +569,7 @@ Partial Class FrmMenuPrincipal
         Me.btnAgruparPendencia.Text = "             Agrupar Pendências"
         Me.btnAgruparPendencia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnAgruparPendencia.UseVisualStyleBackColor = True
+        Me.btnAgruparPendencia.Visible = False
         '
         'btnRelOrcVenda
         '
@@ -594,15 +605,6 @@ Partial Class FrmMenuPrincipal
         'tImportarProdutos
         '
         Me.tImportarProdutos.Interval = 1000
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(88, 821)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 38
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'FrmMenuPrincipal
         '

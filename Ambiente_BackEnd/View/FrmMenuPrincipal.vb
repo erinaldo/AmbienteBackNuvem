@@ -192,7 +192,7 @@ Public Class FrmMenuPrincipal
         End While
         FrmLogin.ShowDialog()
     End Sub
-    Private Sub btnNotaFiscalEletronica_Click(sender As Object, e As EventArgs)
+    Private Sub btnNotaFiscalEletronica_Click(sender As Object, e As EventArgs) Handles btnNotaFiscalEletronica.Click
         FrmNotaFiscalEletronica.ShowDialog()
     End Sub
     Public Sub LimpaProdutos()
@@ -337,6 +337,4 @@ Public Class FrmMenuPrincipal
         Dim FrmAgruparPendencias As New FrmAgruparPendencias
         FrmAgruparPendencias.ShowDialog()
     End Sub
-
-
 End Class

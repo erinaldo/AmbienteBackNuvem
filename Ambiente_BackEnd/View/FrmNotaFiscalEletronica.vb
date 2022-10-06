@@ -10,9 +10,10 @@ Public Class FrmNotaFiscalEletronica
     Public FormaPagamento As String
     Public IndicativoPresenca As String
     Public IndicadorIntermediario As String
+    Public modeloFrete As String
     Public xChaveAcesso As String
     Public cNF As String
-    Public proxnumero As Integer
+    Public proxnumero As Integer = 0
 
     Private Sub MudarOperacao(ByVal novaOperacao As OperacoesCrud)
         If novaOperacao = OperacoesCrud.IniciarNota Then
@@ -42,9 +43,9 @@ Public Class FrmNotaFiscalEletronica
             Case Keys.F2
                 'btnImportarItem.PerformClick()
             Case Keys.F3
-                'btnLancarItem.PerformClick()
+                'FrmConsultaProduto.ShowDialog()
             Case Keys.F4
-                'btnEditarItem.PerformClick()
+                FrmConsultaProduto.ShowDialog()
             Case Keys.Delete
                 'btnDeletarItem.PerformClick()
         End Select
@@ -77,9 +78,10 @@ Public Class FrmNotaFiscalEletronica
     End Sub
 
     Private Sub FrmNotaFiscalEletronica_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim FormasPagamento As Dictionary(Of String, String)
-        Dim IndicadorPresenca As Dictionary(Of String, String)
-        Dim IndicadorIntermediario As Dictionary(Of String, String)
+        Dim formasPagamento As Dictionary(Of String, String)
+        Dim indicadorPresenca As Dictionary(Of String, String)
+        Dim indicadorIntermediario As Dictionary(Of String, String)
+        Dim modeloFrete As Dictionary(Of String, String)
         If (tipoFuncao <> "2") Then
             MudarOperacao(Operacao.BloquearNota)
             btnNovaNota.Enabled = True
@@ -130,6 +132,19 @@ Public Class FrmNotaFiscalEletronica
         cbxIntermediario.DataSource = New BindingSource(IndicadorIntermediario, Nothing)
         cbxIntermediario.ValueMember = "Key"
         cbxIntermediario.DisplayMember = "Value"
+
+        modeloFrete = New Dictionary(Of String, String) From {
+        {"0", "Contratação do Frete por conta do Remetente (CIF)"},
+        {"1", "Contratação do Frete por conta do Destinatário (FOB)"},
+        {"2", "Contratação do Frete por conta de Terceiros"},
+        {"3", "Transporte Próprio por conta do Remetente"},
+        {"4", "Transporte Próprio por conta do Destinatário"},
+        {"9", "Sem Ocorrência de Transporte"}
+        }
+        cbxModeloFrete.DataSource = New BindingSource(indicadorIntermediario, Nothing)
+        cbxModeloFrete.ValueMember = "Key"
+        cbxModeloFrete.DisplayMember = "Value"
+
     End Sub
 
     Private Sub txtCodCliente_TextChanged(sender As Object, e As EventArgs) Handles txtCodCliente.TextChanged
@@ -194,12 +209,15 @@ Public Class FrmNotaFiscalEletronica
         Dim datachave As DateTime = DateTime.Now
         Dim Dataconvertida As String
 
-        proxnumero = numeroNota + 1
-        txtNumeroNota.Text = proxnumero
+        'proxnumero = numeroNota + 1
+        'txtNumeroNota.Text = proxnumero
 
 
         Dataconvertida = datachave.ToString("yyMM")
         xChaveAcesso = 35 & Format(Dataconvertida) & cnpjEmitente & 55 & serie & proxnumero & tpamb & cNF
+
+        mdl_emitirnfe.BuscaCliente(txtCodCliente.Text)
+        mdl_emitirnfe.EmitirRegimeSimplesNacional(xChaveAcesso, "", txtNumeroNota.Text, cNF, "55", txtCfop.Text, IndicativoPresenca, IndicadorIntermediario, 20.3)
     End Sub
 
     Private Sub cbxIndicativoPresenca_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxIndicativoPresenca.SelectedIndexChanged
@@ -208,5 +226,9 @@ Public Class FrmNotaFiscalEletronica
 
     Private Sub cbxIntermediario_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxIntermediario.SelectedIndexChanged
         IndicadorIntermediario = CInt((CType(cbxIntermediario.SelectedItem, KeyValuePair(Of String, String)).Key))
+    End Sub
+
+    Private Sub cbxModeloFrete_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxModeloFrete.SelectedIndexChanged
+        modeloFrete = CInt((CType(cbxModeloFrete.SelectedItem, KeyValuePair(Of String, String)).Key))
     End Sub
 End Class

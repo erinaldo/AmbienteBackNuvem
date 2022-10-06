@@ -21,9 +21,9 @@ Module mdl_emitirnfe
     Dim ufDest As String
     Dim aliquotaProdutos As Decimal
 
-    Private Sub BuscaCliente()
+    Public Sub BuscaCliente(codigoCliente As String)
         Dim strColaborador As String
-        strColaborador = "SELECT * FROM COLABORADOR WHERE CODCOLABORADOR = " & codCliente
+        strColaborador = "SELECT * FROM COLABORADOR WHERE CODCOLABORADOR = " & codigoCliente
 
         conexaoLocal.Close()
         conexaoLocal.ConnectionString = bancoLocal
@@ -61,11 +61,10 @@ Module mdl_emitirnfe
         drLocal = cmdItens.ExecuteReader
 
         While drLocal.Read()
-            aliquotaProdutos = CDec(drLocal("ALIQUOTA").ToString)
+            aliquotaProdutos = CDec(drLocal("ALIQTOTAL").ToString)
         End While
     End Sub
-    Public Sub EmitirRegimeSimplesNacional(chaveAcesso As String, chaveAcessoDevolucao As String, numeroNota As String, cNF As String, tipoNfe As String, codCfop As String, indPres As String, indInter As String, totalImpostos As String
-                                           )
+    Public Sub EmitirRegimeSimplesNacional(chaveAcesso As String, chaveAcessoDevolucao As String, numeroNota As String, cNF As String, tipoNfe As String, codCfop As String, indPres As String, indInter As String, totalImpostos As String)
         Dim cnpjEmitente As String = LerIni("Empresa", "Cnpj")
         Dim dataAtual As DateTime = DateTime.Now
         Dim data As String = dataAtual.ToString("yyyy-MM-dd")
@@ -75,6 +74,8 @@ Module mdl_emitirnfe
         Dim xWriter As XmlWriter = XmlWriter.Create(arquivo)
         Dim left As String
         Dim dest As String
+
+        ' BuscaCliente()
 
         dest = cMunicipio
         left = dest.Substring(0, 2)
@@ -398,7 +399,7 @@ Module mdl_emitirnfe
             xWriter.WriteEndElement()
 
             Dim QCom As Decimal
-            QCom = linha.Cells(6).Value
+            QCom = linha.Cells(7).Value
             Dim complemento As Decimal
             Dim dec As Decimal
             dec = CType(QCom, Decimal)
@@ -411,7 +412,7 @@ Module mdl_emitirnfe
 
 
             Dim vUnCom As Decimal
-            vUnCom = linha.Cells(5).Value
+            vUnCom = linha.Cells(6).Value
             Dim complemento_Vuncom As Decimal
             Dim dec_vUnCom As Decimal
             dec_vUnCom = CType(vUnCom, Decimal)
@@ -423,7 +424,7 @@ Module mdl_emitirnfe
             xWriter.WriteEndElement()
 
             Dim vProd As Decimal
-            vProd = linha.Cells(7).Value
+            vProd = linha.Cells(8).Value
             Dim complemento_vprod As Decimal
             Dim dec_vProd As Decimal
             dec_vProd = CType(vProd, Decimal)
@@ -630,13 +631,63 @@ Module mdl_emitirnfe
         totalimposto = totalImpostos
         totalimposto = totalimposto.ToString("##.00")
         xWriter.WriteStartElement("vTotTrib")
-        xWriter.WriteValue(totalimpostos)
+        xWriter.WriteValue(totalImpostos)
         xWriter.WriteEndElement()
 
         xWriter.WriteEndElement()
         xWriter.WriteEndElement()
 
         xWriter.WriteStartElement("transp")
+
+        xWriter.WriteStartElement("modFrete")
+        xWriter.WriteValue(FrmNotaFiscalEletronica.modeloFrete)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vol")
+
+        xWriter.WriteStartElement("qVol")
+        xWriter.WriteValue(FrmNotaFiscalEletronica.txtQuantidadeVolume.Text)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("esp")
+        xWriter.WriteValue(FrmNotaFiscalEletronica.txtEspecie.Text)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("nVol")
+        xWriter.WriteValue(FrmNotaFiscalEletronica.txtNumeroVolume.Text)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("pesoL")
+        xWriter.WriteValue(FrmNotaFiscalEletronica.txtPesoLiquido.Text)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("pesoB")
+        xWriter.WriteValue(FrmNotaFiscalEletronica.txtPesoB.Text)
+        xWriter.WriteEndElement()
+
+        xWriter.WriteEndElement()
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("pag")
+        xWriter.WriteStartElement("detPag")
+
+        xWriter.WriteStartElement("tPag")
+        xWriter.WriteValue(FrmNotaFiscalEletronica.FormaPagamento)
+        xWriter.WriteEndElement()
+
+
+        'total = Replace(total, ",", ".")
+        If FrmNotaFiscalEletronica.FormaPagamento = 90 Then
+            xWriter.WriteStartElement("vPag")
+            xWriter.WriteValue("0.00")
+            xWriter.WriteEndElement()
+        Else
+            xWriter.WriteStartElement("vPag")
+            xWriter.WriteValue(TotalNf)
+            xWriter.WriteEndElement()
+        End If
+
+        xWriter.Close()
     End Sub
 
 
