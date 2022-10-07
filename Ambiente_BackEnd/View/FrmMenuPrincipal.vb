@@ -319,8 +319,8 @@ Public Class FrmMenuPrincipal
         End Try
     End Sub
     Private Sub btnImportarProdutos_Click(sender As Object, e As EventArgs) Handles btnImportarProdutos.Click
-        My.Computer.FileSystem.CopyFile(Environment.CurrentDirectory + "\Data\Banco\BANCO.FDB",
-    Environment.CurrentDirectory + "\Data\Banco\BANCOBACKUP.FDB")
+        'My.Computer.FileSystem.CopyFile(Environment.CurrentDirectory + "\Data\Banco\BANCO.FDB",
+        'Environment.CurrentDirectory + "\Data\Banco\BANCOBACKUP.FDB")
         pImportarProdutos.Visible = True
         pImportarProdutos.Value = 10
         System.Threading.Thread.Sleep(2500)
