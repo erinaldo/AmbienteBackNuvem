@@ -304,8 +304,6 @@ Public Class FrmMenuPrincipal
                 comandoLocal.Parameters.AddWithValue("@BALANCA", drNuvem("balanca").ToString)
                 comandoLocal.Parameters.AddWithValue("@CARGABALANCA", drNuvem("cargabalanca").ToString)
 
-
-
                 conexaoLocal.Close()
                 conexaoLocal.Open()
                 comandoLocal.ExecuteNonQuery()
