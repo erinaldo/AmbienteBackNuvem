@@ -2121,6 +2121,8 @@ Partial Public Class dsAmbiente
         
         Private columnNUM_AGRUPA As Global.System.Data.DataColumn
         
+        Private columnCANCELADA As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -2245,6 +2247,14 @@ Partial Public Class dsAmbiente
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property CANCELADAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCANCELADA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2281,9 +2291,9 @@ Partial Public Class dsAmbiente
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddVENDARow(ByVal CODORCAMENTO As String, ByVal CODVENDA As String, ByVal CODCAIXA As String, ByVal DATA As String, ByVal HORA As String, ByVal FORMAPAGTO As String, ByVal TOTALMOVIMENTO As String, ByVal NOMEFUNCIONARIO As String, ByVal OPERADOR As String, ByVal CODABERTURA As String, ByVal NUM_AGRUPA As String) As VENDARow
+        Public Overloads Function AddVENDARow(ByVal CODORCAMENTO As String, ByVal CODVENDA As String, ByVal CODCAIXA As String, ByVal DATA As String, ByVal HORA As String, ByVal FORMAPAGTO As String, ByVal TOTALMOVIMENTO As String, ByVal NOMEFUNCIONARIO As String, ByVal OPERADOR As String, ByVal CODABERTURA As String, ByVal NUM_AGRUPA As String, ByVal CANCELADA As String) As VENDARow
             Dim rowVENDARow As VENDARow = CType(Me.NewRow,VENDARow)
-            Dim columnValuesArray() As Object = New Object() {CODORCAMENTO, CODVENDA, CODCAIXA, DATA, HORA, FORMAPAGTO, TOTALMOVIMENTO, NOMEFUNCIONARIO, OPERADOR, CODABERTURA, NUM_AGRUPA}
+            Dim columnValuesArray() As Object = New Object() {CODORCAMENTO, CODVENDA, CODCAIXA, DATA, HORA, FORMAPAGTO, TOTALMOVIMENTO, NOMEFUNCIONARIO, OPERADOR, CODABERTURA, NUM_AGRUPA, CANCELADA}
             rowVENDARow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVENDARow)
             Return rowVENDARow
@@ -2317,6 +2327,7 @@ Partial Public Class dsAmbiente
             Me.columnOPERADOR = MyBase.Columns("OPERADOR")
             Me.columnCODABERTURA = MyBase.Columns("CODABERTURA")
             Me.columnNUM_AGRUPA = MyBase.Columns("NUM_AGRUPA")
+            Me.columnCANCELADA = MyBase.Columns("CANCELADA")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2344,6 +2355,8 @@ Partial Public Class dsAmbiente
             MyBase.Columns.Add(Me.columnCODABERTURA)
             Me.columnNUM_AGRUPA = New Global.System.Data.DataColumn("NUM_AGRUPA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNUM_AGRUPA)
+            Me.columnCANCELADA = New Global.System.Data.DataColumn("CANCELADA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCANCELADA)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2795,6 +2808,8 @@ Partial Public Class dsAmbiente
         
         Private columnTOTAL_ITEM As Global.System.Data.DataColumn
         
+        Private columnCODCAIXA As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -2871,6 +2886,14 @@ Partial Public Class dsAmbiente
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property CODCAIXAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCODCAIXA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2907,9 +2930,9 @@ Partial Public Class dsAmbiente
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddMOVIMENTO_ITEMRow(ByVal CODORCAMENTO As String, ByVal CODABERTURA As String, ByVal QUANTIDADE As String, ByVal PRECO_VENDA As String, ByVal TOTAL_ITEM As String) As MOVIMENTO_ITEMRow
+        Public Overloads Function AddMOVIMENTO_ITEMRow(ByVal CODORCAMENTO As String, ByVal CODABERTURA As String, ByVal QUANTIDADE As String, ByVal PRECO_VENDA As String, ByVal TOTAL_ITEM As String, ByVal CODCAIXA As String) As MOVIMENTO_ITEMRow
             Dim rowMOVIMENTO_ITEMRow As MOVIMENTO_ITEMRow = CType(Me.NewRow,MOVIMENTO_ITEMRow)
-            Dim columnValuesArray() As Object = New Object() {CODORCAMENTO, CODABERTURA, QUANTIDADE, PRECO_VENDA, TOTAL_ITEM}
+            Dim columnValuesArray() As Object = New Object() {CODORCAMENTO, CODABERTURA, QUANTIDADE, PRECO_VENDA, TOTAL_ITEM, CODCAIXA}
             rowMOVIMENTO_ITEMRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowMOVIMENTO_ITEMRow)
             Return rowMOVIMENTO_ITEMRow
@@ -2937,6 +2960,7 @@ Partial Public Class dsAmbiente
             Me.columnQUANTIDADE = MyBase.Columns("QUANTIDADE")
             Me.columnPRECO_VENDA = MyBase.Columns("PRECO_VENDA")
             Me.columnTOTAL_ITEM = MyBase.Columns("TOTAL_ITEM")
+            Me.columnCODCAIXA = MyBase.Columns("CODCAIXA")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2952,6 +2976,8 @@ Partial Public Class dsAmbiente
             MyBase.Columns.Add(Me.columnPRECO_VENDA)
             Me.columnTOTAL_ITEM = New Global.System.Data.DataColumn("TOTAL_ITEM", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnTOTAL_ITEM)
+            Me.columnCODCAIXA = New Global.System.Data.DataColumn("CODCAIXA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCODCAIXA)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5136,6 +5162,21 @@ Partial Public Class dsAmbiente
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property CANCELADA() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVENDA.CANCELADAColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("O valor da coluna 'CANCELADA' na tabela 'VENDA' é DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVENDA.CANCELADAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsCODORCAMENTONull() As Boolean
             Return Me.IsNull(Me.tableVENDA.CODORCAMENTOColumn)
         End Function
@@ -5264,6 +5305,18 @@ Partial Public Class dsAmbiente
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetNUM_AGRUPANull()
             Me(Me.tableVENDA.NUM_AGRUPAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsCANCELADANull() As Boolean
+            Return Me.IsNull(Me.tableVENDA.CANCELADAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetCANCELADANull()
+            Me(Me.tableVENDA.CANCELADAColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -5510,6 +5563,21 @@ Partial Public Class dsAmbiente
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property CODCAIXA() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMOVIMENTO_ITEM.CODCAIXAColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("O valor da coluna 'CODCAIXA' na tabela 'MOVIMENTO_ITEM' é DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMOVIMENTO_ITEM.CODCAIXAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsCODORCAMENTONull() As Boolean
             Return Me.IsNull(Me.tableMOVIMENTO_ITEM.CODORCAMENTOColumn)
         End Function
@@ -5566,6 +5634,18 @@ Partial Public Class dsAmbiente
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetTOTAL_ITEMNull()
             Me(Me.tableMOVIMENTO_ITEM.TOTAL_ITEMColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsCODCAIXANull() As Boolean
+            Return Me.IsNull(Me.tableMOVIMENTO_ITEM.CODCAIXAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetCODCAIXANull()
+            Me(Me.tableMOVIMENTO_ITEM.CODCAIXAColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

@@ -14,6 +14,7 @@ Public Class FrmRelatorioOrcVendas
         lblTotal.Text = FormatCurrency(lblTotal.Text, 2)
 
     End Sub
+
     Private Sub btnPesqusiar_Click(sender As Object, e As EventArgs) Handles btnPesqusiar.Click
         Dim ds As New DataSet
         Dim periodoConverte As String

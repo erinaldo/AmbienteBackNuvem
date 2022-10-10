@@ -35,8 +35,6 @@ Partial Class FrmRelatorioOrcVendas
         Me.btnPesqusiar = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.btnCancelar = New System.Windows.Forms.Button()
-        Me.VENDABindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsAmbiente = New Ambiente_BackEnd.dsAmbiente()
         Me.txtperiodo = New System.Windows.Forms.MaskedTextBox()
         Me.txtate = New System.Windows.Forms.MaskedTextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -55,22 +53,25 @@ Partial Class FrmRelatorioOrcVendas
         Me.tbItensEcontrados = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.dgProdutosVendidos = New System.Windows.Forms.DataGridView()
-        Me.TOTALMOVIMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FORMAPAGTODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.HORADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DATADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CODCAIXADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OPERADOR = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CODVENDADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VENDABindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsAmbiente = New Ambiente_BackEnd.dsAmbiente()
         Me.CODMOVIMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CODVENDADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OPERADOR = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CODCAIXADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DATADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HORADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FORMAPAGTODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TOTALMOVIMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CANCELADA = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel2.SuspendLayout()
-        CType(Me.VENDABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.tbItensEcontrados.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.dgProdutosVendidos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VENDABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel2
@@ -171,16 +172,6 @@ Partial Class FrmRelatorioOrcVendas
         Me.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnCancelar.UseVisualStyleBackColor = True
-        '
-        'VENDABindingSource
-        '
-        Me.VENDABindingSource.DataMember = "VENDA"
-        Me.VENDABindingSource.DataSource = Me.DsAmbiente
-        '
-        'DsAmbiente
-        '
-        Me.DsAmbiente.DataSetName = "dsAmbiente"
-        Me.DsAmbiente.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'txtperiodo
         '
@@ -370,7 +361,7 @@ Partial Class FrmRelatorioOrcVendas
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgProdutosVendidos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgProdutosVendidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgProdutosVendidos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CODMOVIMENTO, Me.CODVENDADataGridViewTextBoxColumn, Me.OPERADOR, Me.CODCAIXADataGridViewTextBoxColumn, Me.DATADataGridViewTextBoxColumn, Me.HORADataGridViewTextBoxColumn, Me.FORMAPAGTODataGridViewTextBoxColumn, Me.TOTALMOVIMENTO})
+        Me.dgProdutosVendidos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CODMOVIMENTO, Me.CODVENDADataGridViewTextBoxColumn, Me.OPERADOR, Me.CODCAIXADataGridViewTextBoxColumn, Me.DATADataGridViewTextBoxColumn, Me.HORADataGridViewTextBoxColumn, Me.FORMAPAGTODataGridViewTextBoxColumn, Me.TOTALMOVIMENTO, Me.CANCELADA})
         Me.dgProdutosVendidos.DataSource = Me.VENDABindingSource
         Me.dgProdutosVendidos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgProdutosVendidos.GridColor = System.Drawing.Color.White
@@ -378,6 +369,64 @@ Partial Class FrmRelatorioOrcVendas
         Me.dgProdutosVendidos.Name = "dgProdutosVendidos"
         Me.dgProdutosVendidos.Size = New System.Drawing.Size(859, 299)
         Me.dgProdutosVendidos.TabIndex = 1
+        '
+        'VENDABindingSource
+        '
+        Me.VENDABindingSource.DataMember = "VENDA"
+        Me.VENDABindingSource.DataSource = Me.DsAmbiente
+        '
+        'DsAmbiente
+        '
+        Me.DsAmbiente.DataSetName = "dsAmbiente"
+        Me.DsAmbiente.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CODMOVIMENTO
+        '
+        Me.CODMOVIMENTO.DataPropertyName = "CODMOVIMENTO"
+        Me.CODMOVIMENTO.HeaderText = "Codigo Movimento"
+        Me.CODMOVIMENTO.Name = "CODMOVIMENTO"
+        Me.CODMOVIMENTO.Width = 120
+        '
+        'CODVENDADataGridViewTextBoxColumn
+        '
+        Me.CODVENDADataGridViewTextBoxColumn.DataPropertyName = "CODVENDA"
+        Me.CODVENDADataGridViewTextBoxColumn.HeaderText = "Codigo Venda"
+        Me.CODVENDADataGridViewTextBoxColumn.Name = "CODVENDADataGridViewTextBoxColumn"
+        '
+        'OPERADOR
+        '
+        Me.OPERADOR.DataPropertyName = "OPERADOR"
+        Me.OPERADOR.HeaderText = "Vendedor"
+        Me.OPERADOR.Name = "OPERADOR"
+        Me.OPERADOR.Width = 130
+        '
+        'CODCAIXADataGridViewTextBoxColumn
+        '
+        Me.CODCAIXADataGridViewTextBoxColumn.DataPropertyName = "CODCAIXA"
+        Me.CODCAIXADataGridViewTextBoxColumn.HeaderText = "Caixa"
+        Me.CODCAIXADataGridViewTextBoxColumn.Name = "CODCAIXADataGridViewTextBoxColumn"
+        Me.CODCAIXADataGridViewTextBoxColumn.Width = 60
+        '
+        'DATADataGridViewTextBoxColumn
+        '
+        Me.DATADataGridViewTextBoxColumn.DataPropertyName = "DATA"
+        Me.DATADataGridViewTextBoxColumn.HeaderText = "Data"
+        Me.DATADataGridViewTextBoxColumn.Name = "DATADataGridViewTextBoxColumn"
+        Me.DATADataGridViewTextBoxColumn.Width = 80
+        '
+        'HORADataGridViewTextBoxColumn
+        '
+        Me.HORADataGridViewTextBoxColumn.DataPropertyName = "HORA"
+        Me.HORADataGridViewTextBoxColumn.HeaderText = "Hora"
+        Me.HORADataGridViewTextBoxColumn.Name = "HORADataGridViewTextBoxColumn"
+        Me.HORADataGridViewTextBoxColumn.Width = 80
+        '
+        'FORMAPAGTODataGridViewTextBoxColumn
+        '
+        Me.FORMAPAGTODataGridViewTextBoxColumn.DataPropertyName = "FORMAPAGTO"
+        Me.FORMAPAGTODataGridViewTextBoxColumn.HeaderText = "Forma Pagamento"
+        Me.FORMAPAGTODataGridViewTextBoxColumn.Name = "FORMAPAGTODataGridViewTextBoxColumn"
+        Me.FORMAPAGTODataGridViewTextBoxColumn.Width = 120
         '
         'TOTALMOVIMENTO
         '
@@ -390,53 +439,12 @@ Partial Class FrmRelatorioOrcVendas
         Me.TOTALMOVIMENTO.HeaderText = "Total Movimento"
         Me.TOTALMOVIMENTO.Name = "TOTALMOVIMENTO"
         '
-        'FORMAPAGTODataGridViewTextBoxColumn
+        'CANCELADA
         '
-        Me.FORMAPAGTODataGridViewTextBoxColumn.DataPropertyName = "FORMAPAGTO"
-        Me.FORMAPAGTODataGridViewTextBoxColumn.HeaderText = "Forma Pagamento"
-        Me.FORMAPAGTODataGridViewTextBoxColumn.Name = "FORMAPAGTODataGridViewTextBoxColumn"
-        Me.FORMAPAGTODataGridViewTextBoxColumn.Width = 120
-        '
-        'HORADataGridViewTextBoxColumn
-        '
-        Me.HORADataGridViewTextBoxColumn.DataPropertyName = "HORA"
-        Me.HORADataGridViewTextBoxColumn.HeaderText = "Hora"
-        Me.HORADataGridViewTextBoxColumn.Name = "HORADataGridViewTextBoxColumn"
-        Me.HORADataGridViewTextBoxColumn.Width = 80
-        '
-        'DATADataGridViewTextBoxColumn
-        '
-        Me.DATADataGridViewTextBoxColumn.DataPropertyName = "DATA"
-        Me.DATADataGridViewTextBoxColumn.HeaderText = "Data"
-        Me.DATADataGridViewTextBoxColumn.Name = "DATADataGridViewTextBoxColumn"
-        Me.DATADataGridViewTextBoxColumn.Width = 80
-        '
-        'CODCAIXADataGridViewTextBoxColumn
-        '
-        Me.CODCAIXADataGridViewTextBoxColumn.DataPropertyName = "CODCAIXA"
-        Me.CODCAIXADataGridViewTextBoxColumn.HeaderText = "Caixa"
-        Me.CODCAIXADataGridViewTextBoxColumn.Name = "CODCAIXADataGridViewTextBoxColumn"
-        Me.CODCAIXADataGridViewTextBoxColumn.Width = 60
-        '
-        'OPERADOR
-        '
-        Me.OPERADOR.DataPropertyName = "OPERADOR"
-        Me.OPERADOR.HeaderText = "Vendedor"
-        Me.OPERADOR.Name = "OPERADOR"
-        Me.OPERADOR.Width = 130
-        '
-        'CODVENDADataGridViewTextBoxColumn
-        '
-        Me.CODVENDADataGridViewTextBoxColumn.DataPropertyName = "CODVENDA"
-        Me.CODVENDADataGridViewTextBoxColumn.HeaderText = "Codigo Venda"
-        Me.CODVENDADataGridViewTextBoxColumn.Name = "CODVENDADataGridViewTextBoxColumn"
-        '
-        'CODMOVIMENTO
-        '
-        Me.CODMOVIMENTO.DataPropertyName = "CODMOVIMENTO"
-        Me.CODMOVIMENTO.HeaderText = "Codigo Movimento"
-        Me.CODMOVIMENTO.Name = "CODMOVIMENTO"
-        Me.CODMOVIMENTO.Width = 120
+        Me.CANCELADA.DataPropertyName = "CANCELADA"
+        Me.CANCELADA.HeaderText = "CANCELADA"
+        Me.CANCELADA.Name = "CANCELADA"
+        Me.CANCELADA.Visible = False
         '
         'FrmRelatorioOrcVendas
         '
@@ -461,8 +469,6 @@ Partial Class FrmRelatorioOrcVendas
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Rel. Orçamentos/Vendas"
         Me.Panel2.ResumeLayout(False)
-        CType(Me.VENDABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel6.ResumeLayout(False)
@@ -470,6 +476,8 @@ Partial Class FrmRelatorioOrcVendas
         Me.tbItensEcontrados.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         CType(Me.dgProdutosVendidos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VENDABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -512,4 +520,5 @@ Partial Class FrmRelatorioOrcVendas
     Friend WithEvents HORADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FORMAPAGTODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TOTALMOVIMENTO As DataGridViewTextBoxColumn
+    Friend WithEvents CANCELADA As DataGridViewTextBoxColumn
 End Class

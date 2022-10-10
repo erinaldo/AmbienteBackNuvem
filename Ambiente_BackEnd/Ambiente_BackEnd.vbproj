@@ -193,6 +193,12 @@
     <Compile Include="View\FrmImportarVenda.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\FrmItensMovimento.Designer.vb">
+      <DependentUpon>FrmItensMovimento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmItensMovimento.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\FrmLancarProduto.Designer.vb">
       <DependentUpon>FrmLancarProduto.vb</DependentUpon>
     </Compile>
@@ -362,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmImportarVenda.resx">
       <DependentUpon>FrmImportarVenda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmItensMovimento.resx">
+      <DependentUpon>FrmItensMovimento.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmLancarProduto.resx">
       <DependentUpon>FrmLancarProduto.vb</DependentUpon>
