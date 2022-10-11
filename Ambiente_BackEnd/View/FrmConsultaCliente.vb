@@ -15,7 +15,6 @@ Public Class FrmConsultaCliente
     End Sub
 
     Private Sub dgConsultaCliente_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgConsultaCliente.CellContentDoubleClick
-
         Dim str As String
         Dim currentRow As DataGridViewRow = dgConsultaCliente.Rows(e.RowIndex)
 
@@ -30,7 +29,7 @@ Public Class FrmConsultaCliente
 
         Dim FrmVisualizaCliente As New FrmVisualizaCliente
 
-            While drLocal.Read()
+        While drLocal.Read()
             FrmVisualizaCliente.txtCodigoCliente.Text = drLocal("CODCOLABORADOR").ToString
             FrmVisualizaCliente.txtRazaoSocial.Text = drLocal("RAZAOSOCIAL").ToString
             FrmVisualizaCliente.txtNomeFantasia.Text = drLocal("NOMEFANTASIA").ToString
@@ -43,7 +42,6 @@ Public Class FrmConsultaCliente
             FrmVisualizaCliente.txtNumero.Text = drLocal("NUMERO").ToString
             FrmVisualizaCliente.txtBairro.Text = drLocal("BAIRRO").ToString
             FrmVisualizaCliente.txtCidade.Text = drLocal("MUNICIPIO").ToString
-            'FrmVisualizaCliente.txtUf.Text = drLocal("MUNICIPIO").ToString
             FrmVisualizaCliente.txtCodigoIbge.Text = drLocal("CODIGOIBGE").ToString
         End While
         FrmVisualizaCliente.ShowDialog()

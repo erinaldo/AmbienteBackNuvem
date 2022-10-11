@@ -11,19 +11,18 @@ Public Class FrmAgruparPendencias
 
         For Each linha As DataGridViewRow In dgVales.Rows
             If linha.Cells(0).Value = True Then
-
                 Dim strItens As String
                 Dim dsItens As New DataSet
 
-            strItens = "SELECT * FROM DEBITO_ITEM WHERE CODORCAMENTO =" & linha.Cells(2).Value & "and CODCAIXA =" & linha.Cells(4).Value & "and CODABERTURA =" & linha.Cells(3).Value
+                strItens = "SELECT * FROM DEBITO_ITEM WHERE CODORCAMENTO =" & linha.Cells(2).Value & "and CODCAIXA =" & linha.Cells(4).Value & "and CODABERTURA =" & linha.Cells(3).Value
 
-            If (conexaoLocal.State <> ConnectionState.Closed) Then
-                conexaoLocal.Close()
-            End If
+                If (conexaoLocal.State <> ConnectionState.Closed) Then
+                    conexaoLocal.Close()
+                End If
 
-            daLocal = New FbDataAdapter(strItens, conexaoLocal)
-            daLocal.Fill(dsItens)
-            dgMovimentoItem.DataSource = dsItens.Tables(0)
+                daLocal = New FbDataAdapter(strItens, conexaoLocal)
+                daLocal.Fill(dsItens)
+                dgMovimentoItem.DataSource = dsItens.Tables(0)
 
                 For Each linha1 As DataGridViewRow In dgMovimentoItem.Rows
                     Dim precoVenda As Decimal = linha1.Cells(4).Value
@@ -69,9 +68,8 @@ Public Class FrmAgruparPendencias
                     Try
 
                         sql = "UPDATE DEBITO SET NUM_AGRUPA = @NUM_AGRUPA WHERE CODCAIXA = @CODCAIXA and CODORCAMENTO = @CODORCAMENTO and CODABERTURA = @CODABERTURA"
-
                         comandoLocal = New FbCommand(sql, conexaoLocal)
-                        'MsgBox(linha.Cells(1).Value)
+
                         comandoLocal.Parameters.AddWithValue("@CODORCAMENTO", linha.Cells(2).Value)
                         comandoLocal.Parameters.AddWithValue("@CODCAIXA", linha.Cells(4).Value)
                         comandoLocal.Parameters.AddWithValue("@CODABERTURA", linha.Cells(3).Value)

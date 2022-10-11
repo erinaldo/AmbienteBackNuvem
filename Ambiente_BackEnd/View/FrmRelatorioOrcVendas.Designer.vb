@@ -53,8 +53,6 @@ Partial Class FrmRelatorioOrcVendas
         Me.tbItensEcontrados = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.dgProdutosVendidos = New System.Windows.Forms.DataGridView()
-        Me.VENDABindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsAmbiente = New Ambiente_BackEnd.dsAmbiente()
         Me.CODMOVIMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CODVENDADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.OPERADOR = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -64,6 +62,8 @@ Partial Class FrmRelatorioOrcVendas
         Me.FORMAPAGTODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TOTALMOVIMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CANCELADA = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VENDABindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsAmbiente = New Ambiente_BackEnd.dsAmbiente()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel6.SuspendLayout()
@@ -370,16 +370,6 @@ Partial Class FrmRelatorioOrcVendas
         Me.dgProdutosVendidos.Size = New System.Drawing.Size(859, 299)
         Me.dgProdutosVendidos.TabIndex = 1
         '
-        'VENDABindingSource
-        '
-        Me.VENDABindingSource.DataMember = "VENDA"
-        Me.VENDABindingSource.DataSource = Me.DsAmbiente
-        '
-        'DsAmbiente
-        '
-        Me.DsAmbiente.DataSetName = "dsAmbiente"
-        Me.DsAmbiente.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'CODMOVIMENTO
         '
         Me.CODMOVIMENTO.DataPropertyName = "CODMOVIMENTO"
@@ -445,6 +435,16 @@ Partial Class FrmRelatorioOrcVendas
         Me.CANCELADA.HeaderText = "CANCELADA"
         Me.CANCELADA.Name = "CANCELADA"
         Me.CANCELADA.Visible = False
+        '
+        'VENDABindingSource
+        '
+        Me.VENDABindingSource.DataMember = "VENDA"
+        Me.VENDABindingSource.DataSource = Me.DsAmbiente
+        '
+        'DsAmbiente
+        '
+        Me.DsAmbiente.DataSetName = "dsAmbiente"
+        Me.DsAmbiente.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'FrmRelatorioOrcVendas
         '

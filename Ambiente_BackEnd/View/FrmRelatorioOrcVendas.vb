@@ -6,13 +6,12 @@ Public Class FrmRelatorioOrcVendas
         Dim valor As Decimal
 
         For Each col As DataGridViewRow In dgProdutosVendidos.Rows
-            valor = valor + col.Cells(7).Value ' numero 8 é a coluna "DC"
+            valor = valor + col.Cells(7).Value
         Next
 
         lblTotal.Text = valor
         lblTotal.Text = valor
         lblTotal.Text = FormatCurrency(lblTotal.Text, 2)
-
     End Sub
 
     Private Sub btnPesqusiar_Click(sender As Object, e As EventArgs) Handles btnPesqusiar.Click
