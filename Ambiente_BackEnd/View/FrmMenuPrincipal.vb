@@ -1,6 +1,8 @@
 ﻿Imports System.IO
 Imports FirebirdSql.Data.FirebirdClient
 Imports MySql.Data.MySqlClient
+Imports Org.BouncyCastle.X509.Store
+Imports Ubiety.Dns.Core.Common
 
 Public Class FrmMenuPrincipal
     Dim aumentapanel As String
@@ -118,11 +120,15 @@ Public Class FrmMenuPrincipal
         DiminuiMenu()
     End Sub
     Private Sub btnRelOrcVenda_Click(sender As Object, e As EventArgs) Handles btnRelOrcVenda.Click
-        With FrmRelatorioOrcVendas
-            DiminuiMenu()
-            .ShowDialog()
-            DiminuiMenu()
-        End With
+        Dim senha As String = InputBox("Digite a senha para continuar")
+
+        If senha = LerIni("DADOS", "SENHA") Then
+            With FrmRelatorioOrcVendas
+                DiminuiMenu()
+                .ShowDialog()
+                DiminuiMenu()
+            End With
+        End If
     End Sub
     Private Sub btnEntregador_Click(sender As Object, e As EventArgs) Handles btnEntregador.Click
         With FrmCadastroEntregador
@@ -192,7 +198,7 @@ Public Class FrmMenuPrincipal
         End While
         FrmLogin.ShowDialog()
     End Sub
-    Private Sub btnNotaFiscalEletronica_Click(sender As Object, e As EventArgs) Handles btnNotaFiscalEletronica.Click
+    Private Sub btnNotaFiscalEletronica_Click(sender As Object, e As EventArgs)
         FrmNotaFiscalEletronica.ShowDialog()
     End Sub
     Public Sub LimpaProdutos()
@@ -207,6 +213,7 @@ Public Class FrmMenuPrincipal
         comandoLocal.ExecuteNonQuery()
         conexaoLocal.Close()
         pImportarProdutos.Value = 50
+
     End Sub
     Public Sub ImportaProdutos()
         Dim str As String
@@ -316,7 +323,7 @@ Public Class FrmMenuPrincipal
             MsgBox("Erro ao importar produtos: " + ex.Message, MsgBoxStyle.Information)
         End Try
     End Sub
-    Private Sub btnImportarProdutos_Click(sender As Object, e As EventArgs) Handles btnImportarProdutos.Click
+    Private Sub btnImportarProdutos_Click(sender As Object, e As EventArgs)
         'My.Computer.FileSystem.CopyFile(Environment.CurrentDirectory + "\Data\Banco\BANCO.FDB",
         'Environment.CurrentDirectory + "\Data\Banco\BANCOBACKUP.FDB")
         pImportarProdutos.Visible = True
@@ -331,8 +338,26 @@ Public Class FrmMenuPrincipal
     Private Sub tImportarProdutos_Tick(sender As Object, e As EventArgs) Handles tImportarProdutos.Tick
         ImportaProdutos()
     End Sub
-    Private Sub btnAgruparPendencia_Click(sender As Object, e As EventArgs) Handles btnAgruparPendencia.Click
+    Private Sub btnAgruparPendencia_Click(sender As Object, e As EventArgs)
         Dim FrmAgruparPendencias As New FrmAgruparPendencias
         FrmAgruparPendencias.ShowDialog()
+    End Sub
+
+    Private Sub btnPendencias_Click(sender As Object, e As EventArgs) Handles btnPendencias.Click
+        Dim FrmConsultaGeraDebitos As New FrmConsultaGeraDebitos
+        FrmConsultaGeraDebitos.ShowDialog()
+    End Sub
+
+    Private Sub btnAtualizarPreco_Click(sender As Object, e As EventArgs)
+        Dim FrmAtualizaPreco As New FrmAtualizaPreco
+        FrmAtualizaPreco.ShowDialog()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        With FrmRelVendasCancelada
+            DiminuiMenu()
+            .ShowDialog()
+            DiminuiMenu()
+        End With
     End Sub
 End Class

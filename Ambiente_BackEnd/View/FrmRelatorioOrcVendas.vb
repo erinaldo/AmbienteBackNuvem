@@ -23,40 +23,65 @@ Public Class FrmRelatorioOrcVendas
         ateConverte = Replace("'" & txtate.Text & "'", "/", ".")
 
         Try
-            If (txtCodigoFormaPagto.Text = "" And cbxTipo.Text = "" And periodoConverte = "'  .  .'") Then
+            If (txtCodigoFormaPagto.Text = "" And cbxTipo.Text = "" And periodoConverte = "'  .  .'" And cbxTipoCartao.Text = "") Then
                 daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S'", conexaoLocal)
-            ElseIf (txtCodigoFormaPagto.Text <> "" And cbxTipo.Text = "" And periodoConverte = "'  .  .'") Then
+            ElseIf (txtCodigoFormaPagto.Text <> "" And cbxTipo.Text = "" And periodoConverte = "'  .  .'" And cbxTipoCartao.Text = "") Then
                 daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and FORMAPAGTO = " & txtCodigoFormaPagto.Text, conexaoLocal)
-            ElseIf (txtCodigoFormaPagto.Text = "" And cbxTipo.Text <> "" And periodoConverte = "'  .  .'") Then
+            ElseIf (txtCodigoFormaPagto.Text = "" And cbxTipo.Text <> "" And periodoConverte = "'  .  .'" And cbxTipoCartao.Text = "") Then
                 If (cbxTipo.Text = "Orçamento") Then
                     daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and CODVENDA is null", conexaoLocal)
                 ElseIf (cbxTipo.Text = "Venda") Then
                     daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and CODVENDA is not null", conexaoLocal)
                 End If
-            ElseIf (txtCodigoFormaPagto.Text = "" And cbxTipo.Text = "" And periodoConverte <> "'  .  .'") Then
+            ElseIf (txtCodigoFormaPagto.Text = "" And cbxTipo.Text <> "" And periodoConverte = "'  .  .'" And cbxTipoCartao.Text <> "") Then
+                If (cbxTipoCartao.Text = "Debito") Then
+                    daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and FORMAPAGTO = '3' and OPERADORA = '2'", conexaoLocal)
+                ElseIf (cbxTipoCartao.Text = "Credito") Then
+                    daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and FORMAPAGTO = '3' and OPERADORA = '1'", conexaoLocal)
+                End If
+            ElseIf (txtCodigoFormaPagto.Text = "" And cbxTipo.Text = "" And periodoConverte <> "'  .  .'" And cbxTipoCartao.Text = "") Then
                 daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and DATA BETWEEN " & periodoConverte & " and " & ateConverte, conexaoLocal)
-            ElseIf (txtCodigoFormaPagto.Text <> "" And cbxTipo.Text <> "" And periodoConverte = "'  .  .'") Then
+            ElseIf (txtCodigoFormaPagto.Text = "" And cbxTipo.Text = "" And periodoConverte = "'  .  .'" And cbxTipoCartao.Text <> "") Then
+                If (cbxTipoCartao.Text = "Debito") Then
+                    daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and FORMAPAGTO = '3' and OPERADORA = '2'", conexaoLocal)
+                ElseIf (cbxTipoCartao.Text = "Credito") Then
+                    daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and FORMAPAGTO = '3' and OPERADORA = '1'", conexaoLocal)
+                End If
+            ElseIf (txtCodigoFormaPagto.Text <> "" And cbxTipo.Text <> "" And periodoConverte = "'  .  .'" And cbxTipoCartao.Text = "") Then
                 If (cbxTipo.Text = "Orçamento") Then
                     daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and FORMAPAGTO = " & txtCodigoFormaPagto.Text & " and CODVENDA is null", conexaoLocal)
                 ElseIf (cbxTipo.Text = "Venda") Then
                     daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and FORMAPAGTO = " & txtCodigoFormaPagto.Text & " and CODVENDA is not null", conexaoLocal)
                 End If
-            ElseIf (txtCodigoFormaPagto.Text <> "" And cbxTipo.Text = "" And periodoConverte <> "'  .  .'") Then
+            ElseIf (txtCodigoFormaPagto.Text <> "" And cbxTipo.Text = "" And periodoConverte <> "'  .  .'" And cbxTipoCartao.Text = "") Then
                 daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and FORMAPAGTO = " & txtCodigoFormaPagto.Text & " and DATA BETWEEN " & periodoConverte & " and " & ateConverte, conexaoLocal)
-            ElseIf (txtCodigoFormaPagto.Text = "" And cbxTipo.Text <> "" And periodoConverte <> "'  .  .'") Then
+            ElseIf (txtCodigoFormaPagto.Text = "" And cbxTipo.Text <> "" And periodoConverte <> "'  .  .'" And cbxTipoCartao.Text = "") Then
                 If (cbxTipo.Text = "Orçamento") Then
                     daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and DATA BETWEEN " & periodoConverte & " and " & ateConverte & " and CODVENDA is null", conexaoLocal)
                 ElseIf (cbxTipo.Text = "Venda") Then
                     daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and DATA BETWEEN " & periodoConverte & " and " & ateConverte & " and CODVENDA is not null", conexaoLocal)
                 End If
-            ElseIf (txtCodigoFormaPagto.Text <> "" And cbxTipo.Text <> "" And periodoConverte <> "'  .  .'") Then
+            ElseIf (txtCodigoFormaPagto.Text <> "" And cbxTipo.Text <> "" And periodoConverte <> "'  .  .'" And cbxTipoCartao.Text = "") Then
                 If (cbxTipo.Text = "Orçamento") Then
                     daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and FORMAPAGTO = " & txtCodigoFormaPagto.Text & " and DATA BETWEEN " & periodoConverte & " and " & ateConverte & " and CODVENDA is null", conexaoLocal)
                 ElseIf (cbxTipo.Text = "Venda") Then
                     daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and FORMAPAGTO = " & txtCodigoFormaPagto.Text & " and DATA BETWEEN " & periodoConverte & " and " & ateConverte & " and CODVENDA is not null", conexaoLocal)
                 End If
+            ElseIf (txtCodigoFormaPagto.Text = "" And cbxTipo.Text <> "" And periodoConverte <> "'  .  .'" And cbxTipoCartao.Text <> "") Then
+                If (cbxTipo.Text = "Orçamento") Then
+                    If (cbxTipoCartao.Text = "Debito") Then
+                        daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and DATA BETWEEN " & periodoConverte & " and " & ateConverte & " and CODVENDA is null and OPERADORA = '2'", conexaoLocal)
+                    ElseIf (cbxTipoCartao.Text = "Credito") Then
+                        daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and DATA BETWEEN " & periodoConverte & " and " & ateConverte & " and CODVENDA is null and OPERADORA = '1'", conexaoLocal)
+                    End If
+                ElseIf (cbxTipo.Text = "Venda") Then
+                    If (cbxTipoCartao.Text = "Debito") Then
+                        daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and DATA BETWEEN " & periodoConverte & " and " & ateConverte & " and CODVENDA is null and OPERADORA = '2'", conexaoLocal)
+                    ElseIf (cbxTipoCartao.Text = "Credito") Then
+                        daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and DATA BETWEEN " & periodoConverte & " and " & ateConverte & " and CODVENDA is null and OPERADORA = '1'", conexaoLocal)
+                    End If
+                End If
             End If
-
             daLocal.Fill(ds)
             dgProdutosVendidos.DataSource = ds.Tables(0)
             calculaTotal()

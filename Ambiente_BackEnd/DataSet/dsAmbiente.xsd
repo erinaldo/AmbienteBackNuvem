@@ -74,7 +74,8 @@
               <xs:element name="OPERADOR" msprop:Generator_ColumnPropNameInTable="OPERADORColumn" msprop:Generator_ColumnPropNameInRow="OPERADOR" msprop:Generator_UserColumnName="OPERADOR" msprop:Generator_ColumnVarNameInTable="columnOPERADOR" type="xs:string" minOccurs="0" />
               <xs:element name="CODABERTURA" msprop:Generator_ColumnPropNameInTable="CODABERTURAColumn" msprop:Generator_ColumnPropNameInRow="CODABERTURA" msprop:Generator_UserColumnName="CODABERTURA" msprop:Generator_ColumnVarNameInTable="columnCODABERTURA" type="xs:string" minOccurs="0" />
               <xs:element name="NUM_AGRUPA" msprop:Generator_ColumnPropNameInTable="NUM_AGRUPAColumn" msprop:Generator_ColumnPropNameInRow="NUM_AGRUPA" msprop:Generator_UserColumnName="NUM_AGRUPA" msprop:Generator_ColumnVarNameInTable="columnNUM_AGRUPA" type="xs:string" minOccurs="0" />
-              <xs:element name="CANCELADA" msprop:Generator_ColumnPropNameInRow="CANCELADA" msprop:Generator_ColumnPropNameInTable="CANCELADAColumn" msprop:Generator_ColumnVarNameInTable="columnCANCELADA" msprop:Generator_UserColumnName="CANCELADA" type="xs:string" minOccurs="0" />
+              <xs:element name="CANCELADA" msprop:Generator_ColumnPropNameInTable="CANCELADAColumn" msprop:Generator_ColumnPropNameInRow="CANCELADA" msprop:Generator_UserColumnName="CANCELADA" msprop:Generator_ColumnVarNameInTable="columnCANCELADA" type="xs:string" minOccurs="0" />
+              <xs:element name="MOTIVOCANCEL" msprop:Generator_ColumnPropNameInRow="MOTIVOCANCEL" msprop:Generator_ColumnPropNameInTable="MOTIVOCANCELColumn" msprop:Generator_ColumnVarNameInTable="columnMOTIVOCANCEL" msprop:Generator_UserColumnName="MOTIVOCANCEL" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -97,7 +98,7 @@
               <xs:element name="QUANTIDADE" msprop:Generator_ColumnPropNameInTable="QUANTIDADEColumn" msprop:Generator_ColumnPropNameInRow="QUANTIDADE" msprop:Generator_UserColumnName="QUANTIDADE" msprop:Generator_ColumnVarNameInTable="columnQUANTIDADE" type="xs:string" minOccurs="0" />
               <xs:element name="PRECO_VENDA" msprop:Generator_ColumnPropNameInTable="PRECO_VENDAColumn" msprop:Generator_ColumnPropNameInRow="PRECO_VENDA" msprop:Generator_UserColumnName="PRECO_VENDA" msprop:Generator_ColumnVarNameInTable="columnPRECO_VENDA" type="xs:string" minOccurs="0" />
               <xs:element name="TOTAL_ITEM" msprop:Generator_ColumnPropNameInTable="TOTAL_ITEMColumn" msprop:Generator_ColumnPropNameInRow="TOTAL_ITEM" msprop:Generator_UserColumnName="TOTAL_ITEM" msprop:Generator_ColumnVarNameInTable="columnTOTAL_ITEM" type="xs:string" minOccurs="0" />
-              <xs:element name="CODCAIXA" msprop:Generator_UserColumnName="CODCAIXA" msprop:Generator_ColumnPropNameInTable="CODCAIXAColumn" msprop:Generator_ColumnPropNameInRow="CODCAIXA" msprop:Generator_ColumnVarNameInTable="columnCODCAIXA" type="xs:string" minOccurs="0" />
+              <xs:element name="CODCAIXA" msprop:Generator_ColumnPropNameInTable="CODCAIXAColumn" msprop:Generator_ColumnPropNameInRow="CODCAIXA" msprop:Generator_UserColumnName="CODCAIXA" msprop:Generator_ColumnVarNameInTable="columnCODCAIXA" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -136,6 +137,8 @@
               <xs:element name="TOTAL" msprop:Generator_ColumnPropNameInTable="TOTALColumn" msprop:Generator_ColumnPropNameInRow="TOTAL" msprop:Generator_UserColumnName="TOTAL" msprop:Generator_ColumnVarNameInTable="columnTOTAL" type="xs:string" minOccurs="0" />
               <xs:element name="CODCLIENTE" msprop:Generator_ColumnPropNameInTable="CODCLIENTEColumn" msprop:Generator_ColumnPropNameInRow="CODCLIENTE" msprop:Generator_UserColumnName="CODCLIENTE" msprop:Generator_ColumnVarNameInTable="columnCODCLIENTE" type="xs:string" minOccurs="0" />
               <xs:element name="RAZAOSOCIAL" msprop:Generator_ColumnPropNameInTable="RAZAOSOCIALColumn" msprop:Generator_ColumnPropNameInRow="RAZAOSOCIAL" msprop:Generator_UserColumnName="RAZAOSOCIAL" msprop:Generator_ColumnVarNameInTable="columnRAZAOSOCIAL" type="xs:string" minOccurs="0" />
+              <xs:element name="DATA" msprop:Generator_ColumnPropNameInTable="DATAColumn" msprop:Generator_ColumnPropNameInRow="DATA" msprop:Generator_UserColumnName="DATA" msprop:Generator_ColumnVarNameInTable="columnDATA" type="xs:string" minOccurs="0" />
+              <xs:element name="TIPO" msprop:Generator_ColumnPropNameInTable="TIPOColumn" msprop:Generator_ColumnPropNameInRow="TIPO" msprop:Generator_UserColumnName="TIPO" msprop:Generator_ColumnVarNameInTable="columnTIPO" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -149,6 +152,16 @@
               <xs:element name="PRECO_VENDA" msprop:Generator_ColumnPropNameInTable="PRECO_VENDAColumn" msprop:Generator_ColumnPropNameInRow="PRECO_VENDA" msprop:Generator_UserColumnName="PRECO_VENDA" msprop:Generator_ColumnVarNameInTable="columnPRECO_VENDA" type="xs:string" minOccurs="0" />
               <xs:element name="TOTAL_ITEM" msprop:Generator_ColumnPropNameInTable="TOTAL_ITEMColumn" msprop:Generator_ColumnPropNameInRow="TOTAL_ITEM" msprop:Generator_UserColumnName="TOTAL_ITEM" msprop:Generator_ColumnVarNameInTable="columnTOTAL_ITEM" type="xs:string" minOccurs="0" />
               <xs:element name="CODIGOBARRA" msprop:Generator_ColumnPropNameInTable="CODIGOBARRAColumn" msprop:Generator_ColumnPropNameInRow="CODIGOBARRA" msprop:Generator_UserColumnName="CODIGOBARRA" msprop:Generator_ColumnVarNameInTable="columnCODIGOBARRA" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ProdutosNuvem" msprop:Generator_RowClassName="ProdutosNuvemRow" msprop:Generator_RowEvHandlerName="ProdutosNuvemRowChangeEventHandler" msprop:Generator_RowDeletedName="ProdutosNuvemRowDeleted" msprop:Generator_RowDeletingName="ProdutosNuvemRowDeleting" msprop:Generator_RowEvArgName="ProdutosNuvemRowChangeEvent" msprop:Generator_TablePropName="ProdutosNuvem" msprop:Generator_RowChangedName="ProdutosNuvemRowChanged" msprop:Generator_UserTableName="ProdutosNuvem" msprop:Generator_RowChangingName="ProdutosNuvemRowChanging" msprop:Generator_TableClassName="ProdutosNuvemDataTable" msprop:Generator_TableVarName="tableProdutosNuvem">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idProdutos" msprop:Generator_UserColumnName="idProdutos" msprop:Generator_ColumnPropNameInTable="idProdutosColumn" msprop:Generator_ColumnPropNameInRow="idProdutos" msprop:Generator_ColumnVarNameInTable="columnidProdutos" type="xs:string" minOccurs="0" />
+              <xs:element name="codigobarra" msprop:Generator_UserColumnName="codigobarra" msprop:Generator_ColumnPropNameInTable="codigobarraColumn" msprop:Generator_ColumnPropNameInRow="codigobarra" msprop:Generator_ColumnVarNameInTable="columncodigobarra" type="xs:string" minOccurs="0" />
+              <xs:element name="produto" msprop:Generator_UserColumnName="produto" msprop:Generator_ColumnPropNameInTable="produtoColumn" msprop:Generator_ColumnPropNameInRow="produto" msprop:Generator_ColumnVarNameInTable="columnproduto" type="xs:string" minOccurs="0" />
+              <xs:element name="precovenda" msprop:Generator_UserColumnName="precovenda" msprop:Generator_ColumnPropNameInTable="precovendaColumn" msprop:Generator_ColumnPropNameInRow="precovenda" msprop:Generator_ColumnVarNameInTable="columnprecovenda" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

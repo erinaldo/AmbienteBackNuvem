@@ -64,6 +64,8 @@ Partial Class FrmRelatorioOrcVendas
         Me.CANCELADA = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VENDABindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsAmbiente = New Ambiente_BackEnd.dsAmbiente()
+        Me.cbxTipoCartao = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel6.SuspendLayout()
@@ -84,9 +86,9 @@ Partial Class FrmRelatorioOrcVendas
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Controls.Add(Me.btnCancelar)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(0, 501)
+        Me.Panel2.Location = New System.Drawing.Point(0, 527)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(873, 51)
+        Me.Panel2.Size = New System.Drawing.Size(857, 51)
         Me.Panel2.TabIndex = 234
         '
         'btnSair
@@ -95,7 +97,7 @@ Partial Class FrmRelatorioOrcVendas
         Me.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSair.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSair.Image = CType(resources.GetObject("btnSair.Image"), System.Drawing.Image)
-        Me.btnSair.Location = New System.Drawing.Point(743, 0)
+        Me.btnSair.Location = New System.Drawing.Point(727, 0)
         Me.btnSair.Name = "btnSair"
         Me.btnSair.Size = New System.Drawing.Size(130, 51)
         Me.btnSair.TabIndex = 6
@@ -175,7 +177,7 @@ Partial Class FrmRelatorioOrcVendas
         '
         'txtperiodo
         '
-        Me.txtperiodo.Location = New System.Drawing.Point(115, 107)
+        Me.txtperiodo.Location = New System.Drawing.Point(115, 142)
         Me.txtperiodo.Mask = "00/00/0000"
         Me.txtperiodo.Name = "txtperiodo"
         Me.txtperiodo.Size = New System.Drawing.Size(109, 20)
@@ -184,7 +186,7 @@ Partial Class FrmRelatorioOrcVendas
         '
         'txtate
         '
-        Me.txtate.Location = New System.Drawing.Point(326, 108)
+        Me.txtate.Location = New System.Drawing.Point(326, 143)
         Me.txtate.Mask = "00/00/0000"
         Me.txtate.Name = "txtate"
         Me.txtate.Size = New System.Drawing.Size(109, 20)
@@ -195,7 +197,7 @@ Partial Class FrmRelatorioOrcVendas
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(289, 109)
+        Me.Label5.Location = New System.Drawing.Point(289, 144)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(31, 15)
         Me.Label5.TabIndex = 243
@@ -205,7 +207,7 @@ Partial Class FrmRelatorioOrcVendas
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(50, 108)
+        Me.Label3.Location = New System.Drawing.Point(50, 143)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(61, 15)
         Me.Label3.TabIndex = 242
@@ -218,7 +220,7 @@ Partial Class FrmRelatorioOrcVendas
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(873, 45)
+        Me.Panel1.Size = New System.Drawing.Size(857, 45)
         Me.Panel1.TabIndex = 237
         '
         'Label1
@@ -293,9 +295,9 @@ Partial Class FrmRelatorioOrcVendas
         Me.Panel6.Controls.Add(Me.Label2)
         Me.Panel6.Controls.Add(Me.lblTotal)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel6.Location = New System.Drawing.Point(0, 462)
+        Me.Panel6.Location = New System.Drawing.Point(0, 488)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(873, 39)
+        Me.Panel6.Size = New System.Drawing.Size(857, 39)
         Me.Panel6.TabIndex = 254
         '
         'Label2
@@ -303,7 +305,7 @@ Partial Class FrmRelatorioOrcVendas
         Me.Label2.AutoSize = True
         Me.Label2.Dock = System.Windows.Forms.DockStyle.Right
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(765, 0)
+        Me.Label2.Location = New System.Drawing.Point(749, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(72, 25)
         Me.Label2.TabIndex = 1
@@ -314,7 +316,7 @@ Partial Class FrmRelatorioOrcVendas
         Me.lblTotal.AutoSize = True
         Me.lblTotal.Dock = System.Windows.Forms.DockStyle.Right
         Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotal.Location = New System.Drawing.Point(837, 0)
+        Me.lblTotal.Location = New System.Drawing.Point(821, 0)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(36, 25)
         Me.lblTotal.TabIndex = 0
@@ -324,10 +326,10 @@ Partial Class FrmRelatorioOrcVendas
         '
         Me.tbItensEcontrados.Controls.Add(Me.TabPage1)
         Me.tbItensEcontrados.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.tbItensEcontrados.Location = New System.Drawing.Point(0, 131)
+        Me.tbItensEcontrados.Location = New System.Drawing.Point(0, 197)
         Me.tbItensEcontrados.Name = "tbItensEcontrados"
         Me.tbItensEcontrados.SelectedIndex = 0
-        Me.tbItensEcontrados.Size = New System.Drawing.Size(873, 331)
+        Me.tbItensEcontrados.Size = New System.Drawing.Size(857, 291)
         Me.tbItensEcontrados.TabIndex = 255
         '
         'TabPage1
@@ -336,7 +338,7 @@ Partial Class FrmRelatorioOrcVendas
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(865, 305)
+        Me.TabPage1.Size = New System.Drawing.Size(849, 265)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Itens Encontrados"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -367,7 +369,7 @@ Partial Class FrmRelatorioOrcVendas
         Me.dgProdutosVendidos.GridColor = System.Drawing.Color.White
         Me.dgProdutosVendidos.Location = New System.Drawing.Point(3, 3)
         Me.dgProdutosVendidos.Name = "dgProdutosVendidos"
-        Me.dgProdutosVendidos.Size = New System.Drawing.Size(859, 299)
+        Me.dgProdutosVendidos.Size = New System.Drawing.Size(843, 259)
         Me.dgProdutosVendidos.TabIndex = 1
         '
         'CODMOVIMENTO
@@ -446,11 +448,33 @@ Partial Class FrmRelatorioOrcVendas
         Me.DsAmbiente.DataSetName = "dsAmbiente"
         Me.DsAmbiente.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'cbxTipoCartao
+        '
+        Me.cbxTipoCartao.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbxTipoCartao.FormattingEnabled = True
+        Me.cbxTipoCartao.Items.AddRange(New Object() {"Debito", "Credito"})
+        Me.cbxTipoCartao.Location = New System.Drawing.Point(117, 109)
+        Me.cbxTipoCartao.Name = "cbxTipoCartao"
+        Me.cbxTipoCartao.Size = New System.Drawing.Size(107, 21)
+        Me.cbxTipoCartao.TabIndex = 257
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(0, 110)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(111, 15)
+        Me.Label7.TabIndex = 256
+        Me.Label7.Text = "Debito / Credito:"
+        '
         'FrmRelatorioOrcVendas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(873, 552)
+        Me.ClientSize = New System.Drawing.Size(857, 578)
+        Me.Controls.Add(Me.cbxTipoCartao)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.tbItensEcontrados)
         Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.cbxFormaPagamento)
@@ -521,4 +545,6 @@ Partial Class FrmRelatorioOrcVendas
     Friend WithEvents FORMAPAGTODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TOTALMOVIMENTO As DataGridViewTextBoxColumn
     Friend WithEvents CANCELADA As DataGridViewTextBoxColumn
+    Friend WithEvents cbxTipoCartao As ComboBox
+    Friend WithEvents Label7 As Label
 End Class

@@ -181,10 +181,28 @@
     <Compile Include="View\FrmAgruparPendencias.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\FrmAtualizaPreco.Designer.vb">
+      <DependentUpon>FrmAtualizaPreco.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmAtualizaPreco.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmConsultaGeraDebitos.Designer.vb">
+      <DependentUpon>FrmConsultaGeraDebitos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmConsultaGeraDebitos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\FrmConsultaProduto.Designer.vb">
       <DependentUpon>FrmConsultaProduto.vb</DependentUpon>
     </Compile>
     <Compile Include="View\FrmConsultaProduto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmHistoricoMovimentacaoItens.Designer.vb">
+      <DependentUpon>FrmHistoricoMovimentacaoItens.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmHistoricoMovimentacaoItens.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FrmImportarVenda.Designer.vb">
@@ -251,6 +269,12 @@
       <DependentUpon>FrmNotaFiscalEletronica.vb</DependentUpon>
     </Compile>
     <Compile Include="View\FrmNotaFiscalEletronica.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmRecebimentos.Designer.vb">
+      <DependentUpon>FrmRecebimentos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmRecebimentos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FrmRelatorioOrcVendas.Designer.vb">
@@ -352,6 +376,12 @@
     <Compile Include="View\FrmRelEtiqueta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\FrmRelVendasCancelada.Designer.vb">
+      <DependentUpon>FrmRelVendasCancelada.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmRelVendasCancelada.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\FrmVisualizaCliente.Designer.vb">
       <DependentUpon>FrmVisualizaCliente.vb</DependentUpon>
     </Compile>
@@ -363,8 +393,17 @@
     <EmbeddedResource Include="View\FrmAgruparPendencias.resx">
       <DependentUpon>FrmAgruparPendencias.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmAtualizaPreco.resx">
+      <DependentUpon>FrmAtualizaPreco.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmConsultaGeraDebitos.resx">
+      <DependentUpon>FrmConsultaGeraDebitos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmConsultaProduto.resx">
       <DependentUpon>FrmConsultaProduto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmHistoricoMovimentacaoItens.resx">
+      <DependentUpon>FrmHistoricoMovimentacaoItens.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmImportarVenda.resx">
       <DependentUpon>FrmImportarVenda.vb</DependentUpon>
@@ -398,6 +437,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmNotaFiscalEletronica.resx">
       <DependentUpon>FrmNotaFiscalEletronica.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmRecebimentos.resx">
+      <DependentUpon>FrmRecebimentos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmRelatorioOrcVendas.resx">
       <DependentUpon>FrmRelatorioOrcVendas.vb</DependentUpon>
@@ -443,6 +485,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmRelEtiqueta.resx">
       <DependentUpon>FrmRelEtiqueta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmRelVendasCancelada.resx">
+      <DependentUpon>FrmRelVendasCancelada.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmVisualizaCliente.resx">
       <DependentUpon>FrmVisualizaCliente.vb</DependentUpon>

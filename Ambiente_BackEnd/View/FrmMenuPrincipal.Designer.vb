@@ -50,11 +50,12 @@ Partial Class FrmMenuPrincipal
         Me.pMovimentacao = New System.Windows.Forms.Panel()
         Me.btnPendencias = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnAtualizarPreco = New System.Windows.Forms.Button()
         Me.pImportarProdutos = New System.Windows.Forms.ProgressBar()
         Me.btnImportarProdutos = New System.Windows.Forms.Button()
         Me.btnNotaFiscalEletronica = New System.Windows.Forms.Button()
         Me.btnAgruparPendencia = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.btnRelOrcVenda = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.tImportarProdutos = New System.Windows.Forms.Timer(Me.components)
@@ -466,18 +467,19 @@ Partial Class FrmMenuPrincipal
         Me.btnPendencias.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
         Me.btnPendencias.Size = New System.Drawing.Size(267, 47)
         Me.btnPendencias.TabIndex = 21
-        Me.btnPendencias.Text = "             Pendências"
+        Me.btnPendencias.Text = "             Dabito Geral"
         Me.btnPendencias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnPendencias.UseVisualStyleBackColor = True
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(71, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.Button1)
+        Me.Panel1.Controls.Add(Me.btnAtualizarPreco)
         Me.Panel1.Controls.Add(Me.pImportarProdutos)
         Me.Panel1.Controls.Add(Me.btnImportarProdutos)
         Me.Panel1.Controls.Add(Me.btnNotaFiscalEletronica)
         Me.Panel1.Controls.Add(Me.btnAgruparPendencia)
+        Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.btnRelOrcVenda)
         Me.Panel1.Controls.Add(Me.pMovimentacao)
         Me.Panel1.Controls.Add(Me.btnMoviementacao)
@@ -491,22 +493,33 @@ Partial Class FrmMenuPrincipal
         Me.Panel1.Size = New System.Drawing.Size(269, 920)
         Me.Panel1.TabIndex = 6
         '
-        'Button1
+        'btnAtualizarPreco
         '
-        Me.Button1.Location = New System.Drawing.Point(88, 821)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 38
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnAtualizarPreco.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnAtualizarPreco.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnAtualizarPreco.FlatAppearance.BorderSize = 0
+        Me.btnAtualizarPreco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(113, Byte), Integer))
+        Me.btnAtualizarPreco.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAtualizarPreco.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAtualizarPreco.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.btnAtualizarPreco.Image = CType(resources.GetObject("btnAtualizarPreco.Image"), System.Drawing.Image)
+        Me.btnAtualizarPreco.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAtualizarPreco.Location = New System.Drawing.Point(0, 862)
+        Me.btnAtualizarPreco.Name = "btnAtualizarPreco"
+        Me.btnAtualizarPreco.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.btnAtualizarPreco.Size = New System.Drawing.Size(269, 53)
+        Me.btnAtualizarPreco.TabIndex = 45
+        Me.btnAtualizarPreco.Text = "             Atualizar Preços"
+        Me.btnAtualizarPreco.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAtualizarPreco.UseVisualStyleBackColor = False
         '
         'pImportarProdutos
         '
         Me.pImportarProdutos.Dock = System.Windows.Forms.DockStyle.Top
-        Me.pImportarProdutos.Location = New System.Drawing.Point(0, 800)
+        Me.pImportarProdutos.Location = New System.Drawing.Point(0, 847)
         Me.pImportarProdutos.Name = "pImportarProdutos"
         Me.pImportarProdutos.Size = New System.Drawing.Size(269, 15)
-        Me.pImportarProdutos.TabIndex = 37
+        Me.pImportarProdutos.TabIndex = 44
         Me.pImportarProdutos.Visible = False
         '
         'btnImportarProdutos
@@ -520,11 +533,11 @@ Partial Class FrmMenuPrincipal
         Me.btnImportarProdutos.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.btnImportarProdutos.Image = CType(resources.GetObject("btnImportarProdutos.Image"), System.Drawing.Image)
         Me.btnImportarProdutos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnImportarProdutos.Location = New System.Drawing.Point(0, 753)
+        Me.btnImportarProdutos.Location = New System.Drawing.Point(0, 800)
         Me.btnImportarProdutos.Name = "btnImportarProdutos"
         Me.btnImportarProdutos.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
         Me.btnImportarProdutos.Size = New System.Drawing.Size(269, 47)
-        Me.btnImportarProdutos.TabIndex = 36
+        Me.btnImportarProdutos.TabIndex = 43
         Me.btnImportarProdutos.Text = "             Importar Produtos"
         Me.btnImportarProdutos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnImportarProdutos.UseVisualStyleBackColor = False
@@ -540,11 +553,11 @@ Partial Class FrmMenuPrincipal
         Me.btnNotaFiscalEletronica.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.btnNotaFiscalEletronica.Image = CType(resources.GetObject("btnNotaFiscalEletronica.Image"), System.Drawing.Image)
         Me.btnNotaFiscalEletronica.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnNotaFiscalEletronica.Location = New System.Drawing.Point(0, 706)
+        Me.btnNotaFiscalEletronica.Location = New System.Drawing.Point(0, 753)
         Me.btnNotaFiscalEletronica.Name = "btnNotaFiscalEletronica"
         Me.btnNotaFiscalEletronica.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
         Me.btnNotaFiscalEletronica.Size = New System.Drawing.Size(269, 47)
-        Me.btnNotaFiscalEletronica.TabIndex = 35
+        Me.btnNotaFiscalEletronica.TabIndex = 42
         Me.btnNotaFiscalEletronica.Text = "             Nota Fiscal Eletronica"
         Me.btnNotaFiscalEletronica.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnNotaFiscalEletronica.UseVisualStyleBackColor = True
@@ -561,15 +574,35 @@ Partial Class FrmMenuPrincipal
         Me.btnAgruparPendencia.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.btnAgruparPendencia.Image = CType(resources.GetObject("btnAgruparPendencia.Image"), System.Drawing.Image)
         Me.btnAgruparPendencia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAgruparPendencia.Location = New System.Drawing.Point(0, 659)
+        Me.btnAgruparPendencia.Location = New System.Drawing.Point(0, 706)
         Me.btnAgruparPendencia.Name = "btnAgruparPendencia"
         Me.btnAgruparPendencia.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
         Me.btnAgruparPendencia.Size = New System.Drawing.Size(269, 47)
-        Me.btnAgruparPendencia.TabIndex = 32
+        Me.btnAgruparPendencia.TabIndex = 41
         Me.btnAgruparPendencia.Text = "             Agrupar Pendências"
         Me.btnAgruparPendencia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnAgruparPendencia.UseVisualStyleBackColor = True
         Me.btnAgruparPendencia.Visible = False
+        '
+        'Button1
+        '
+        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(113, Byte), Integer))
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.Location = New System.Drawing.Point(0, 659)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.Button1.Size = New System.Drawing.Size(269, 47)
+        Me.Button1.TabIndex = 40
+        Me.Button1.Text = "             Orc/Venda Cancelados"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'btnRelOrcVenda
         '
@@ -610,6 +643,7 @@ Partial Class FrmMenuPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(1300, 920)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.Panel3)
@@ -666,6 +700,7 @@ Partial Class FrmMenuPrincipal
     Friend WithEvents btnEntregador As Button
     Friend WithEvents lblMenu As Label
     Friend WithEvents tImportarProdutos As Timer
+    Friend WithEvents btnAtualizarPreco As Button
     Friend WithEvents pImportarProdutos As ProgressBar
     Friend WithEvents btnImportarProdutos As Button
     Friend WithEvents btnNotaFiscalEletronica As Button
