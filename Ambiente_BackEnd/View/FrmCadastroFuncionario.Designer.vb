@@ -22,7 +22,7 @@ Partial Class FrmCadastroFuncionario
     'Não o modifique usando o editor de códigos.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmCadastroFuncionario))
         Me.tbFuncionario = New System.Windows.Forms.TabControl()
         Me.tpCadastrar = New System.Windows.Forms.TabPage()
@@ -195,7 +195,6 @@ Partial Class FrmCadastroFuncionario
         Me.txtUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtUsuario.Location = New System.Drawing.Point(222, 208)
         Me.txtUsuario.Name = "txtUsuario"
-        Me.txtUsuario.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtUsuario.Size = New System.Drawing.Size(171, 21)
         Me.txtUsuario.TabIndex = 7
         '
@@ -621,14 +620,14 @@ Partial Class FrmCadastroFuncionario
         Me.dg_funcionario.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.dg_funcionario.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dg_funcionario.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.HotTrack
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_funcionario.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_funcionario.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dg_funcionario.ColumnHeadersHeight = 20
         Me.dg_funcionario.Cursor = System.Windows.Forms.Cursors.Hand
         Me.dg_funcionario.Dock = System.Windows.Forms.DockStyle.Bottom
