@@ -9,6 +9,30 @@ Public Class FrmMenuPrincipal
     Public codFuncionario As String
     Public nomeFuncionario As String
     Dim download As New Net.WebClient
+    Private Operacao As OperacoesCrud
+
+    Private Sub MudarOperacao(ByVal novaOperacao As OperacoesCrud)
+        If novaOperacao = OperacoesCrud.BloquearAcesso Then
+            btnCadastros.Enabled = False
+            btnMoviementacao.Enabled = False
+            btnRelOrcVenda.Enabled = False
+            btnRelOrcCanceladas.Enabled = False
+            btnAgruparPendencia.Enabled = False
+            btnAtualizarPreco.Enabled = False
+            imgCadeadoDesbloqueado.Visible = False
+
+        ElseIf novaOperacao = OperacoesCrud.LiberarAcesso Then
+            btnCadastros.Enabled = True
+            btnMoviementacao.Enabled = True
+            btnRelOrcVenda.Enabled = True
+            btnRelOrcCanceladas.Enabled = True
+            btnAgruparPendencia.Enabled = True
+            btnAtualizarPreco.Enabled = True
+            imgCadeadoBloqueado.Visible = False
+            imgCadeadoDesbloqueado.Visible = True
+        End If
+        Operacao = novaOperacao
+    End Sub
     Public Sub DiminuiMenu()
         If aumentapanel = "1" Then
             Panel1.Size = New Size(214, 766)
@@ -197,6 +221,7 @@ Public Class FrmMenuPrincipal
             End If
         End While
         FrmLogin.ShowDialog()
+        MudarOperacao(OperacoesCrud.BloquearAcesso)
     End Sub
     Private Sub btnNotaFiscalEletronica_Click(sender As Object, e As EventArgs)
         FrmNotaFiscalEletronica.ShowDialog()
@@ -323,7 +348,7 @@ Public Class FrmMenuPrincipal
             MsgBox("Erro ao importar produtos: " + ex.Message, MsgBoxStyle.Information)
         End Try
     End Sub
-    Private Sub btnImportarProdutos_Click(sender As Object, e As EventArgs)
+    Private Sub btnImportarProdutos_Click(sender As Object, e As EventArgs) Handles btnImportarProdutos.Click
         'My.Computer.FileSystem.CopyFile(Environment.CurrentDirectory + "\Data\Banco\BANCO.FDB",
         'Environment.CurrentDirectory + "\Data\Banco\BANCOBACKUP.FDB")
         pImportarProdutos.Visible = True
@@ -348,16 +373,27 @@ Public Class FrmMenuPrincipal
         FrmConsultaGeraDebitos.ShowDialog()
     End Sub
 
-    Private Sub btnAtualizarPreco_Click(sender As Object, e As EventArgs)
+    Private Sub btnAtualizarPreco_Click(sender As Object, e As EventArgs) Handles btnAtualizarPreco.Click
         Dim FrmAtualizaPreco As New FrmAtualizaPreco
         FrmAtualizaPreco.ShowDialog()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub btnRelOrcCanceladas_Click(sender As Object, e As EventArgs) Handles btnRelOrcCanceladas.Click
         With FrmRelVendasCancelada
             DiminuiMenu()
             .ShowDialog()
             DiminuiMenu()
         End With
+    End Sub
+
+    Private Sub imgCadeadoBloqueado_Click(sender As Object, e As EventArgs) Handles imgCadeadoBloqueado.Click
+        Dim senhaLibera As String = InputBox("Digite a senha para liberar o acesso")
+
+        If senhaLibera = LerIni("Dados", "SenhaBack") Then
+            MudarOperacao(OperacoesCrud.LiberarAcesso)
+            MsgBox("Liberação Efetuada com Sucesso", MsgBoxStyle.Information)
+        Else
+            MsgBox("Senha Está Incorreta", MsgBoxStyle.Critical)
+        End If
     End Sub
 End Class

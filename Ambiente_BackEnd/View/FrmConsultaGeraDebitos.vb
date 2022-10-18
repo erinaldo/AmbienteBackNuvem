@@ -5,7 +5,7 @@ Public Class FrmConsultaGeraDebitos
         Dim valor As Decimal
 
         For Each col As DataGridViewRow In dg_recebimento.Rows
-            valor = valor + col.Cells(5).Value
+            valor = valor + col.Cells(3).Value
         Next
 
         txtTotal.Text = valor
@@ -17,8 +17,8 @@ Public Class FrmConsultaGeraDebitos
 
 
 
-        str = "SELECT D.CODCAIXA, D.CODCLIENTE,C.RAZAOSOCIAL,D.DATA,sum(D.TOTAL) AS TOTAL FROM DEBITO AS D JOIN COLABORADOR AS C On ( C.CODCOLABORADOR = D.CODCLIENTE ) WHERE D.TIPO = 'COMPRA' GROUP BY  D.CODCAIXA, D.CODCLIENTE,C.RAZAOSOCIAL,D.DATA ORDER BY TOTAL DESC"
-
+        'str = "SELECT D.CODCAIXA, D.CODCLIENTE,C.RAZAOSOCIAL,D.DATA,sum(D.TOTAL) AS TOTAL FROM DEBITO AS D JOIN COLABORADOR AS C On ( C.CODCOLABORADOR = D.CODCLIENTE ) WHERE GROUP BY  D.CODCAIXA, D.CODCLIENTE,C.RAZAOSOCIAL,D.DATA ORDER BY TOTAL DESC"
+        str = "SELECT D.CODCLIENTE,C.RAZAOSOCIAL,sum(D.TOTAL) AS TOTAL FROM DEBITO AS D JOIN COLABORADOR AS C On ( C.CODCOLABORADOR = D.CODCLIENTE )  GROUP BY D.CODCLIENTE,C.RAZAOSOCIAL ORDER BY TOTAL DESC"
         conexaoLocal.Close()
         conexaoLocal.ConnectionString = bancoLocal
         conexaoLocal.Open()

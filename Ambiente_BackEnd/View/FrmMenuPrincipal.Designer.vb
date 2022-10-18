@@ -30,6 +30,9 @@ Partial Class FrmMenuPrincipal
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.lblMenu = New System.Windows.Forms.Label()
+        Me.imgCadeadoDesbloqueado = New System.Windows.Forms.PictureBox()
+        Me.imgCadeadoBloqueado = New System.Windows.Forms.PictureBox()
+        Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.imgMenu = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
@@ -55,7 +58,7 @@ Partial Class FrmMenuPrincipal
         Me.btnImportarProdutos = New System.Windows.Forms.Button()
         Me.btnNotaFiscalEletronica = New System.Windows.Forms.Button()
         Me.btnAgruparPendencia = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnRelOrcCanceladas = New System.Windows.Forms.Button()
         Me.btnRelOrcVenda = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.tImportarProdutos = New System.Windows.Forms.Timer(Me.components)
@@ -63,6 +66,8 @@ Partial Class FrmMenuPrincipal
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        CType(Me.imgCadeadoDesbloqueado, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.imgCadeadoBloqueado, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -96,7 +101,7 @@ Partial Class FrmMenuPrincipal
         '
         Me.PictureBox3.Dock = System.Windows.Forms.DockStyle.Right
         Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(944, 0)
+        Me.PictureBox3.Location = New System.Drawing.Point(939, 0)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(32, 44)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
@@ -108,7 +113,7 @@ Partial Class FrmMenuPrincipal
         Me.Panel7.AutoSize = True
         Me.Panel7.Controls.Add(Me.lblFuncLogado)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel7.Location = New System.Drawing.Point(976, 0)
+        Me.Panel7.Location = New System.Drawing.Point(971, 0)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(5, 44)
         Me.Panel7.TabIndex = 7
@@ -117,6 +122,9 @@ Partial Class FrmMenuPrincipal
         '
         Me.Panel3.BackColor = System.Drawing.Color.Indigo
         Me.Panel3.Controls.Add(Me.lblMenu)
+        Me.Panel3.Controls.Add(Me.imgCadeadoDesbloqueado)
+        Me.Panel3.Controls.Add(Me.imgCadeadoBloqueado)
+        Me.Panel3.Controls.Add(Me.Panel4)
         Me.Panel3.Controls.Add(Me.PictureBox3)
         Me.Panel3.Controls.Add(Me.Panel7)
         Me.Panel3.Controls.Add(Me.Panel6)
@@ -136,15 +144,46 @@ Partial Class FrmMenuPrincipal
         Me.lblMenu.Location = New System.Drawing.Point(0, 7)
         Me.lblMenu.Name = "lblMenu"
         Me.lblMenu.Size = New System.Drawing.Size(44, 37)
-        Me.lblMenu.TabIndex = 9
+        Me.lblMenu.TabIndex = 14
         Me.lblMenu.Text = "..."
+        '
+        'imgCadeadoDesbloqueado
+        '
+        Me.imgCadeadoDesbloqueado.Dock = System.Windows.Forms.DockStyle.Right
+        Me.imgCadeadoDesbloqueado.Image = CType(resources.GetObject("imgCadeadoDesbloqueado.Image"), System.Drawing.Image)
+        Me.imgCadeadoDesbloqueado.Location = New System.Drawing.Point(817, 0)
+        Me.imgCadeadoDesbloqueado.Name = "imgCadeadoDesbloqueado"
+        Me.imgCadeadoDesbloqueado.Size = New System.Drawing.Size(48, 44)
+        Me.imgCadeadoDesbloqueado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.imgCadeadoDesbloqueado.TabIndex = 13
+        Me.imgCadeadoDesbloqueado.TabStop = False
+        Me.imgCadeadoDesbloqueado.Visible = False
+        '
+        'imgCadeadoBloqueado
+        '
+        Me.imgCadeadoBloqueado.Dock = System.Windows.Forms.DockStyle.Right
+        Me.imgCadeadoBloqueado.Image = CType(resources.GetObject("imgCadeadoBloqueado.Image"), System.Drawing.Image)
+        Me.imgCadeadoBloqueado.Location = New System.Drawing.Point(865, 0)
+        Me.imgCadeadoBloqueado.Name = "imgCadeadoBloqueado"
+        Me.imgCadeadoBloqueado.Size = New System.Drawing.Size(48, 44)
+        Me.imgCadeadoBloqueado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.imgCadeadoBloqueado.TabIndex = 12
+        Me.imgCadeadoBloqueado.TabStop = False
+        '
+        'Panel4
+        '
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel4.Location = New System.Drawing.Point(913, 0)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(26, 44)
+        Me.Panel4.TabIndex = 11
         '
         'Panel6
         '
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel6.Location = New System.Drawing.Point(981, 0)
+        Me.Panel6.Location = New System.Drawing.Point(976, 0)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(10, 44)
+        Me.Panel6.Size = New System.Drawing.Size(15, 44)
         Me.Panel6.TabIndex = 3
         '
         'imgMenu
@@ -479,7 +518,7 @@ Partial Class FrmMenuPrincipal
         Me.Panel1.Controls.Add(Me.btnImportarProdutos)
         Me.Panel1.Controls.Add(Me.btnNotaFiscalEletronica)
         Me.Panel1.Controls.Add(Me.btnAgruparPendencia)
-        Me.Panel1.Controls.Add(Me.Button1)
+        Me.Panel1.Controls.Add(Me.btnRelOrcCanceladas)
         Me.Panel1.Controls.Add(Me.btnRelOrcVenda)
         Me.Panel1.Controls.Add(Me.pMovimentacao)
         Me.Panel1.Controls.Add(Me.btnMoviementacao)
@@ -584,25 +623,25 @@ Partial Class FrmMenuPrincipal
         Me.btnAgruparPendencia.UseVisualStyleBackColor = True
         Me.btnAgruparPendencia.Visible = False
         '
-        'Button1
+        'btnRelOrcCanceladas
         '
-        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(113, Byte), Integer))
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(0, 659)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
-        Me.Button1.Size = New System.Drawing.Size(269, 47)
-        Me.Button1.TabIndex = 40
-        Me.Button1.Text = "             Orc/Venda Cancelados"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnRelOrcCanceladas.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnRelOrcCanceladas.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnRelOrcCanceladas.FlatAppearance.BorderSize = 0
+        Me.btnRelOrcCanceladas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(113, Byte), Integer))
+        Me.btnRelOrcCanceladas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnRelOrcCanceladas.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRelOrcCanceladas.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.btnRelOrcCanceladas.Image = CType(resources.GetObject("btnRelOrcCanceladas.Image"), System.Drawing.Image)
+        Me.btnRelOrcCanceladas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnRelOrcCanceladas.Location = New System.Drawing.Point(0, 659)
+        Me.btnRelOrcCanceladas.Name = "btnRelOrcCanceladas"
+        Me.btnRelOrcCanceladas.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.btnRelOrcCanceladas.Size = New System.Drawing.Size(269, 47)
+        Me.btnRelOrcCanceladas.TabIndex = 40
+        Me.btnRelOrcCanceladas.Text = "             Orc/Venda Cancelados"
+        Me.btnRelOrcCanceladas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnRelOrcCanceladas.UseVisualStyleBackColor = True
         '
         'btnRelOrcVenda
         '
@@ -659,6 +698,8 @@ Partial Class FrmMenuPrincipal
         Me.Panel7.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
+        CType(Me.imgCadeadoDesbloqueado, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.imgCadeadoBloqueado, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgMenu, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
@@ -698,12 +739,15 @@ Partial Class FrmMenuPrincipal
     Friend WithEvents Panel5 As Panel
     Friend WithEvents btnRelOrcVenda As Button
     Friend WithEvents btnEntregador As Button
-    Friend WithEvents lblMenu As Label
     Friend WithEvents tImportarProdutos As Timer
     Friend WithEvents btnAtualizarPreco As Button
     Friend WithEvents pImportarProdutos As ProgressBar
     Friend WithEvents btnImportarProdutos As Button
     Friend WithEvents btnNotaFiscalEletronica As Button
     Friend WithEvents btnAgruparPendencia As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnRelOrcCanceladas As Button
+    Friend WithEvents imgCadeadoBloqueado As PictureBox
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents lblMenu As Label
+    Friend WithEvents imgCadeadoDesbloqueado As PictureBox
 End Class

@@ -32,7 +32,6 @@ Module mdl_INI
     Public Function LerIni(ByVal strItem As String, ByVal strValue As String) As String
         Return lerINI(Environment.CurrentDirectory + "/Data/Configuracao.ini", strItem, strValue)
     End Function
-
     Public Function EscreveIni(ByVal strKey As String, ByVal strItem As String, ByVal strValue As String) As String
         Return escreveINI(Environment.CurrentDirectory + "/Data/Configuracao.ini", strKey, strItem, strValue)
     End Function

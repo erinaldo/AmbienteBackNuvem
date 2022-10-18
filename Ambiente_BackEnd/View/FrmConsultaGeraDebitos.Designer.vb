@@ -31,6 +31,8 @@ Partial Class FrmConsultaGeraDebitos
         Me.tbItens = New System.Windows.Forms.TabControl()
         Me.tpItenEncontrado = New System.Windows.Forms.TabPage()
         Me.dg_recebimento = New System.Windows.Forms.DataGridView()
+        Me.DEBITOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsAmbiente = New Ambiente_BackEnd.dsAmbiente()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.nTotal = New System.Windows.Forms.NumericUpDown()
@@ -39,24 +41,20 @@ Partial Class FrmConsultaGeraDebitos
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.DEBITOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsAmbiente = New Ambiente_BackEnd.dsAmbiente()
-        Me.CODCAIXADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CODORCAMENTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CODCLIENTE = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RAZAOSOCIAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DATA = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TOTALDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         Me.tbItens.SuspendLayout()
         Me.tpItenEncontrado.SuspendLayout()
         CType(Me.dg_recebimento, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DEBITOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         CType(Me.nTotal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
-        CType(Me.DEBITOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -110,7 +108,7 @@ Partial Class FrmConsultaGeraDebitos
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dg_recebimento.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dg_recebimento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_recebimento.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CODCAIXADataGridViewTextBoxColumn, Me.CODORCAMENTO, Me.CODCLIENTE, Me.RAZAOSOCIAL, Me.DATA, Me.TOTALDataGridViewTextBoxColumn})
+        Me.dg_recebimento.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CODORCAMENTO, Me.CODCLIENTE, Me.RAZAOSOCIAL, Me.TOTALDataGridViewTextBoxColumn})
         Me.dg_recebimento.DataSource = Me.DEBITOBindingSource
         Me.dg_recebimento.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dg_recebimento.GridColor = System.Drawing.Color.White
@@ -118,6 +116,16 @@ Partial Class FrmConsultaGeraDebitos
         Me.dg_recebimento.Name = "dg_recebimento"
         Me.dg_recebimento.Size = New System.Drawing.Size(782, 466)
         Me.dg_recebimento.TabIndex = 0
+        '
+        'DEBITOBindingSource
+        '
+        Me.DEBITOBindingSource.DataMember = "DEBITO"
+        Me.DEBITOBindingSource.DataSource = Me.DsAmbiente
+        '
+        'DsAmbiente
+        '
+        Me.DsAmbiente.DataSetName = "dsAmbiente"
+        Me.DsAmbiente.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Panel3
         '
@@ -205,24 +213,6 @@ Partial Class FrmConsultaGeraDebitos
         Me.Panel2.Size = New System.Drawing.Size(796, 95)
         Me.Panel2.TabIndex = 37
         '
-        'DEBITOBindingSource
-        '
-        Me.DEBITOBindingSource.DataMember = "DEBITO"
-        Me.DEBITOBindingSource.DataSource = Me.DsAmbiente
-        '
-        'DsAmbiente
-        '
-        Me.DsAmbiente.DataSetName = "dsAmbiente"
-        Me.DsAmbiente.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'CODCAIXADataGridViewTextBoxColumn
-        '
-        Me.CODCAIXADataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.CODCAIXADataGridViewTextBoxColumn.DataPropertyName = "CODCAIXA"
-        Me.CODCAIXADataGridViewTextBoxColumn.HeaderText = "Caixa"
-        Me.CODCAIXADataGridViewTextBoxColumn.Name = "CODCAIXADataGridViewTextBoxColumn"
-        Me.CODCAIXADataGridViewTextBoxColumn.Width = 65
-        '
         'CODORCAMENTO
         '
         Me.CODORCAMENTO.DataPropertyName = "CODORCAMENTO"
@@ -238,16 +228,10 @@ Partial Class FrmConsultaGeraDebitos
         '
         'RAZAOSOCIAL
         '
+        Me.RAZAOSOCIAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.RAZAOSOCIAL.DataPropertyName = "RAZAOSOCIAL"
         Me.RAZAOSOCIAL.HeaderText = "Nome Cliente"
         Me.RAZAOSOCIAL.Name = "RAZAOSOCIAL"
-        '
-        'DATA
-        '
-        Me.DATA.DataPropertyName = "DATA"
-        Me.DATA.HeaderText = "Data"
-        Me.DATA.Name = "DATA"
-        Me.DATA.Width = 85
         '
         'TOTALDataGridViewTextBoxColumn
         '
@@ -274,14 +258,14 @@ Partial Class FrmConsultaGeraDebitos
         Me.tbItens.ResumeLayout(False)
         Me.tpItenEncontrado.ResumeLayout(False)
         CType(Me.dg_recebimento, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DEBITOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         CType(Me.nTotal, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        CType(Me.DEBITOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsAmbiente, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -299,10 +283,8 @@ Partial Class FrmConsultaGeraDebitos
     Friend WithEvents tpItenEncontrado As TabPage
     Friend WithEvents dg_recebimento As DataGridView
     Friend WithEvents Panel3 As Panel
-    Friend WithEvents CODCAIXADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents CODORCAMENTO As DataGridViewTextBoxColumn
     Friend WithEvents CODCLIENTE As DataGridViewTextBoxColumn
     Friend WithEvents RAZAOSOCIAL As DataGridViewTextBoxColumn
-    Friend WithEvents DATA As DataGridViewTextBoxColumn
     Friend WithEvents TOTALDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class

@@ -10,5 +10,7 @@
         BloquearVenda
         IniciarNota
         BloquearNota
+        LiberarAcesso
+        BloquearAcesso
     End Enum
 End Module
