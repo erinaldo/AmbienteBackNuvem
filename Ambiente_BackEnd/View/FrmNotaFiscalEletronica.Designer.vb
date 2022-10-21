@@ -64,7 +64,7 @@ Partial Class FrmNotaFiscalEletronica
         Me.cbxModeloFrete = New System.Windows.Forms.ComboBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.nTotalNFe = New System.Windows.Forms.NumericUpDown()
-        Me.Label12 = New System.Windows.Forms.Label()
+        Me.lblTotalNfe = New System.Windows.Forms.Label()
         Me.btnLimpar = New System.Windows.Forms.Button()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.rtbInformaçõesComplementares = New System.Windows.Forms.RichTextBox()
@@ -89,6 +89,14 @@ Partial Class FrmNotaFiscalEletronica
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtCodigoVenda = New System.Windows.Forms.TextBox()
         Me.dgNotaFiscal = New System.Windows.Forms.DataGridView()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel5 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.cod = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.descricao = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CFOP = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -98,13 +106,6 @@ Partial Class FrmNotaFiscalEletronica
         Me.UNITARIO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.QTDE = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TOTAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel5 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Panel1.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -120,6 +121,7 @@ Partial Class FrmNotaFiscalEletronica
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.MidnightBlue
+        Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.btnEmitir)
         Me.Panel1.Controls.Add(Me.Panel9)
         Me.Panel1.Controls.Add(Me.Label1)
@@ -507,7 +509,7 @@ Partial Class FrmNotaFiscalEletronica
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.nTotalNFe)
-        Me.GroupBox1.Controls.Add(Me.Label12)
+        Me.GroupBox1.Controls.Add(Me.lblTotalNfe)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.Color.MidnightBlue
         Me.GroupBox1.Location = New System.Drawing.Point(24, 259)
@@ -527,16 +529,16 @@ Partial Class FrmNotaFiscalEletronica
         Me.nTotalNFe.TabIndex = 63
         Me.nTotalNFe.Visible = False
         '
-        'Label12
+        'lblTotalNfe
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(199, 22)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(94, 29)
-        Me.Label12.TabIndex = 0
-        Me.Label12.Text = "R$0,00"
+        Me.lblTotalNfe.AutoSize = True
+        Me.lblTotalNfe.Dock = System.Windows.Forms.DockStyle.Right
+        Me.lblTotalNfe.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotalNfe.Location = New System.Drawing.Point(199, 22)
+        Me.lblTotalNfe.Name = "lblTotalNfe"
+        Me.lblTotalNfe.Size = New System.Drawing.Size(94, 29)
+        Me.lblTotalNfe.TabIndex = 0
+        Me.lblTotalNfe.Text = "R$0,00"
         '
         'btnLimpar
         '
@@ -770,6 +772,68 @@ Partial Class FrmNotaFiscalEletronica
         Me.dgNotaFiscal.Size = New System.Drawing.Size(1215, 199)
         Me.dgNotaFiscal.TabIndex = 52
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel5, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel3, Me.ToolStripStatusLabel4})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 583)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(1215, 30)
+        Me.StatusStrip1.TabIndex = 53
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(180, 25)
+        Me.ToolStripStatusLabel1.Text = "F2 - Importar Venda"
+        '
+        'ToolStripStatusLabel5
+        '
+        Me.ToolStripStatusLabel5.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolStripStatusLabel5.Name = "ToolStripStatusLabel5"
+        Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(218, 25)
+        Me.ToolStripStatusLabel5.Text = "F3 - Importar Agrupadas"
+        '
+        'ToolStripStatusLabel2
+        '
+        Me.ToolStripStatusLabel2.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(147, 25)
+        Me.ToolStripStatusLabel2.Text = "F4 - Lançar Item"
+        '
+        'ToolStripStatusLabel3
+        '
+        Me.ToolStripStatusLabel3.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(140, 25)
+        Me.ToolStripStatusLabel3.Text = "F5 - Editar Item"
+        '
+        'ToolStripStatusLabel4
+        '
+        Me.ToolStripStatusLabel4.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolStripStatusLabel4.MergeAction = System.Windows.Forms.MergeAction.MatchOnly
+        Me.ToolStripStatusLabel4.MergeIndex = 3
+        Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
+        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(205, 25)
+        Me.ToolStripStatusLabel4.Text = " DELETE - Deletar Item "
+        Me.ToolStripStatusLabel4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(426, 15)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(132, 35)
+        Me.Button1.TabIndex = 37
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'cod
         '
         Me.cod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
@@ -863,59 +927,6 @@ Partial Class FrmNotaFiscalEletronica
         Me.TOTAL.ReadOnly = True
         Me.TOTAL.Width = 105
         '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
-        '
-        'StatusStrip1
-        '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel5, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel3, Me.ToolStripStatusLabel4})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 583)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1215, 30)
-        Me.StatusStrip1.TabIndex = 53
-        Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'ToolStripStatusLabel1
-        '
-        Me.ToolStripStatusLabel1.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(180, 25)
-        Me.ToolStripStatusLabel1.Text = "F2 - Importar Venda"
-        '
-        'ToolStripStatusLabel5
-        '
-        Me.ToolStripStatusLabel5.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStripStatusLabel5.Name = "ToolStripStatusLabel5"
-        Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(218, 25)
-        Me.ToolStripStatusLabel5.Text = "F3 - Importar Agrupadas"
-        '
-        'ToolStripStatusLabel2
-        '
-        Me.ToolStripStatusLabel2.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(147, 25)
-        Me.ToolStripStatusLabel2.Text = "F4 - Lançar Item"
-        '
-        'ToolStripStatusLabel3
-        '
-        Me.ToolStripStatusLabel3.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
-        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(140, 25)
-        Me.ToolStripStatusLabel3.Text = "F5 - Editar Item"
-        '
-        'ToolStripStatusLabel4
-        '
-        Me.ToolStripStatusLabel4.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStripStatusLabel4.MergeAction = System.Windows.Forms.MergeAction.MatchOnly
-        Me.ToolStripStatusLabel4.MergeIndex = 3
-        Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
-        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(205, 25)
-        Me.ToolStripStatusLabel4.Text = " DELETE - Deletar Item "
-        Me.ToolStripStatusLabel4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
         'FrmNotaFiscalEletronica
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -958,7 +969,7 @@ Partial Class FrmNotaFiscalEletronica
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Panel4 As Panel
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Label12 As Label
+    Friend WithEvents lblTotalNfe As Label
     Friend WithEvents btnLimpar As Button
     Friend WithEvents Label11 As Label
     Friend WithEvents rtbInformaçõesComplementares As RichTextBox
@@ -1012,6 +1023,14 @@ Partial Class FrmNotaFiscalEletronica
     Friend WithEvents cbxIndicativoPresenca As ComboBox
     Friend WithEvents Label20 As Label
     Friend WithEvents cbxIntermediario As ComboBox
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel5 As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel4 As ToolStripStatusLabel
+    Friend WithEvents nTotalNFe As NumericUpDown
+    Friend WithEvents Button1 As Button
     Friend WithEvents cod As DataGridViewTextBoxColumn
     Friend WithEvents descricao As DataGridViewTextBoxColumn
     Friend WithEvents CFOP As DataGridViewTextBoxColumn
@@ -1021,11 +1040,4 @@ Partial Class FrmNotaFiscalEletronica
     Friend WithEvents UNITARIO As DataGridViewTextBoxColumn
     Friend WithEvents QTDE As DataGridViewTextBoxColumn
     Friend WithEvents TOTAL As DataGridViewTextBoxColumn
-    Friend WithEvents StatusStrip1 As StatusStrip
-    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
-    Friend WithEvents ToolStripStatusLabel5 As ToolStripStatusLabel
-    Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
-    Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
-    Friend WithEvents ToolStripStatusLabel4 As ToolStripStatusLabel
-    Friend WithEvents nTotalNFe As NumericUpDown
 End Class

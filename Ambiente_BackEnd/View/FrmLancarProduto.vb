@@ -125,6 +125,7 @@ Public Class FrmLancarProduto
             Close()
             FrmConsultaProduto.Close()
         End If
+        FrmNotaFiscalEletronica.calculaTotal()
     End Sub
 
     Private Sub nValorUnitario_Leave(sender As Object, e As EventArgs) Handles nValorUnitario.Leave

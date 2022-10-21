@@ -13,8 +13,7 @@ Public Class FrmNotaFiscalEletronica
     Public modeloFrete As String
     Public xChaveAcesso As String
     Public cNF As String
-    Public proxnumero As Integer = 0
-
+    Public proxnumero As String
     Private Sub MudarOperacao(ByVal novaOperacao As OperacoesCrud)
         If novaOperacao = OperacoesCrud.IniciarNota Then
             mdl_bloquearcampos.funcao = "LIBERAR"
@@ -23,6 +22,16 @@ Public Class FrmNotaFiscalEletronica
         End If
         bloquearcampos(Me)
         Operacao = novaOperacao
+    End Sub
+    Public Sub calculaTotal()
+        Dim valor As Decimal
+
+        For Each col As DataGridViewRow In dgNotaFiscal.Rows
+            valor = valor + col.Cells(8).Value
+        Next
+
+        nTotalNFe.Value = valor
+        lblTotalNfe.Text = FormatCurrency(valor, 2)
     End Sub
     Private Sub btnLimpar_Click(sender As Object, e As EventArgs) Handles btnLimpar.Click
         If funcao = "" Then
@@ -75,6 +84,8 @@ Public Class FrmNotaFiscalEletronica
 
     Private Sub btnNovaNota_Click(sender As Object, e As EventArgs) Handles btnNovaNota.Click
         MudarOperacao(Operacao.IniciarNota)
+        txtNumeroNota.Text = LerIni("SEQNOTA", "numero")
+        txtNumeroNota.Text = txtNumeroNota.Text + 1
     End Sub
 
     Private Sub FrmNotaFiscalEletronica_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -141,7 +152,7 @@ Public Class FrmNotaFiscalEletronica
         {"4", "Transporte Próprio por conta do Destinatário"},
         {"9", "Sem Ocorrência de Transporte"}
         }
-        cbxModeloFrete.DataSource = New BindingSource(indicadorIntermediario, Nothing)
+        cbxModeloFrete.DataSource = New BindingSource(modeloFrete, Nothing)
         cbxModeloFrete.ValueMember = "Key"
         cbxModeloFrete.DisplayMember = "Value"
 
@@ -187,37 +198,14 @@ Public Class FrmNotaFiscalEletronica
             End While
         End If
     End Sub
-
     Private Sub cbxFormaPagamento_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxFormaPagamento.SelectedIndexChanged
         FormaPagamento = CInt((CType(cbxFormaPagamento.SelectedItem, KeyValuePair(Of String, String)).Key))
     End Sub
-    Public Sub aleatorio()
-        Dim inicio As Integer
-        Dim fim As Integer
-        Dim result As Integer
-        inicio = 0
-        fim = 100000000
-        Dim numero As Integer
-        Dim GeradorDeNumerosAleatorios As Random = New Random()
-        numero = GeradorDeNumerosAleatorios.Next(inicio, fim)
-        result = numero
-        cNF = result
-    End Sub
     Private Sub btnEmitir_Click(sender As Object, e As EventArgs) Handles btnEmitir.Click
-        Dim serie As String = "001"
-        Dim tpamb As Integer
-        Dim datachave As DateTime = DateTime.Now
-        Dim Dataconvertida As String
-
-        'proxnumero = numeroNota + 1
-        'txtNumeroNota.Text = proxnumero
-
-
-        Dataconvertida = datachave.ToString("yyMM")
-        xChaveAcesso = 35 & Format(Dataconvertida) & cnpjEmitente & 55 & serie & proxnumero & tpamb & cNF
-
         mdl_emitirnfe.BuscaCliente(txtCodCliente.Text)
-        mdl_emitirnfe.EmitirRegimeSimplesNacional(xChaveAcesso, "", txtNumeroNota.Text, cNF, "55", txtCfop.Text, IndicativoPresenca, IndicadorIntermediario, 20.3)
+        mdl_emitirnfe.GeraChaveAcesso(txtNumeroNota.Text, txtCfop.Text, IndicativoPresenca, IndicadorIntermediario)
+        'mdl_emitirnfe.EmitirRegimeSimplesNacional(xChaveAcesso, "", txtNumeroNota.Text, cNF, "55", txtCfop.Text, IndicativoPresenca, IndicadorIntermediario, 20.3)
+        System.Threading.Thread.Sleep(3400)
     End Sub
 
     Private Sub cbxIndicativoPresenca_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxIndicativoPresenca.SelectedIndexChanged
@@ -230,5 +218,9 @@ Public Class FrmNotaFiscalEletronica
 
     Private Sub cbxModeloFrete_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxModeloFrete.SelectedIndexChanged
         modeloFrete = CInt((CType(cbxModeloFrete.SelectedItem, KeyValuePair(Of String, String)).Key))
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Retorno()
     End Sub
 End Class

@@ -1,4 +1,6 @@
-﻿Imports System.Xml
+﻿Imports System.Data.SqlTypes
+Imports System.IO
+Imports System.Xml
 Imports FirebirdSql.Data.FirebirdClient
 
 Module mdl_emitirnfe
@@ -19,8 +21,61 @@ Module mdl_emitirnfe
     Dim inscEstadual As String
     Dim email As String
     Dim ufDest As String
+    Dim chaveAcesso As String
     Dim aliquotaProdutos As Decimal
+    Dim aliqTotal As Decimal
+    Public cNF As String
+    Public proxnumero As String
+    Public arquivoRetorno As String
 
+    Public Sub ArqRetorno()
+
+        Dim cnpjEmitente As String = LerIni("Empresa", "CNPJ")
+        Dim DirDiretorio As DirectoryInfo = New DirectoryInfo("C:\Unimake\UniNFe\" & cnpjEmitente & "\Retorno")
+        Dim oFileInfoCollection() As FileInfo
+        Dim oFileInfo As FileInfo
+        Dim i As Integer
+
+        oFileInfoCollection = DirDiretorio.GetFiles("*-pro-rec.xml")
+
+        For i = 0 To oFileInfoCollection.Length() - 1
+            oFileInfo = oFileInfoCollection.GetValue(i)
+            arquivoRetorno = oFileInfo.Name
+
+        Next
+    End Sub
+
+    Public Sub Retorno()
+        Dim cnpjEmitente As String = LerIni("Empresa", "CNPJ")
+        Dim vcaminhoRetorno = "C:\Unimake\UniNFe\" & cnpjEmitente & "\Retorno\"
+        Dim isEmitente = False
+        Dim arquivo As String
+        Dim cstat As String
+
+        ArqRetorno()
+        arquivo = vcaminhoRetorno + arquivoRetorno
+        Using meuXml = XmlReader.Create(arquivo)
+            While meuXml.Read()
+                If meuXml.NodeType = XmlNodeType.Element And meuXml.Name = "infProt" Then
+                    isEmitente = True
+                ElseIf meuXml.NodeType = XmlNodeType.Element And meuXml.Name = "infProt" Then
+                    Exit While
+                End If
+                If isEmitente Then
+                    If meuXml.NodeType = XmlNodeType.Element And meuXml.Name = "cStat" Then
+                        cstat = meuXml.ReadElementContentAsString()
+                    End If
+                    If meuXml.NodeType = XmlNodeType.Element And meuXml.Name = "xMotivo" Then
+                        If cstat = "100" Then
+                            MsgBox(meuXml.ReadElementContentAsString(), MsgBoxStyle.Information, "Ambiente Soft")
+                        Else
+                            MsgBox(meuXml.ReadElementContentAsString(), MsgBoxStyle.Critical, "Ambiente Soft")
+                        End If
+                    End If
+                End If
+            End While
+        End Using
+    End Sub
     Public Sub BuscaCliente(codigoCliente As String)
         Dim strColaborador As String
         strColaborador = "SELECT * FROM COLABORADOR WHERE CODCOLABORADOR = " & codigoCliente
@@ -49,6 +104,75 @@ Module mdl_emitirnfe
             email = drLocal("EMAIL").ToString
         End While
     End Sub
+    Public Function FormataZerosEsq(ByVal Valor As String, ByVal nZeros As String)
+        FormataZerosEsq = Valor.PadLeft(nZeros, "0")
+    End Function
+    Function DVmod11(vNr As String) As Integer
+        'Função retirada do site: http://comunidade.itlab.com.br/eve/forums/a/tpc/f/273606921/m/6817001723?r=6817001723#6817001723
+        On Error GoTo erro
+        Dim vchave As String
+        Dim i As Integer, vSoma As Long, vMult As Byte
+        vSoma = 0
+        vMult = 2
+        For i = Len(vNr) To 1 Step -1
+            If vMult = 10 Then vMult = 2
+            vSoma = vSoma + CInt(Mid(vNr, i, 1)) * vMult
+            vMult = vMult + 1
+        Next
+        If vSoma Mod 11 = 0 Or vSoma Mod 11 = 1 Then
+            DVmod11 = 0
+        Else
+            DVmod11 = 11 - (vSoma Mod 11)
+        End If
+        'MsgBox DVmod11
+Sair:
+        Exit Function
+erro:
+        ' MsgBox Err.Description, vbCritical + vbOKOnly, "Erro na Função DVmod11"
+        Resume Sair
+    End Function
+    Public Sub GeraChaveAcesso(nNota As String, codCfop As String, IndiPresenca As String, IndiIntermediario As String)
+        Dim serie As String = "001"
+        Dim tpamb As Integer
+        Dim datachave As DateTime = DateTime.Now
+        Dim Dataconvertida As String
+        Dim xchave As String
+        Dim inicio As Integer
+        Dim fim As Integer
+        Dim result As Integer
+        Dim cnpjEmitente As String
+        inicio = 0
+        fim = 10000000
+        Dim numeroale As Integer
+        Dim GeradorDeNumerosAleatorios As Random = New Random()
+        numeroale = GeradorDeNumerosAleatorios.Next(inicio, fim)
+        result = numeroale
+        cNF = result
+        cNF = FormataZerosEsq(cNF, 8)
+
+        Dataconvertida = datachave.ToString("yyMM")
+        tpamb = LerIni("ide", "tpamb")
+        cnpjEmitente = LerIni("Empresa", "CNPJ")
+        serie = "001"
+        proxnumero = nNota
+        proxnumero = FormataZerosEsq(proxnumero, 9)
+        chaveAcesso = 35 & Format(Dataconvertida) & cnpjEmitente & 55 & serie & proxnumero & tpamb & cNF
+        xchave = chaveAcesso
+        Dim left, right As String
+        Dim mid As String
+        left = xchave.Substring(0, 1)
+        If left = 0 Then
+            right = xchave.Substring(0, 44)
+            xchave = 3 + right
+        End If
+        'De posse da chave, calculo o digito Verificado dela com a função DVmod11
+        xchave = DVmod11(xchave)
+        chaveAcesso = (chaveAcesso & xchave)
+
+        mdl_emitirnfe.EmitirRegimeSimplesNacional(chaveAcesso, "", nNota, cNF, "55", codCfop, IndiPresenca, IndiIntermediario, 20.3, xchave, FrmNotaFiscalEletronica.rtbInformaçõesComplementares.Text)
+    End Sub
+
+
     Private Sub ConsultaProduto(codProduto As String)
         Dim strProduto As String
         strProduto = "SELECT * FROM PRODUTOS WHERE CODPRODUTO = " & codProduto
@@ -62,9 +186,11 @@ Module mdl_emitirnfe
 
         While drLocal.Read()
             aliquotaProdutos = CDec(drLocal("ALIQTOTAL").ToString)
+            aliqTotal = aliqTotal + aliquotaProdutos
         End While
     End Sub
-    Public Sub EmitirRegimeSimplesNacional(chaveAcesso As String, chaveAcessoDevolucao As String, numeroNota As String, cNF As String, tipoNfe As String, codCfop As String, indPres As String, indInter As String, totalImpostos As String)
+
+    Public Sub EmitirRegimeSimplesNacional(chaveAcesso As String, chaveAcessoDevolucao As String, numeroNota As String, cNF As String, tipoNfe As String, codCfop As String, indPres As String, indInter As String, totalImpostos As String, digitoVerificador As String, InfAdicional As String)
         Dim cnpjEmitente As String = LerIni("Empresa", "Cnpj")
         Dim dataAtual As DateTime = DateTime.Now
         Dim data As String = dataAtual.ToString("yyyy-MM-dd")
@@ -97,7 +223,7 @@ Module mdl_emitirnfe
 
         'CABEÇALHO DA NOTA--------------------------------------------------------------------
         xWriter.WriteStartElement("NFe", sNamespace)
-        xWriter.WriteStartElement("xmlns", sNamespace)
+        'xWriter.WriteStartElement("xmlns", sNamespace)
 
         xWriter.WriteStartElement("infNFe")
         xWriter.WriteAttributeString("versao", "4.00")
@@ -114,7 +240,7 @@ Module mdl_emitirnfe
         xWriter.WriteEndElement()
 
         xWriter.WriteStartElement("natOp")
-        xWriter.WriteValue(codCfop)
+        xWriter.WriteValue(FrmNotaFiscalEletronica.txtDescricaoCfop.Text)
         xWriter.WriteEndElement()
 
         xWriter.WriteStartElement("mod")
@@ -139,7 +265,7 @@ Module mdl_emitirnfe
 
         xWriter.WriteStartElement("tpNF")
         'xWriter.WriteValue(LerIni("ide", "tpNF"))
-        xWriter.WriteValue(tipoNfe)
+        xWriter.WriteValue("1")
         xWriter.WriteEndElement()
 
         xWriter.WriteStartElement("idDest")
@@ -160,7 +286,7 @@ Module mdl_emitirnfe
 
 
         xWriter.WriteStartElement("cDV")
-        xWriter.WriteValue(chaveAcesso)
+        xWriter.WriteValue(digitoVerificador)
         xWriter.WriteEndElement()
 
 
@@ -259,7 +385,7 @@ Module mdl_emitirnfe
         xWriter.WriteEndElement()
 
         xWriter.WriteStartElement("xPais")
-        xWriter.WriteValue(LerIni("emit", "xPais"))
+        xWriter.WriteValue(LerIni("Emit", "xPais"))
         xWriter.WriteEndElement()
 
         xWriter.WriteStartElement("fone")
@@ -333,11 +459,11 @@ Module mdl_emitirnfe
         xWriter.WriteEndElement()
 
         xWriter.WriteStartElement("cPais")
-        xWriter.WriteValue(cPais)
+        xWriter.WriteValue("1058")
         xWriter.WriteEndElement()
 
         xWriter.WriteStartElement("xPais")
-        xWriter.WriteValue(xPais)
+        xWriter.WriteValue("Brasil")
         xWriter.WriteEndElement()
 
         xWriter.WriteStartElement("fone")
@@ -369,7 +495,9 @@ Module mdl_emitirnfe
         Dim item As String = 1
 
         For Each linha As DataGridViewRow In FrmNotaFiscalEletronica.dgNotaFiscal.Rows
-            ConsultaProduto(linha.Cells(0).Value)
+            Dim ncm As String = linha.Cells(4).Value
+            Dim cfop As String = linha.Cells(2).Value
+            'ConsultaProduto(linha.Cells(0).Value)
             xWriter.WriteStartElement("det")
             xWriter.WriteAttributeString("nItem", item)
 
@@ -387,15 +515,15 @@ Module mdl_emitirnfe
             xWriter.WriteEndElement()
 
             xWriter.WriteStartElement("NCM")
-            xWriter.WriteValue(linha.Cells(4).Value)
+            xWriter.WriteValue(ncm)
             xWriter.WriteEndElement()
 
             xWriter.WriteStartElement("CFOP")
-            xWriter.WriteValue(linha.Cells(2).Value)
+            xWriter.WriteValue(cfop)
             xWriter.WriteEndElement()
 
             xWriter.WriteStartElement("uCom")
-            xWriter.WriteValue(linha.Cells(4).Value)
+            xWriter.WriteValue("UN")
             xWriter.WriteEndElement()
 
             Dim QCom As Decimal
@@ -424,12 +552,13 @@ Module mdl_emitirnfe
             xWriter.WriteEndElement()
 
             Dim vProd As Decimal
-            vProd = linha.Cells(8).Value
+            vProd = CDec(linha.Cells(8).Value)
+            vProd = FormatCurrency(vProd, 2)
             Dim complemento_vprod As Decimal
             Dim dec_vProd As Decimal
             dec_vProd = CType(vProd, Decimal)
             complemento_vprod = FormatNumber(dec_vProd, 4)
-            vProd = complemento_vprod.ToString("##.00")
+            'vProd = complemento_vprod.ToString("##.00")
 
             xWriter.WriteStartElement("vProd")
             xWriter.WriteValue(vProd)
@@ -440,7 +569,7 @@ Module mdl_emitirnfe
             xWriter.WriteEndElement()
 
             xWriter.WriteStartElement("uTrib")
-            xWriter.WriteValue(linha.Cells(4).Value)
+            xWriter.WriteValue("UN")
             xWriter.WriteEndElement()
 
             xWriter.WriteStartElement("qTrib")
@@ -462,7 +591,7 @@ Module mdl_emitirnfe
             xWriter.WriteStartElement("imposto")
 
             Dim impvTrotTrib As Decimal
-
+            ConsultaProduto(linha.Cells(0).Value)
             impvTrotTrib = (linha.Cells(6).Value * aliquotaProdutos) / 100
             impvTrotTrib = impvTrotTrib.ToString("##.00")
             'impvTrotTrib = Replace(impvTrotTrib, ",", ".")
@@ -581,7 +710,9 @@ Module mdl_emitirnfe
         xWriter.WriteEndElement()
 
         Dim TotalNf As Decimal
+        'TotalNf = Replace(TotalNf, ",", ".")
         TotalNf = FrmNotaFiscalEletronica.nTotalNFe.Value
+        TotalNf = FormatCurrency(TotalNf, 2)
         xWriter.WriteStartElement("vProd")
         xWriter.WriteValue(TotalNf)
         xWriter.WriteEndElement()
@@ -626,12 +757,12 @@ Module mdl_emitirnfe
         xWriter.WriteValue(TotalNf)
         xWriter.WriteEndElement()
 
-        Dim totalimposto As Decimal
+        'Dim totalimposto As Decimal
 
-        totalimposto = totalImpostos
-        totalimposto = totalimposto.ToString("##.00")
+        'totalimposto = totalImpostos
+        aliqTotal = aliqTotal.ToString("##.00")
         xWriter.WriteStartElement("vTotTrib")
-        xWriter.WriteValue(totalImpostos)
+        xWriter.WriteValue(aliqTotal)
         xWriter.WriteEndElement()
 
         xWriter.WriteEndElement()
@@ -686,6 +817,15 @@ Module mdl_emitirnfe
             xWriter.WriteValue(TotalNf)
             xWriter.WriteEndElement()
         End If
+        xWriter.WriteEndElement()
+        xWriter.WriteEndElement()
+        xWriter.WriteStartElement("infAdic")
+        xWriter.WriteStartElement("infCpl")
+        xWriter.WriteValue(CStr(InfAdicional))
+        'xWriter.WriteEndElement()
+
+        xWriter.WriteEndElement()
+        xWriter.WriteEndElement()
 
         xWriter.Close()
     End Sub

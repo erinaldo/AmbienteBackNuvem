@@ -257,7 +257,7 @@ Public Class FrmCadastroProdutos
         conexaoLocal.Close()
 
         MsgBox("REGISTRO SALVO COM SUCESSO", MsgBoxStyle.Information, "Ambiente Soft")
-
+        AtualizaPreco()
         limparTextBoxes(Me)
         tbProduto.TabPages.Add(tpPesquisa)
         tbProduto.TabPages.Remove(tpCadastrar)

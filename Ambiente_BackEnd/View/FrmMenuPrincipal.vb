@@ -223,7 +223,7 @@ Public Class FrmMenuPrincipal
         FrmLogin.ShowDialog()
         MudarOperacao(OperacoesCrud.BloquearAcesso)
     End Sub
-    Private Sub btnNotaFiscalEletronica_Click(sender As Object, e As EventArgs)
+    Private Sub btnNotaFiscalEletronica_Click(sender As Object, e As EventArgs) Handles btnNotaFiscalEletronica.Click
         FrmNotaFiscalEletronica.ShowDialog()
     End Sub
     Public Sub LimpaProdutos()
@@ -363,7 +363,7 @@ Public Class FrmMenuPrincipal
     Private Sub tImportarProdutos_Tick(sender As Object, e As EventArgs) Handles tImportarProdutos.Tick
         ImportaProdutos()
     End Sub
-    Private Sub btnAgruparPendencia_Click(sender As Object, e As EventArgs)
+    Private Sub btnAgruparPendencia_Click(sender As Object, e As EventArgs) Handles btnAgruparPendencia.Click
         Dim FrmAgruparPendencias As New FrmAgruparPendencias
         FrmAgruparPendencias.ShowDialog()
     End Sub

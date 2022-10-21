@@ -173,6 +173,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsAmbiente.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Modulo\mdl_atualizapreco.vb" />
     <Compile Include="Modulo\mdl_bloquearcampos.vb" />
     <Compile Include="Modulo\mdl_emitirnfe.vb" />
     <Compile Include="View\FrmAgruparPendencias.Designer.vb">

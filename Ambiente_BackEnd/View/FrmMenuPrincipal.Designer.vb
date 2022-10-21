@@ -600,7 +600,6 @@ Partial Class FrmMenuPrincipal
         Me.btnNotaFiscalEletronica.Text = "             Nota Fiscal Eletronica"
         Me.btnNotaFiscalEletronica.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnNotaFiscalEletronica.UseVisualStyleBackColor = True
-        Me.btnNotaFiscalEletronica.Visible = False
         '
         'btnAgruparPendencia
         '
@@ -621,7 +620,6 @@ Partial Class FrmMenuPrincipal
         Me.btnAgruparPendencia.Text = "             Agrupar Pendências"
         Me.btnAgruparPendencia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnAgruparPendencia.UseVisualStyleBackColor = True
-        Me.btnAgruparPendencia.Visible = False
         '
         'btnRelOrcCanceladas
         '
