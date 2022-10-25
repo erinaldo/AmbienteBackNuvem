@@ -200,6 +200,12 @@
     <Compile Include="View\FrmConsultaProduto.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\FrmEtiquetaNuvem.Designer.vb">
+      <DependentUpon>FrmEtiquetaNuvem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmEtiquetaNuvem.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\FrmHistoricoMovimentacaoItens.Designer.vb">
       <DependentUpon>FrmHistoricoMovimentacaoItens.vb</DependentUpon>
     </Compile>
@@ -402,6 +408,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmConsultaProduto.resx">
       <DependentUpon>FrmConsultaProduto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmEtiquetaNuvem.resx">
+      <DependentUpon>FrmEtiquetaNuvem.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmHistoricoMovimentacaoItens.resx">
       <DependentUpon>FrmHistoricoMovimentacaoItens.vb</DependentUpon>

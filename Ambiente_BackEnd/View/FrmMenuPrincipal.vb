@@ -240,9 +240,25 @@ Public Class FrmMenuPrincipal
         pImportarProdutos.Value = 50
 
     End Sub
+    Public Sub AtualizaEtiquetaNuvem()
+        Dim sql As String
+        Dim condicao As String = "etiquetaloja" + LerIni("Dados", "Loja")
+        sql = "UPDATE ProdutosNuvem Set " & condicao & " = @" & condicao
+
+        comandoNuvem = New MySqlCommand(sql, conexaoAtualiza)
+
+        comandoNuvem.Parameters.AddWithValue("@" + condicao, "")
+
+        conexaoAtualiza.Close()
+        conexaoAtualiza.Open()
+        comandoNuvem.ExecuteNonQuery()
+        conexaoAtualiza.Close()
+        conexaoAtualiza.Open()
+    End Sub
     Public Sub ImportaProdutos()
         Dim str As String
         Dim descricaoPdv As String
+        Dim condicao As String = "etiquetaloja" + LerIni("Dados", "Caixa")
         str = "SELECT * FROM ProdutosNuvem WHERE ATIVO = 'SIM'"
 
         conexaoAtualiza.Close()
@@ -255,8 +271,8 @@ Public Class FrmMenuPrincipal
 
             While drNuvem.Read()
                 Dim sql As String
-                sql = "INSERT INTO PRODUTOS (CODPRODUTO,CODBARRA,DESCRICAO,DESCRICAOPDV,SALDOATUAL,CODCFOP,CODCSOSN,CODICMSCST,CODCOFINSCST,CODPISCST,CODIPI,NCM,ALIQICMS,ALIQICMSBC,ALIQCOFINS,ALIQPIS,ALIQIPI,ALIQNCMFEDERAL,ALIQNCMESTADUAL,ALIQNCMMUNICIPAL,ALIQTOTAL,ATIVO,DATACADASTRO,PRECO_COMPRA,DESCONTO_MAXIMO,PRECO_CUSTO,CUSTO_PERCENTUAL,LUCRO,PRECO_VENDA,BALANCA,CARGABALANCA,VALIDADEATUAL) VALUES
-                                          (@CODPRODUTO,@CODBARRA,@DESCRICAO,@DESCRICAOPDV,@SALDOATUAL,@CODCFOP,@CODCSOSN,@CODICMSCST,@CODCOFINSCST,@CODPISCST,@CODIPI,@NCM,@ALIQICMS,@ALIQICMSBC,@ALIQCOFINS,@ALIQPIS,@ALIQIPI,@ALIQNCMFEDERAL,@ALIQNCMESTADUAL,@ALIQNCMMUNICIPAL,@ALIQTOTAL,@ATIVO,@DATACADASTRO,@PRECO_COMPRA,@DESCONTO_MAXIMO,@PRECO_CUSTO,@CUSTO_PERCENTUAL,@LUCRO,@PRECO_VENDA,@BALANCA,@CARGABALANCA,@VALIDADEATUAL)"
+                sql = "INSERT INTO PRODUTOS (CODPRODUTO,CODBARRA,DESCRICAO,DESCRICAOPDV,SALDOATUAL,CODCFOP,CODCSOSN,CODICMSCST,CODCOFINSCST,CODPISCST,CODIPI,NCM,ALIQICMS,ALIQICMSBC,ALIQCOFINS,ALIQPIS,ALIQIPI,ALIQNCMFEDERAL,ALIQNCMESTADUAL,ALIQNCMMUNICIPAL,ALIQTOTAL,ATIVO,DATACADASTRO,PRECO_COMPRA,DESCONTO_MAXIMO,PRECO_CUSTO,CUSTO_PERCENTUAL,LUCRO,PRECO_VENDA,BALANCA,CARGABALANCA,VALIDADEATUAL,ETIQUETASNUVEM) VALUES
+                                          (@CODPRODUTO,@CODBARRA,@DESCRICAO,@DESCRICAOPDV,@SALDOATUAL,@CODCFOP,@CODCSOSN,@CODICMSCST,@CODCOFINSCST,@CODPISCST,@CODIPI,@NCM,@ALIQICMS,@ALIQICMSBC,@ALIQCOFINS,@ALIQPIS,@ALIQIPI,@ALIQNCMFEDERAL,@ALIQNCMESTADUAL,@ALIQNCMMUNICIPAL,@ALIQTOTAL,@ATIVO,@DATACADASTRO,@PRECO_COMPRA,@DESCONTO_MAXIMO,@PRECO_CUSTO,@CUSTO_PERCENTUAL,@LUCRO,@PRECO_VENDA,@BALANCA,@CARGABALANCA,@VALIDADEATUAL,@ETIQUETASNUVEM)"
 
 
                 comandoLocal = New FbCommand(sql, conexaoLocal)
@@ -270,82 +286,113 @@ Public Class FrmMenuPrincipal
                 End If
                 comandoLocal.Parameters.AddWithValue("@DESCRICAOPDV", descricaoPdv)
                 comandoLocal.Parameters.AddWithValue("@SALDOATUAL", "0")
+
+
+
+                'Dim cmd2 As MySqlCommand = New MySqlCommand(str, conexaoAtualiza)
+
+                'drNuvem = cmd.ExecuteReader
+                'drLocal = cmd.ExecuteReade
+
+                'While drNuvem.Read
                 If (drNuvem("cfop").ToString = "") Then
-                    comandoLocal.Parameters.AddWithValue("@CODCFOP", "0")
-                Else
-                    comandoLocal.Parameters.AddWithValue("@CODCFOP", drNuvem("cfop").ToString)
-                End If
+                            comandoLocal.Parameters.AddWithValue("@CODCFOP", "0")
+                        Else
+                            comandoLocal.Parameters.AddWithValue("@CODCFOP", drNuvem("cfop").ToString)
+                        End If
 
-                If (drNuvem("csons").ToString = "") Then
-                    comandoLocal.Parameters.AddWithValue("@CODCSOSN", "0")
-                Else
-                    comandoLocal.Parameters.AddWithValue("@CODCSOSN", drNuvem("csons").ToString)
-                End If
+                        If (drNuvem("csons").ToString = "") Then
+                            comandoLocal.Parameters.AddWithValue("@CODCSOSN", "0")
+                        Else
+                            comandoLocal.Parameters.AddWithValue("@CODCSOSN", drNuvem("csons").ToString)
+                        End If
 
-                If (drNuvem("icms").ToString = "") Then
-                    comandoLocal.Parameters.AddWithValue("@CODICMSCST", "0")
-                Else
-                    comandoLocal.Parameters.AddWithValue("@CODICMSCST", drNuvem("icms").ToString)
-                End If
+                        If (drNuvem("icms").ToString = "") Then
+                            comandoLocal.Parameters.AddWithValue("@CODICMSCST", "0")
+                        Else
+                            comandoLocal.Parameters.AddWithValue("@CODICMSCST", drNuvem("icms").ToString)
+                        End If
 
-                If (drNuvem("cofins").ToString = "") Then
-                    comandoLocal.Parameters.AddWithValue("@CODCOFINSCST", "0")
-                Else
-                    comandoLocal.Parameters.AddWithValue("@CODCOFINSCST", drNuvem("cofins").ToString)
-                End If
+                        If (drNuvem("cofins").ToString = "") Then
+                            comandoLocal.Parameters.AddWithValue("@CODCOFINSCST", "0")
+                        Else
+                            comandoLocal.Parameters.AddWithValue("@CODCOFINSCST", drNuvem("cofins").ToString)
+                        End If
 
-                If (drNuvem("pis").ToString = "") Then
-                    comandoLocal.Parameters.AddWithValue("@CODPISCST", "0")
-                Else
-                    comandoLocal.Parameters.AddWithValue("@CODPISCST", drNuvem("pis").ToString)
-                End If
+                        If (drNuvem("pis").ToString = "") Then
+                            comandoLocal.Parameters.AddWithValue("@CODPISCST", "0")
+                        Else
+                            comandoLocal.Parameters.AddWithValue("@CODPISCST", drNuvem("pis").ToString)
+                        End If
 
-                If (drNuvem("ncm").ToString = "") Then
-                    comandoLocal.Parameters.AddWithValue("@NCM", "0")
-                Else
-                    comandoLocal.Parameters.AddWithValue("@NCM", drNuvem("NCM").ToString)
-                End If
+                        If (drNuvem("ncm").ToString = "") Then
+                            comandoLocal.Parameters.AddWithValue("@NCM", "0")
+                        Else
+                            comandoLocal.Parameters.AddWithValue("@NCM", drNuvem("NCM").ToString)
+                        End If
 
-                If (drNuvem("aliquota").ToString = "") Then
-                    comandoLocal.Parameters.AddWithValue("@ALIQTOTAL", "0")
-                Else
-                    comandoLocal.Parameters.AddWithValue("@ALIQTOTAL", drNuvem("aliquota").ToString)
-                End If
-                If (drNuvem("validade").ToString = "") Then
-                    comandoLocal.Parameters.AddWithValue("@VALIDADEATUAL", "0")
-                Else
-                    comandoLocal.Parameters.AddWithValue("@VALIDADEATUAL", drNuvem("validade").ToString)
-                End If
-                comandoLocal.Parameters.AddWithValue("@CODIPI", "0")
-                comandoLocal.Parameters.AddWithValue("@ALIQICMS", "0")
-                comandoLocal.Parameters.AddWithValue("@ALIQICMSBC", "0")
-                comandoLocal.Parameters.AddWithValue("@ALIQCOFINS", "0")
-                comandoLocal.Parameters.AddWithValue("@ALIQPIS", "0")
-                comandoLocal.Parameters.AddWithValue("@ALIQIPI", "0")
-                comandoLocal.Parameters.AddWithValue("@ALIQNCMFEDERAL", "0")
-                comandoLocal.Parameters.AddWithValue("@ALIQNCMESTADUAL", "0")
-                comandoLocal.Parameters.AddWithValue("@ALIQNCMMUNICIPAL", "0")
-                comandoLocal.Parameters.AddWithValue("@ATIVO", drNuvem("ativo").ToString)
-                comandoLocal.Parameters.AddWithValue("@DATACADASTRO", Date.Now)
-                comandoLocal.Parameters.AddWithValue("@PRECO_VENDA", CDec(drNuvem("precovenda")))
-                comandoLocal.Parameters.AddWithValue("@PRECO_COMPRA", "0")
-                comandoLocal.Parameters.AddWithValue("@DESCONTO_MAXIMO", "0")
-                comandoLocal.Parameters.AddWithValue("@PRECO_CUSTO", CDec(drNuvem("precocusto")))
-                comandoLocal.Parameters.AddWithValue("@CUSTO_PERCENTUAL", "0")
-                comandoLocal.Parameters.AddWithValue("@LUCRO", "0")
-                comandoLocal.Parameters.AddWithValue("@BALANCA", drNuvem("balanca").ToString)
-                comandoLocal.Parameters.AddWithValue("@CARGABALANCA", drNuvem("cargabalanca").ToString)
+                        If (drNuvem("aliquota").ToString = "") Then
+                            comandoLocal.Parameters.AddWithValue("@ALIQTOTAL", "0")
+                        Else
+                            comandoLocal.Parameters.AddWithValue("@ALIQTOTAL", drNuvem("aliquota").ToString)
+                        End If
+                        If (drNuvem("validade").ToString = "") Then
+                            comandoLocal.Parameters.AddWithValue("@VALIDADEATUAL", "0")
+                        Else
+                            comandoLocal.Parameters.AddWithValue("@VALIDADEATUAL", drNuvem("validade").ToString)
+                        End If
+                        comandoLocal.Parameters.AddWithValue("@CODIPI", "0")
+                        comandoLocal.Parameters.AddWithValue("@ALIQICMS", "0")
+                        comandoLocal.Parameters.AddWithValue("@ALIQICMSBC", "0")
+                        comandoLocal.Parameters.AddWithValue("@ALIQCOFINS", "0")
+                        comandoLocal.Parameters.AddWithValue("@ALIQPIS", "0")
+                        comandoLocal.Parameters.AddWithValue("@ALIQIPI", "0")
+                        comandoLocal.Parameters.AddWithValue("@ALIQNCMFEDERAL", "0")
+                        comandoLocal.Parameters.AddWithValue("@ALIQNCMESTADUAL", "0")
+                        comandoLocal.Parameters.AddWithValue("@ALIQNCMMUNICIPAL", "0")
+                        comandoLocal.Parameters.AddWithValue("@ATIVO", drNuvem("ativo").ToString)
+                        comandoLocal.Parameters.AddWithValue("@DATACADASTRO", Date.Now)
+                        comandoLocal.Parameters.AddWithValue("@PRECO_VENDA", CDec(drNuvem("precovenda")))
+                        comandoLocal.Parameters.AddWithValue("@PRECO_COMPRA", "0")
+                        comandoLocal.Parameters.AddWithValue("@DESCONTO_MAXIMO", "0")
+                        comandoLocal.Parameters.AddWithValue("@PRECO_CUSTO", CDec(drNuvem("precocusto")))
+                        comandoLocal.Parameters.AddWithValue("@CUSTO_PERCENTUAL", "0")
+                        comandoLocal.Parameters.AddWithValue("@LUCRO", "0")
+                        comandoLocal.Parameters.AddWithValue("@BALANCA", drNuvem("balanca").ToString)
+                        comandoLocal.Parameters.AddWithValue("@CARGABALANCA", drNuvem("cargabalanca").ToString)
+
+                    comandoLocal.Parameters.AddWithValue("@ETIQUETASNUVEM", drNuvem(condicao).ToString)
 
                 conexaoLocal.Close()
                 conexaoLocal.Open()
                 comandoLocal.ExecuteNonQuery()
                 conexaoLocal.Close()
             End While
+            AtualizaEtiquetaNuvem()
             tImportarProdutos.Enabled = False
             MsgBox("Produtos importados com sucesso", MsgBoxStyle.Information, "Ambiente Soft")
             pImportarProdutos.Value = 100
+
+            str = "SELECT * FROM PRODUTOS WHERE ETIQUETASNUVEM = 'SIM'"
+
+            conexaoLocal.Close()
+            conexaoLocal.ConnectionString = bancoLocal
+            conexaoLocal.Open()
+
+            Dim cmd1 As FbCommand = New FbCommand(str, conexaoLocal)
+            drLocal = cmd1.ExecuteReader
+
+            While drLocal.Read()
+                If MessageBox.Show("Foi encontrado algumas etiquetas a serem geradas", "Ambiente Soft informa", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1) = vbYes Then
+                    Dim FrmEtiquetaNuvem As New FrmEtiquetaNuvem
+                    FrmEtiquetaNuvem.ShowDialog()
+                    Exit Sub
+                Else
+                    Exit Sub
+                End If
+            End While
         Catch ex As Exception
-            MsgBox("Erro ao importar produtos: " + ex.Message, MsgBoxStyle.Information)
+            MsgBox("Erro ao importar produtos: " + ex.Message, MsgBoxStyle.Critical)
         End Try
     End Sub
     Private Sub btnImportarProdutos_Click(sender As Object, e As EventArgs) Handles btnImportarProdutos.Click

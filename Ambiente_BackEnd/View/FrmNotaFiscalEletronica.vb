@@ -202,10 +202,50 @@ Public Class FrmNotaFiscalEletronica
         FormaPagamento = CInt((CType(cbxFormaPagamento.SelectedItem, KeyValuePair(Of String, String)).Key))
     End Sub
     Private Sub btnEmitir_Click(sender As Object, e As EventArgs) Handles btnEmitir.Click
-        mdl_emitirnfe.BuscaCliente(txtCodCliente.Text)
-        mdl_emitirnfe.GeraChaveAcesso(txtNumeroNota.Text, txtCfop.Text, IndicativoPresenca, IndicadorIntermediario)
-        'mdl_emitirnfe.EmitirRegimeSimplesNacional(xChaveAcesso, "", txtNumeroNota.Text, cNF, "55", txtCfop.Text, IndicativoPresenca, IndicadorIntermediario, 20.3)
-        System.Threading.Thread.Sleep(3400)
+        'If MessageBox.Show("Deseja lançar outro produto?", "Ambiente Soft", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) = vbYes Then
+        '    dataCadastro = Data.ToString("yyyy-M-dd")
+        Dim mensagem As String = String.Empty
+        Dim sequencia As String = ""
+        If sequencia = "" Then mensagem += "Ultimas notas emitidas" + Environment.NewLine
+
+        Dim str As String
+        Dim registro As Double = 0
+        str = "SELECT * FROM NOTAFISCAL ORDER BY NUMNOTA DESC"
+
+        conexaoLocal.Close()
+        conexaoLocal.ConnectionString = bancoLocal
+        conexaoLocal.Open()
+
+        Dim cmd As FbCommand = New FbCommand(str, conexaoLocal)
+
+        drLocal = cmd.ExecuteReader
+
+        While drLocal.Read()
+            If registro <> 5 Then
+                'Dim numero As String = drLocal("NUMNOT")
+                If sequencia = "" Then mensagem += CStr(drLocal("NUMNOTA").ToString) + Environment.NewLine
+                registro = registro + 1
+            Else
+
+            End If
+        End While
+
+        If sequencia = "" Then mensagem += "Nota a ser emitida : " + txtNumeroNota.Text + Environment.NewLine
+
+        If sequencia = "" Then mensagem += "Confirmar a emissão da nota ?" + Environment.NewLine
+
+        If (mensagem <> "") Then
+
+            If MessageBox.Show(mensagem, "Ambiente Soft", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) = vbYes Then
+                mdl_emitirnfe.BuscaCliente(txtCodCliente.Text)
+                mdl_emitirnfe.GeraChaveAcesso(txtNumeroNota.Text, txtCfop.Text, IndicativoPresenca, IndicadorIntermediario)
+                'mdl_emitirnfe.EmitirRegimeSimplesNacional(xChaveAcesso, "", txtNumeroNota.Text, cNF, "55", txtCfop.Text, IndicativoPresenca, IndicadorIntermediario, 20.3)
+                System.Threading.Thread.Sleep(3400)
+            Else
+            End If
+
+            Exit Sub
+        End If
     End Sub
 
     Private Sub cbxIndicativoPresenca_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxIndicativoPresenca.SelectedIndexChanged
