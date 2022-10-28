@@ -228,7 +228,6 @@ Public Class FrmMenuPrincipal
     End Sub
     Public Sub LimpaProdutos()
         Dim sql As String
-
         sql = "DELETE FROM PRODUTOS"
 
         comandoLocal = New FbCommand(sql, conexaoLocal)
@@ -238,7 +237,6 @@ Public Class FrmMenuPrincipal
         comandoLocal.ExecuteNonQuery()
         conexaoLocal.Close()
         pImportarProdutos.Value = 50
-
     End Sub
     Public Sub AtualizaEtiquetaNuvem()
         Dim sql As String
@@ -396,8 +394,6 @@ Public Class FrmMenuPrincipal
         End Try
     End Sub
     Private Sub btnImportarProdutos_Click(sender As Object, e As EventArgs) Handles btnImportarProdutos.Click
-        'My.Computer.FileSystem.CopyFile(Environment.CurrentDirectory + "\Data\Banco\BANCO.FDB",
-        'Environment.CurrentDirectory + "\Data\Banco\BANCOBACKUP.FDB")
         pImportarProdutos.Visible = True
         pImportarProdutos.Value = 10
         System.Threading.Thread.Sleep(2500)

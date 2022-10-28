@@ -25,7 +25,6 @@ Public Class FrmNotaFiscalEletronica
     End Sub
     Public Sub calculaTotal()
         Dim valor As Decimal
-
         For Each col As DataGridViewRow In dgNotaFiscal.Rows
             valor = valor + col.Cells(8).Value
         Next
@@ -39,14 +38,11 @@ Public Class FrmNotaFiscalEletronica
             funcao = "1"
             btnLimpar.Text = "Preencher"
         ElseIf funcao = "1" Then
-            rtbInformaçõesComplementares.Text = "DOCUMENTO EMITIDO POR ME OU EPP,OPTANTE PELO SIMPLES NACIONAL NAO GERA DIREITO A CREDITO FINAL DE IPI. " + rtbInformaçõesComplementares.Text
+            rtbInformaçõesComplementares.Text = "DOCUMENTO EMITIDO POR ME OU EPP,OPTANTE PELO SIMPLES NACIONAL NAO GERA DIREITO A CREDITO FINAL DE IPI." + rtbInformaçõesComplementares.Text
             funcao = ""
-            btnLimpar.Text = "Enviar"
+            btnLimpar.Text = "Limpar"
         End If
     End Sub
-
-
-
     Private Sub FrmNotaFiscalEletronica_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         Select Case e.KeyCode
             Case Keys.F2
@@ -59,35 +55,28 @@ Public Class FrmNotaFiscalEletronica
                 'btnDeletarItem.PerformClick()
         End Select
     End Sub
-
     Private Sub btnImportarItem_Click(sender As Object, e As EventArgs)
         Dim FrmImportaVenda As New FrmImportarVenda
         FrmImportarVenda.ShowDialog()
     End Sub
-
     Private Sub btnLancarItem_Click(sender As Object, e As EventArgs)
         FrmConsultaProduto.ShowDialog()
     End Sub
-
     Private Sub btnEditarItem_Click(sender As Object, e As EventArgs)
         MsgBox("Em Desenvolvimento")
     End Sub
-
     Private Sub btnDeletarItem_Click(sender As Object, e As EventArgs)
         MsgBox("Em Desenvolvimento")
     End Sub
-
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
         Dim FrmConsultaCliente As New FrmConsultaCliente
         FrmConsultaCliente.ShowDialog()
     End Sub
-
     Private Sub btnNovaNota_Click(sender As Object, e As EventArgs) Handles btnNovaNota.Click
         MudarOperacao(Operacao.IniciarNota)
         txtNumeroNota.Text = LerIni("SEQNOTA", "numero")
         txtNumeroNota.Text = txtNumeroNota.Text + 1
     End Sub
-
     Private Sub FrmNotaFiscalEletronica_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim formasPagamento As Dictionary(Of String, String)
         Dim indicadorPresenca As Dictionary(Of String, String)
@@ -121,13 +110,13 @@ Public Class FrmNotaFiscalEletronica
         cbxFormaPagamento.ValueMember = "Key"
         cbxFormaPagamento.DisplayMember = "Value"
 
-        IndicadorPresenca = New Dictionary(Of String, String) From {
+        indicadorPresenca = New Dictionary(Of String, String) From {
            {"0", "Não se aplica (por exemplo, Nota Fiscal complementar ou de ajuste)"},
            {"1", "Operação presencial"},
            {"2", "Operação não presencial, pela Internet"},
            {"3", "Operação não presencial, tele atendimento"},
            {"4", "NFC-e em operação com entrega a domicílio"},
-           {"5", " Operação presencial, fora do estabelecimento"},
+           {"5", "Operação presencial, fora do estabelecimento"},
            {"9", "Operação não presencial, outros"}
            }
 
@@ -152,10 +141,10 @@ Public Class FrmNotaFiscalEletronica
         {"4", "Transporte Próprio por conta do Destinatário"},
         {"9", "Sem Ocorrência de Transporte"}
         }
+
         cbxModeloFrete.DataSource = New BindingSource(modeloFrete, Nothing)
         cbxModeloFrete.ValueMember = "Key"
         cbxModeloFrete.DisplayMember = "Value"
-
     End Sub
 
     Private Sub txtCodCliente_TextChanged(sender As Object, e As EventArgs) Handles txtCodCliente.TextChanged
@@ -202,8 +191,7 @@ Public Class FrmNotaFiscalEletronica
         FormaPagamento = CInt((CType(cbxFormaPagamento.SelectedItem, KeyValuePair(Of String, String)).Key))
     End Sub
     Private Sub btnEmitir_Click(sender As Object, e As EventArgs) Handles btnEmitir.Click
-        'If MessageBox.Show("Deseja lançar outro produto?", "Ambiente Soft", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) = vbYes Then
-        '    dataCadastro = Data.ToString("yyyy-M-dd")
+
         Dim mensagem As String = String.Empty
         Dim sequencia As String = ""
         If sequencia = "" Then mensagem += "Ultimas notas emitidas" + Environment.NewLine
@@ -222,7 +210,6 @@ Public Class FrmNotaFiscalEletronica
 
         While drLocal.Read()
             If registro <> 5 Then
-                'Dim numero As String = drLocal("NUMNOT")
                 If sequencia = "" Then mensagem += CStr(drLocal("NUMNOTA").ToString) + Environment.NewLine
                 registro = registro + 1
             Else
@@ -231,15 +218,12 @@ Public Class FrmNotaFiscalEletronica
         End While
 
         If sequencia = "" Then mensagem += "Nota a ser emitida : " + txtNumeroNota.Text + Environment.NewLine
-
         If sequencia = "" Then mensagem += "Confirmar a emissão da nota ?" + Environment.NewLine
-
         If (mensagem <> "") Then
 
             If MessageBox.Show(mensagem, "Ambiente Soft", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) = vbYes Then
                 mdl_emitirnfe.BuscaCliente(txtCodCliente.Text)
                 mdl_emitirnfe.GeraChaveAcesso(txtNumeroNota.Text, txtCfop.Text, IndicativoPresenca, IndicadorIntermediario)
-                'mdl_emitirnfe.EmitirRegimeSimplesNacional(xChaveAcesso, "", txtNumeroNota.Text, cNF, "55", txtCfop.Text, IndicativoPresenca, IndicadorIntermediario, 20.3)
                 System.Threading.Thread.Sleep(3400)
             Else
             End If

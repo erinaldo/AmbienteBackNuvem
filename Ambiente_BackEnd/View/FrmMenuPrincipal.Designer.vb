@@ -620,6 +620,7 @@ Partial Class FrmMenuPrincipal
         Me.btnAgruparPendencia.Text = "             Agrupar Pendências"
         Me.btnAgruparPendencia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnAgruparPendencia.UseVisualStyleBackColor = True
+        Me.btnAgruparPendencia.Visible = False
         '
         'btnRelOrcCanceladas
         '

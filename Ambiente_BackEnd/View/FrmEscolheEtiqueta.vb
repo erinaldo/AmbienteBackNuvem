@@ -1,7 +1,6 @@
 ﻿Imports FirebirdSql.Data.FirebirdClient
 
 Public Class FrmEscolheEtiqueta
-
     Private Sub carregaDados()
         Dim ds As New DataSet
         daLocal = New FbDataAdapter("SELECT PRODUTOS.CODPRODUTO,PRODUTOS.CODBARRA,PRODUTOS.DESCRICAO,PRODUTOS.PRECO_VENDA,PRODUTOS.ATIVO FROM PRODUTOS WHERE ATIVO = 'SIM'", conexaoLocal)
@@ -60,7 +59,7 @@ Public Class FrmEscolheEtiqueta
             Dim currentRow As DataGridViewRow = dgProdutos.Rows(e.RowIndex)
             sql = "UPDATE PRODUTOS SET GERAETIQUETA = @GERAETIQUETA WHERE CODPRODUTO = @CODPRODUTO"
 
-            comandoLocal = New FbCommand(Sql, conexaoLocal)
+            comandoLocal = New FbCommand(sql, conexaoLocal)
 
             comandoLocal.Parameters.AddWithValue("@CODPRODUTO", currentRow.Cells(0).Value.ToString)
             comandoLocal.Parameters.AddWithValue("@GERAETIQUETA", "SIM")

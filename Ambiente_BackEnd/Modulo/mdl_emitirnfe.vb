@@ -538,7 +538,6 @@ erro:
             xWriter.WriteValue(QCom)
             xWriter.WriteEndElement()
 
-
             Dim vUnCom As Decimal
             vUnCom = linha.Cells(6).Value
             Dim complemento_Vuncom As Decimal
@@ -563,7 +562,6 @@ erro:
             xWriter.WriteStartElement("vProd")
             xWriter.WriteValue(vProd)
             xWriter.WriteEndElement()
-
 
             xWriter.WriteStartElement(CStr("cEANTrib"))
             xWriter.WriteEndElement()
@@ -638,7 +636,6 @@ erro:
             xWriter.WriteStartElement("pPIS")
             xWriter.WriteValue("0.0000")
             xWriter.WriteEndElement()
-
 
             xWriter.WriteStartElement("vPIS")
             xWriter.WriteValue("0.00")
@@ -799,13 +796,49 @@ erro:
         xWriter.WriteEndElement()
         xWriter.WriteEndElement()
 
+        xWriter.WriteStartElement("cobr")
+        xWriter.WriteStartElement("fat")
+
+        xWriter.WriteStartElement("nFat")
+        xWriter.WriteValue("131266")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vOrig")
+        xWriter.WriteValue("2456.12")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vDesc")
+        xWriter.WriteValue("0.00")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vLiq")
+        xWriter.WriteValue("2456.12")
+        xWriter.WriteEndElement()
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("dup")
+
+        xWriter.WriteStartElement("nDump")
+        xWriter.WriteValue("001")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("dVenc")
+        xWriter.WriteValue("2022-11-24")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteStartElement("vDup")
+        xWriter.WriteValue("800.20")
+        xWriter.WriteEndElement()
+
+        xWriter.WriteEndElement()
+        xWriter.WriteEndElement()
+
         xWriter.WriteStartElement("pag")
         xWriter.WriteStartElement("detPag")
 
         xWriter.WriteStartElement("tPag")
         xWriter.WriteValue(FrmNotaFiscalEletronica.FormaPagamento)
         xWriter.WriteEndElement()
-
 
         'total = Replace(total, ",", ".")
         If FrmNotaFiscalEletronica.FormaPagamento = 90 Then
