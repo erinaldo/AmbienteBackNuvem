@@ -17,7 +17,7 @@ Public Class FrmMenuPrincipal
             btnMoviementacao.Enabled = False
             btnRelOrcVenda.Enabled = False
             btnRelOrcCanceladas.Enabled = False
-            btnAgruparPendencia.Enabled = False
+            'btnAgruparPendencia.Enabled = False
             btnAtualizarPreco.Enabled = False
             imgCadeadoDesbloqueado.Visible = False
 

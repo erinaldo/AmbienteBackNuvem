@@ -1,9 +1,16 @@
 ﻿Imports System.Data.SqlTypes
 Imports System.IO
 Imports System.Xml
+Imports Boleto2Net
 Imports FirebirdSql.Data.FirebirdClient
+Imports ZionDanfe
+Imports ZionDanfe.Modelo
+Imports PdfiumViewer
+'Imports PdfiumViewer
+
 
 Module mdl_emitirnfe
+    Dim pdf As New PdfiumViewer.PdfViewer
     Public codCliente As String
     Dim cnpjCpf As String
     Dim razaoSocial As String
@@ -859,9 +866,44 @@ erro:
 
         xWriter.WriteEndElement()
         xWriter.WriteEndElement()
-
         xWriter.Close()
+        GerarDanfe("C:\Unimake\UniNFe\14396397000197\Envio\35190714887258000166550010000000081461798812-procNFe.xml", numeroNota + ".pdf")
     End Sub
+    Private Sub OpenFileDialog(filePath As String)
 
+        Dim conteudo = System.IO.File.ReadAllBytes(filePath)
+        Dim stream = New System.IO.MemoryStream(conteudo)
+        Dim meuDocumento As PdfDocument = PdfDocument.Load(stream)
+        pdf.Document = meuDocumento
+    End Sub
+    Public Sub GerarDanfe(ByVal xml As String, ByVal arquivo As String)
+        Dim gerar = LerIni("Danfe", "GerarDanfe")
+
+
+        If gerar <> "1" Then
+            MessageBox.Show("Não configurado para visualizar DANFE, entre em contato com o administrador.")
+            Return
+        End If
+
+        Try
+
+            Dim modelo = DanfeViewModelCreator.CriarDeArquivoXml(xml)
+            Dim danfe = New Danfe(modelo)
+            danfe.Gerar()
+
+            Dim diretorio As String = Path.Combine("C:\BOLETOS", DateTime.Now.ToString("yyyyMM"))
+
+            Directory.CreateDirectory(diretorio)
+
+            danfe.Salvar(Path.Combine(diretorio, arquivo))
+            'Process.Start(Path.Combine(diretorio, arquivo))
+
+            OpenFileDialog("C:\BOLETOS\202210\2.pdf")
+
+        Catch ex As Exception
+            MessageBox.Show(EX.Message)
+            Process.Start("C:\Unimake\UniNFe\unidanfe.exe")
+        End Try
+    End Sub
 
 End Module

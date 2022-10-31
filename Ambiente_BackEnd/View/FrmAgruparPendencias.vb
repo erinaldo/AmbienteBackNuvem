@@ -48,7 +48,6 @@ Public Class FrmAgruparPendencias
         FrmNotaFiscalEletronica.ShowDialog()
     End Sub
     Private Sub btnAgrupar_Click(sender As Object, e As EventArgs) Handles btnAgrupar.Click
-        Dim str As String
         Dim codCaixa As String = LerIni("Dados", "Caixa")
         Dim sql As String
         Dim dataatual As String
@@ -63,8 +62,8 @@ Public Class FrmAgruparPendencias
         codAgrupa = dataatual + horaatual
         If MessageBox.Show("Deseja Agrupar Pendências Selecionadas?", "Ambiente Soft", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = vbYes Then
             For Each linha As DataGridViewRow In dgVales.Rows
-                codCliente = linha.Cells(5).Value
                 If linha.Cells(0).Value = True Then
+                    codCliente = linha.Cells(5).Value
                     Try
 
                         sql = "UPDATE DEBITO SET NUM_AGRUPA = @NUM_AGRUPA WHERE CODCAIXA = @CODCAIXA and CODORCAMENTO = @CODORCAMENTO and CODABERTURA = @CODABERTURA"
@@ -79,7 +78,6 @@ Public Class FrmAgruparPendencias
                         conexaoLocal.Open()
                         comandoLocal.ExecuteNonQuery()
                         conexaoLocal.Close()
-
                     Catch ex As Exception
                         MsgBox("Erro: " + ex.Message, MsgBoxStyle.Exclamation)
                         Exit Sub

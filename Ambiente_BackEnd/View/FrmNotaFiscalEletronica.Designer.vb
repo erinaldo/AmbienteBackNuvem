@@ -30,8 +30,10 @@ Partial Class FrmNotaFiscalEletronica
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.btnEmitir = New System.Windows.Forms.Button()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnNovaNota = New System.Windows.Forms.Button()
@@ -121,8 +123,10 @@ Partial Class FrmNotaFiscalEletronica
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.MidnightBlue
-        Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.btnEmitir)
+        Me.Panel1.Controls.Add(Me.Panel2)
+        Me.Panel1.Controls.Add(Me.Button2)
+        Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.Panel9)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.btnNovaNota)
@@ -134,15 +138,6 @@ Partial Class FrmNotaFiscalEletronica
         Me.Panel1.Size = New System.Drawing.Size(1215, 66)
         Me.Panel1.TabIndex = 0
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(426, 15)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(132, 35)
-        Me.Button1.TabIndex = 37
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'btnEmitir
         '
         Me.btnEmitir.Dock = System.Windows.Forms.DockStyle.Left
@@ -153,13 +148,48 @@ Partial Class FrmNotaFiscalEletronica
         Me.btnEmitir.ForeColor = System.Drawing.Color.White
         Me.btnEmitir.Image = CType(resources.GetObject("btnEmitir.Image"), System.Drawing.Image)
         Me.btnEmitir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnEmitir.Location = New System.Drawing.Point(150, 0)
+        Me.btnEmitir.Location = New System.Drawing.Point(276, 0)
         Me.btnEmitir.Name = "btnEmitir"
         Me.btnEmitir.Size = New System.Drawing.Size(102, 66)
-        Me.btnEmitir.TabIndex = 36
+        Me.btnEmitir.TabIndex = 40
         Me.btnEmitir.Text = "Emitir"
         Me.btnEmitir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnEmitir.UseVisualStyleBackColor = True
+        '
+        'Panel2
+        '
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel2.Location = New System.Drawing.Point(252, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(24, 66)
+        Me.Panel2.TabIndex = 39
+        '
+        'Button2
+        '
+        Me.Button2.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.Button2.FlatAppearance.BorderSize = 0
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.ForeColor = System.Drawing.Color.White
+        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
+        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button2.Location = New System.Drawing.Point(150, 0)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(102, 66)
+        Me.Button2.TabIndex = 38
+        Me.Button2.Text = "Boleto"
+        Me.Button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(755, 5)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(132, 35)
+        Me.Button1.TabIndex = 37
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Panel9
         '
@@ -997,7 +1027,6 @@ Partial Class FrmNotaFiscalEletronica
     Friend WithEvents dgNotaFiscal As DataGridView
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents Label1 As Label
-    Friend WithEvents btnEmitir As Button
     Friend WithEvents Panel9 As Panel
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents Label17 As Label
@@ -1040,4 +1069,7 @@ Partial Class FrmNotaFiscalEletronica
     Friend WithEvents UNITARIO As DataGridViewTextBoxColumn
     Friend WithEvents QTDE As DataGridViewTextBoxColumn
     Friend WithEvents TOTAL As DataGridViewTextBoxColumn
+    Friend WithEvents btnEmitir As Button
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Button2 As Button
 End Class
