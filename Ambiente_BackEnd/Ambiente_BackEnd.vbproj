@@ -103,9 +103,6 @@
     <Reference Include="PDFClown, Version=0.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFClown.NET.2.0.0\lib\PDFClown.dll</HintPath>
     </Reference>
-    <Reference Include="PdfiumViewer, Version=2.13.0.0, Culture=neutral, PublicKeyToken=91e4789cfb0609e0, processorArchitecture=MSIL">
-      <HintPath>..\packages\PdfiumViewer.2.13.0.0\lib\net20\PdfiumViewer.dll</HintPath>
-    </Reference>
     <Reference Include="RestSharp, Version=108.0.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.108.0.1\lib\netstandard2.0\RestSharp.dll</HintPath>
     </Reference>
@@ -212,6 +209,12 @@
       <DependentUpon>FrmConsultaProduto.vb</DependentUpon>
     </Compile>
     <Compile Include="View\FrmConsultaProduto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmEnviarEmail.Designer.vb">
+      <DependentUpon>FrmEnviarEmail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmEnviarEmail.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FrmEtiquetaNuvem.Designer.vb">
@@ -422,6 +425,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmConsultaProduto.resx">
       <DependentUpon>FrmConsultaProduto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmEnviarEmail.resx">
+      <DependentUpon>FrmEnviarEmail.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmEtiquetaNuvem.resx">
       <DependentUpon>FrmEtiquetaNuvem.vb</DependentUpon>
