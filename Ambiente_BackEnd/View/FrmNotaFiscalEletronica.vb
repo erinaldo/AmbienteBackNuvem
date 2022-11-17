@@ -216,7 +216,6 @@ Public Class FrmNotaFiscalEletronica
 
             End If
         End While
-
         If sequencia = "" Then mensagem += "Nota a ser emitida : " + txtNumeroNota.Text + Environment.NewLine
         If sequencia = "" Then mensagem += "Confirmar a emissão da nota ?" + Environment.NewLine
         If (mensagem <> "") Then
