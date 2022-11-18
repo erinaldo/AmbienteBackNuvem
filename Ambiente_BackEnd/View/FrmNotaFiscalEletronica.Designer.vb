@@ -30,6 +30,8 @@ Partial Class FrmNotaFiscalEletronica
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnEmail = New System.Windows.Forms.Button()
+        Me.Panel5 = New System.Windows.Forms.Panel()
         Me.btnEmitir = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -123,6 +125,8 @@ Partial Class FrmNotaFiscalEletronica
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.MidnightBlue
+        Me.Panel1.Controls.Add(Me.btnEmail)
+        Me.Panel1.Controls.Add(Me.Panel5)
         Me.Panel1.Controls.Add(Me.btnEmitir)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.Button2)
@@ -137,6 +141,32 @@ Partial Class FrmNotaFiscalEletronica
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1215, 66)
         Me.Panel1.TabIndex = 0
+        '
+        'btnEmail
+        '
+        Me.btnEmail.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btnEmail.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.btnEmail.FlatAppearance.BorderSize = 0
+        Me.btnEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEmail.ForeColor = System.Drawing.Color.White
+        Me.btnEmail.Image = CType(resources.GetObject("btnEmail.Image"), System.Drawing.Image)
+        Me.btnEmail.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnEmail.Location = New System.Drawing.Point(402, 0)
+        Me.btnEmail.Name = "btnEmail"
+        Me.btnEmail.Size = New System.Drawing.Size(102, 66)
+        Me.btnEmail.TabIndex = 42
+        Me.btnEmail.Text = "Enviar Email"
+        Me.btnEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnEmail.UseVisualStyleBackColor = True
+        '
+        'Panel5
+        '
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel5.Location = New System.Drawing.Point(378, 0)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(24, 66)
+        Me.Panel5.TabIndex = 41
         '
         'btnEmitir
         '
@@ -1070,6 +1100,8 @@ Partial Class FrmNotaFiscalEletronica
     Friend WithEvents QTDE As DataGridViewTextBoxColumn
     Friend WithEvents TOTAL As DataGridViewTextBoxColumn
     Friend WithEvents btnEmitir As Button
-    Friend WithEvents Panel2 As Panel
     Friend WithEvents Button2 As Button
+    Friend WithEvents btnEmail As Button
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents Panel2 As Panel
 End Class

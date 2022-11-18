@@ -1,12 +1,16 @@
-﻿Imports FirebirdSql.Data.FirebirdClient
+﻿Imports System.IO.IsolatedStorage
+Imports System.Web.Services.Description
+Imports FirebirdSql.Data.FirebirdClient
+Imports Org.BouncyCastle.Asn1
+Imports Org.BouncyCastle.Math.EC.Endo
 
 Public Class FrmNotaFiscalEletronica
     Dim funcao As String = ""
     Dim cnpjEmitente As String = LerIni("EMPRESA", "CNPJ")
     Dim numeroNota As String = LerIni("SEQNOTA", "numero")
+
     Public codCliente As String
     Public tipoFuncao As String
-    Private Operacao As OperacoesCrud
     Public FormaPagamento As String
     Public IndicativoPresenca As String
     Public IndicadorIntermediario As String
@@ -14,6 +18,11 @@ Public Class FrmNotaFiscalEletronica
     Public xChaveAcesso As String
     Public cNF As String
     Public proxnumero As String
+    Public caminhoXml As String
+    Public caminhoPdf As String
+    Public emailCliente As String
+
+    Private Operacao As OperacoesCrud
     Private Sub MudarOperacao(ByVal novaOperacao As OperacoesCrud)
         If novaOperacao = OperacoesCrud.IniciarNota Then
             mdl_bloquearcampos.funcao = "LIBERAR"
@@ -87,7 +96,7 @@ Public Class FrmNotaFiscalEletronica
             btnNovaNota.Enabled = True
         End If
 
-        FormasPagamento = New Dictionary(Of String, String) From {
+        formasPagamento = New Dictionary(Of String, String) From {
             {"01", "Dinheiro"},
             {"02", "Cheque"},
             {"03", "Cartão de Crédito"},
@@ -106,7 +115,7 @@ Public Class FrmNotaFiscalEletronica
             {"90", "Sem Pagamentos"},
             {"99", "Outros"}
         }
-        cbxFormaPagamento.DataSource = New BindingSource(FormasPagamento, Nothing)
+        cbxFormaPagamento.DataSource = New BindingSource(formasPagamento, Nothing)
         cbxFormaPagamento.ValueMember = "Key"
         cbxFormaPagamento.DisplayMember = "Value"
 
@@ -120,16 +129,16 @@ Public Class FrmNotaFiscalEletronica
            {"9", "Operação não presencial, outros"}
            }
 
-        cbxIndicativoPresenca.DataSource = New BindingSource(IndicadorPresenca, Nothing)
+        cbxIndicativoPresenca.DataSource = New BindingSource(indicadorPresenca, Nothing)
         cbxIndicativoPresenca.ValueMember = "Key"
         cbxIndicativoPresenca.DisplayMember = "Value"
 
-        IndicadorIntermediario = New Dictionary(Of String, String) From {
+        indicadorIntermediario = New Dictionary(Of String, String) From {
            {"0", "NÃO"},
            {"1", "SIM"}
            }
 
-        cbxIntermediario.DataSource = New BindingSource(IndicadorIntermediario, Nothing)
+        cbxIntermediario.DataSource = New BindingSource(indicadorIntermediario, Nothing)
         cbxIntermediario.ValueMember = "Key"
         cbxIntermediario.DisplayMember = "Value"
 
@@ -163,6 +172,7 @@ Public Class FrmNotaFiscalEletronica
 
             While drLocal.Read()
                 txtNomeCliente.Text = drLocal("RAZAOSOCIAL").ToString
+                emailCliente = drLocal("EMAIL").ToString
             End While
         End If
     End Sub
@@ -191,7 +201,6 @@ Public Class FrmNotaFiscalEletronica
         FormaPagamento = CInt((CType(cbxFormaPagamento.SelectedItem, KeyValuePair(Of String, String)).Key))
     End Sub
     Private Sub btnEmitir_Click(sender As Object, e As EventArgs) Handles btnEmitir.Click
-
         Dim mensagem As String = String.Empty
         Dim sequencia As String = ""
         If sequencia = "" Then mensagem += "Ultimas notas emitidas" + Environment.NewLine
@@ -230,28 +239,26 @@ Public Class FrmNotaFiscalEletronica
             Exit Sub
         End If
     End Sub
-
     Private Sub cbxIndicativoPresenca_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxIndicativoPresenca.SelectedIndexChanged
         IndicativoPresenca = CInt((CType(cbxIndicativoPresenca.SelectedItem, KeyValuePair(Of String, String)).Key))
     End Sub
-
     Private Sub cbxIntermediario_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxIntermediario.SelectedIndexChanged
         IndicadorIntermediario = CInt((CType(cbxIntermediario.SelectedItem, KeyValuePair(Of String, String)).Key))
     End Sub
-
     Private Sub cbxModeloFrete_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxModeloFrete.SelectedIndexChanged
         modeloFrete = CInt((CType(cbxModeloFrete.SelectedItem, KeyValuePair(Of String, String)).Key))
     End Sub
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Retorno()
     End Sub
-
-    Private Sub btnEmitir_Click_1(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         mdl_boleto.buscaCliente(txtCodCliente.Text, nTotalNFe.Value)
+    End Sub
+    Private Sub btnEmail_Click(sender As Object, e As EventArgs) Handles btnEmail.Click
+        Dim FrmEnviarEmail As New FrmEnviarEmail
+        FrmEnviarEmail.anexoXml = caminhoXml
+        FrmEnviarEmail.anexoNfe = caminhoPdf
+        FrmEnviarEmail.txtDestinatario.Text = emailCliente
+        FrmEnviarEmail.ShowDialog()
     End Sub
 End Class

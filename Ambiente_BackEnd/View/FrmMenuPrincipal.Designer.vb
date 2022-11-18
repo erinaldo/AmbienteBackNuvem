@@ -151,7 +151,7 @@ Partial Class FrmMenuPrincipal
         '
         Me.imgCadeadoDesbloqueado.Dock = System.Windows.Forms.DockStyle.Right
         Me.imgCadeadoDesbloqueado.Image = CType(resources.GetObject("imgCadeadoDesbloqueado.Image"), System.Drawing.Image)
-        Me.imgCadeadoDesbloqueado.Location = New System.Drawing.Point(817, 0)
+        Me.imgCadeadoDesbloqueado.Location = New System.Drawing.Point(823, 0)
         Me.imgCadeadoDesbloqueado.Name = "imgCadeadoDesbloqueado"
         Me.imgCadeadoDesbloqueado.Size = New System.Drawing.Size(48, 44)
         Me.imgCadeadoDesbloqueado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -163,7 +163,7 @@ Partial Class FrmMenuPrincipal
         '
         Me.imgCadeadoBloqueado.Dock = System.Windows.Forms.DockStyle.Right
         Me.imgCadeadoBloqueado.Image = CType(resources.GetObject("imgCadeadoBloqueado.Image"), System.Drawing.Image)
-        Me.imgCadeadoBloqueado.Location = New System.Drawing.Point(865, 0)
+        Me.imgCadeadoBloqueado.Location = New System.Drawing.Point(871, 0)
         Me.imgCadeadoBloqueado.Name = "imgCadeadoBloqueado"
         Me.imgCadeadoBloqueado.Size = New System.Drawing.Size(48, 44)
         Me.imgCadeadoBloqueado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -173,9 +173,9 @@ Partial Class FrmMenuPrincipal
         'Panel4
         '
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel4.Location = New System.Drawing.Point(913, 0)
+        Me.Panel4.Location = New System.Drawing.Point(919, 0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(26, 44)
+        Me.Panel4.Size = New System.Drawing.Size(20, 44)
         Me.Panel4.TabIndex = 11
         '
         'Panel6

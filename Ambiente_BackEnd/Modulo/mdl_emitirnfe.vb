@@ -885,6 +885,8 @@ erro:
 
             danfe.Salvar(Path.Combine(diretorio, arquivo))
             'Process.Start(Path.Combine(diretorio, arquivo))
+            FrmNotaFiscalEletronica.caminhoXml = xml
+            FrmNotaFiscalEletronica.caminhoPdf = Path.Combine(diretorio, arquivo)
 
             FrmVisualizarPdf.caminhopdf = Path.Combine(diretorio, arquivo)
             FrmVisualizarPdf.ShowDialog()

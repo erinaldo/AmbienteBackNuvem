@@ -1,4 +1,8 @@
-﻿Public Class FrmEnviarEmail
+﻿Imports System.Net.Mail
+Imports System.Runtime.InteropServices
+Imports Org.BouncyCastle.Math.EC.Endo
+
+Public Class FrmEnviarEmail
     Public anexoNfe As String
     Public anexoXml As String
     Public anexoBoleto As String
@@ -47,5 +51,45 @@
             End If
         End If
         verificaAnexos()
+    End Sub
+    Private Sub EnviarEmail()
+        Dim host As String = LerIni("EMAIL", "Server")
+        Dim credenciais As String = LerIni("EMAIL", "Usuario")
+        Dim senha As String = LerIni("EMAIL", "Senha")
+        Dim porta As String = LerIni("EMAIL", "Porta")
+        Dim ssl As Boolean = LerIni("EMAIL", "SSL")
+
+        Try
+            Using Smtp As New SmtpClient
+                Using email As New MailMessage()
+                    Smtp.Host = host
+                    Smtp.UseDefaultCredentials = False
+                    Smtp.Credentials = New Net.NetworkCredential(credenciais, senha)
+                    Smtp.Port = porta
+                    Smtp.EnableSsl = ssl
+
+                    email.From = New MailAddress(credenciais)
+                    email.To.Add(txtDestinatario.Text)
+                    email.Subject = txtAssunto.Text
+                    email.IsBodyHtml = False
+                    email.Body = rtbMensagem.Text
+
+                    If anexoXml <> "" Then
+                        email.Attachments.Add(New Attachment(anexoXml))
+                    End If
+                    If anexoNfe <> "" Then
+                        email.Attachments.Add(New Attachment(anexoNfe))
+                    End If
+                    
+                    Smtp.Send(email)
+                End Using
+            End Using
+            MsgBox("Email Enviado", vbInformation, "Ambiente Soft")
+        Catch ex As Exception
+            MsgBox("Erro:" & ex.Message)
+        End Try
+    End Sub
+    Private Sub btnEnviar_Click(sender As Object, e As EventArgs) Handles btnEnviar.Click
+        EnviarEmail()
     End Sub
 End Class

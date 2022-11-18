@@ -26,10 +26,10 @@ Partial Class FrmEnviarEmail
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtEmail = New System.Windows.Forms.TextBox()
+        Me.txtDestinatario = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtAssunto = New System.Windows.Forms.TextBox()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.rtbMensagem = New System.Windows.Forms.RichTextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btnAnexar = New System.Windows.Forms.Button()
@@ -78,13 +78,13 @@ Partial Class FrmEnviarEmail
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Para:"
         '
-        'txtEmail
+        'txtDestinatario
         '
-        Me.txtEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEmail.Location = New System.Drawing.Point(184, 148)
-        Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(685, 29)
-        Me.txtEmail.TabIndex = 3
+        Me.txtDestinatario.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDestinatario.Location = New System.Drawing.Point(184, 148)
+        Me.txtDestinatario.Name = "txtDestinatario"
+        Me.txtDestinatario.Size = New System.Drawing.Size(685, 29)
+        Me.txtDestinatario.TabIndex = 3
         '
         'Label3
         '
@@ -105,13 +105,13 @@ Partial Class FrmEnviarEmail
         Me.txtAssunto.Size = New System.Drawing.Size(685, 29)
         Me.txtAssunto.TabIndex = 5
         '
-        'RichTextBox1
+        'rtbMensagem
         '
-        Me.RichTextBox1.Location = New System.Drawing.Point(184, 226)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(685, 107)
-        Me.RichTextBox1.TabIndex = 6
-        Me.RichTextBox1.Text = ""
+        Me.rtbMensagem.Location = New System.Drawing.Point(184, 226)
+        Me.rtbMensagem.Name = "rtbMensagem"
+        Me.rtbMensagem.Size = New System.Drawing.Size(685, 107)
+        Me.rtbMensagem.TabIndex = 6
+        Me.rtbMensagem.Text = ""
         '
         'Label4
         '
@@ -241,15 +241,16 @@ Partial Class FrmEnviarEmail
         Me.Controls.Add(Me.btnAnexar)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.RichTextBox1)
+        Me.Controls.Add(Me.rtbMensagem)
         Me.Controls.Add(Me.txtAssunto)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.txtEmail)
+        Me.Controls.Add(Me.txtDestinatario)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Name = "FrmEnviarEmail"
-        Me.Text = "FrmEnviarEmail"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Enviar Email"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgXML, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgPDF, System.ComponentModel.ISupportInitialize).EndInit()
@@ -262,10 +263,10 @@ Partial Class FrmEnviarEmail
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents txtEmail As TextBox
+    Friend WithEvents txtDestinatario As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents txtAssunto As TextBox
-    Friend WithEvents RichTextBox1 As RichTextBox
+    Friend WithEvents rtbMensagem As RichTextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents btnAnexar As Button
