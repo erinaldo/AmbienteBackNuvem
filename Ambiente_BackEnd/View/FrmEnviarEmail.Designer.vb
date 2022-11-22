@@ -41,6 +41,7 @@ Partial Class FrmEnviarEmail
         Me.lblAnexoBoleto = New System.Windows.Forms.Label()
         Me.imgBoleto = New System.Windows.Forms.PictureBox()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.Label6 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgXML, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgPDF, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -225,12 +226,23 @@ Partial Class FrmEnviarEmail
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(796, 9)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(115, 13)
+        Me.Label6.TabIndex = 17
+        Me.Label6.Text = "Localizar Nota (F6)"
+        '
         'FrmEnviarEmail
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(923, 496)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.lblAnexoBoleto)
         Me.Controls.Add(Me.imgBoleto)
         Me.Controls.Add(Me.lblAnexoPdf)
@@ -248,6 +260,7 @@ Partial Class FrmEnviarEmail
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PictureBox1)
+        Me.KeyPreview = True
         Me.Name = "FrmEnviarEmail"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Enviar Email"
@@ -278,4 +291,5 @@ Partial Class FrmEnviarEmail
     Friend WithEvents lblAnexoBoleto As Label
     Friend WithEvents imgBoleto As PictureBox
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents Label6 As Label
 End Class

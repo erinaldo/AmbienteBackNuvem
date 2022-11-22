@@ -26,7 +26,7 @@ Public Class FrmRelatorioOrcVendas
             If (txtCodigoFormaPagto.Text = "" And cbxTipo.Text = "" And periodoConverte = "'  .  .'" And cbxTipoCartao.Text = "") Then
                 daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S'", conexaoLocal)
             ElseIf (txtCodigoFormaPagto.Text <> "" And cbxTipo.Text = "" And periodoConverte = "'  .  .'" And cbxTipoCartao.Text = "") Then
-                daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and FORMAPAGTO = " & txtCodigoFormaPagto.Text, conexaoLocal)
+            daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and FORMAPAGTO = " & txtCodigoFormaPagto.Text, conexaoLocal)
             ElseIf (txtCodigoFormaPagto.Text = "" And cbxTipo.Text <> "" And periodoConverte = "'  .  .'" And cbxTipoCartao.Text = "") Then
                 If (cbxTipo.Text = "Orçamento") Then
                     daLocal = New FbDataAdapter("SELECT V.CODMOVIMENTO,V.CODVENDA,V.CODCAIXA,V.OPERADOR,V.DATA,V.HORA,V.FORMAPAGTO,V.TOTALMOVIMENTO FROM MOVIMENTO_VENDA V WHERE FINALIZADO = 'S' and CODVENDA is null", conexaoLocal)

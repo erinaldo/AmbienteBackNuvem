@@ -94,6 +94,7 @@ Public Class FrmNotaFiscalEletronica
         If (tipoFuncao <> "2") Then
             MudarOperacao(Operacao.BloquearNota)
             btnNovaNota.Enabled = True
+            btnPesquisarNota.Enabled = True
         End If
 
         formasPagamento = New Dictionary(Of String, String) From {
@@ -258,7 +259,14 @@ Public Class FrmNotaFiscalEletronica
         Dim FrmEnviarEmail As New FrmEnviarEmail
         FrmEnviarEmail.anexoXml = caminhoXml
         FrmEnviarEmail.anexoNfe = caminhoPdf
+        FrmEnviarEmail.assunto = "NOTA FISCAL EMITIDA POR: " + txtNomeCliente.Text
+        FrmEnviarEmail.rtbMensagem.Text = "SEGUE ANEXO REFERENTE A NOTA FISCAL ELETRONICA Nº " + txtNumeroNota.Text
         FrmEnviarEmail.txtDestinatario.Text = emailCliente
         FrmEnviarEmail.ShowDialog()
+    End Sub
+
+    Private Sub btnPesquisarNota_Click(sender As Object, e As EventArgs) Handles btnPesquisarNota.Click
+        Dim FrmNotasEmitidas As New FrmNotasEmitidas
+        FrmNotasEmitidas.ShowDialog()
     End Sub
 End Class

@@ -1,11 +1,11 @@
 ﻿Imports System.Net.Mail
-Imports System.Runtime.InteropServices
-Imports Org.BouncyCastle.Math.EC.Endo
-
+Imports FirebirdSql.Data.FirebirdClient
 Public Class FrmEnviarEmail
     Public anexoNfe As String
     Public anexoXml As String
     Public anexoBoleto As String
+    Public numNota As String
+    Public assunto As String
     Private Sub verificaAnexos()
         If (anexoNfe = "") Then
             imgPDF.Visible = False
@@ -33,6 +33,7 @@ Public Class FrmEnviarEmail
     End Sub
     Private Sub FrmEnviarEmail_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         verificaAnexos()
+        txtAssunto.Text = assunto
     End Sub
     Private Sub btnAnexar_Click(sender As Object, e As EventArgs) Handles btnAnexar.Click
         Dim anexo = New OpenFileDialog()
@@ -91,5 +92,44 @@ Public Class FrmEnviarEmail
     End Sub
     Private Sub btnEnviar_Click(sender As Object, e As EventArgs) Handles btnEnviar.Click
         EnviarEmail()
+    End Sub
+    Private Sub ConsultaCliente(codColaborador As String)
+        Dim sql As String
+        sql = "SELECT * FROM COLABORADOR WHERE CODCOLABORADOR = " & codColaborador
+
+        conexaoLocal.Close()
+        conexaoLocal.ConnectionString = bancoLocal
+        conexaoLocal.Open()
+
+        Dim cmd As FbCommand = New FbCommand(sql, conexaoLocal)
+        drLocal = cmd.ExecuteReader
+
+        While drLocal.Read()
+            txtDestinatario.Text = drLocal("EMAIL").ToString
+        End While
+    End Sub
+    Private Sub FrmEnviarEmail_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode = Keys.F6 Then
+            Dim sql As String
+            Dim numNota As String = InputBox("Digite o numero da nota", "Ambiente Soft")
+
+            If (numNota <> "") Then
+                sql = "SELECT * FROM NOTAFISCAL WHERE NUMNOTA = " & numNota
+
+                conexaoLocal.Close()
+                conexaoLocal.ConnectionString = bancoLocal
+                conexaoLocal.Open()
+
+                Dim cmd As FbCommand = New FbCommand(sql, conexaoLocal)
+                drLocal = cmd.ExecuteReader
+
+                While drLocal.Read()
+                    anexoXml = drLocal("CAMINHOXML").ToString
+                    anexoNfe = drLocal("CAMINHOPDF").ToString
+                    ConsultaCliente(drLocal("CODCOLABORADOR"))
+                    verificaAnexos()
+                End While
+            End If
+        End If
     End Sub
 End Class

@@ -30,6 +30,8 @@ Partial Class FrmNotaFiscalEletronica
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnPesquisarNota = New System.Windows.Forms.Button()
+        Me.Panel6 = New System.Windows.Forms.Panel()
         Me.btnEmail = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.btnEmitir = New System.Windows.Forms.Button()
@@ -125,6 +127,8 @@ Partial Class FrmNotaFiscalEletronica
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.MidnightBlue
+        Me.Panel1.Controls.Add(Me.btnPesquisarNota)
+        Me.Panel1.Controls.Add(Me.Panel6)
         Me.Panel1.Controls.Add(Me.btnEmail)
         Me.Panel1.Controls.Add(Me.Panel5)
         Me.Panel1.Controls.Add(Me.btnEmitir)
@@ -141,6 +145,32 @@ Partial Class FrmNotaFiscalEletronica
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1215, 66)
         Me.Panel1.TabIndex = 0
+        '
+        'btnPesquisarNota
+        '
+        Me.btnPesquisarNota.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btnPesquisarNota.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.btnPesquisarNota.FlatAppearance.BorderSize = 0
+        Me.btnPesquisarNota.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPesquisarNota.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPesquisarNota.ForeColor = System.Drawing.Color.White
+        Me.btnPesquisarNota.Image = CType(resources.GetObject("btnPesquisarNota.Image"), System.Drawing.Image)
+        Me.btnPesquisarNota.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnPesquisarNota.Location = New System.Drawing.Point(528, 0)
+        Me.btnPesquisarNota.Name = "btnPesquisarNota"
+        Me.btnPesquisarNota.Size = New System.Drawing.Size(125, 66)
+        Me.btnPesquisarNota.TabIndex = 44
+        Me.btnPesquisarNota.Text = "Pesquisar Nota"
+        Me.btnPesquisarNota.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnPesquisarNota.UseVisualStyleBackColor = True
+        '
+        'Panel6
+        '
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel6.Location = New System.Drawing.Point(504, 0)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(24, 66)
+        Me.Panel6.TabIndex = 43
         '
         'btnEmail
         '
@@ -214,7 +244,7 @@ Partial Class FrmNotaFiscalEletronica
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(755, 5)
+        Me.Button1.Location = New System.Drawing.Point(802, 25)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(132, 35)
         Me.Button1.TabIndex = 37
@@ -1104,4 +1134,6 @@ Partial Class FrmNotaFiscalEletronica
     Friend WithEvents btnEmail As Button
     Friend WithEvents Panel5 As Panel
     Friend WithEvents Panel2 As Panel
+    Friend WithEvents btnPesquisarNota As Button
+    Friend WithEvents Panel6 As Panel
 End Class

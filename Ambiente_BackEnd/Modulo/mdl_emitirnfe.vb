@@ -162,20 +162,16 @@ erro:
         chaveAcesso = 35 & Format(Dataconvertida) & cnpjEmitente & 55 & serie & proxnumero & tpamb & cNF
         xchave = chaveAcesso
         Dim left, right As String
-        Dim mid As String
         left = xchave.Substring(0, 1)
         If left = 0 Then
             right = xchave.Substring(0, 44)
             xchave = 3 + right
         End If
-        'De posse da chave, calculo o digito Verificado dela com a função DVmod11
         xchave = DVmod11(xchave)
         chaveAcesso = (chaveAcesso & xchave)
 
         mdl_emitirnfe.EmitirRegimeSimplesNacional(chaveAcesso, "", nNota, cNF, "55", codCfop, IndiPresenca, IndiIntermediario, 20.3, xchave, FrmNotaFiscalEletronica.rtbInformaçõesComplementares.Text)
     End Sub
-
-
     Private Sub ConsultaProduto(codProduto As String)
         Dim strProduto As String
         strProduto = "SELECT * FROM PRODUTOS WHERE CODPRODUTO = " & codProduto
@@ -192,7 +188,6 @@ erro:
             aliqTotal = aliqTotal + aliquotaProdutos
         End While
     End Sub
-
     Public Sub EmitirRegimeSimplesNacional(chaveAcesso As String, chaveAcessoDevolucao As String, numeroNota As String, cNF As String, tipoNfe As String, codCfop As String, indPres As String, indInter As String, totalImpostos As String, digitoVerificador As String, InfAdicional As String)
         Dim cnpjEmitente As String = LerIni("Empresa", "Cnpj")
         Dim dataAtual As DateTime = DateTime.Now
@@ -203,8 +198,6 @@ erro:
         Dim xWriter As XmlWriter = XmlWriter.Create(arquivo)
         Dim left As String
         Dim dest As String
-
-        ' BuscaCliente()
 
         dest = cMunicipio
         left = dest.Substring(0, 2)
@@ -226,7 +219,6 @@ erro:
 
         'CABEÇALHO DA NOTA--------------------------------------------------------------------
         xWriter.WriteStartElement("NFe", sNamespace)
-        'xWriter.WriteStartElement("xmlns", sNamespace)
 
         xWriter.WriteStartElement("infNFe")
         xWriter.WriteAttributeString("versao", "4.00")
@@ -267,7 +259,6 @@ erro:
         xWriter.WriteEndElement()
 
         xWriter.WriteStartElement("tpNF")
-        'xWriter.WriteValue(LerIni("ide", "tpNF"))
         xWriter.WriteValue("1")
         xWriter.WriteEndElement()
 
@@ -287,11 +278,9 @@ erro:
         xWriter.WriteValue(LerIni("ide", "tpemis"))
         xWriter.WriteEndElement()
 
-
         xWriter.WriteStartElement("cDV")
         xWriter.WriteValue(digitoVerificador)
         xWriter.WriteEndElement()
-
 
         xWriter.WriteStartElement("tpAmb")
         xWriter.WriteValue(LerIni("ide", "tpamb"))
@@ -315,7 +304,6 @@ erro:
             xWriter.WriteEndElement()
 
             xWriter.WriteStartElement("indIntermed")
-            'xWriter.WriteValue(CInt((CType(cbxIndIntermed.SelectedItem, KeyValuePair(Of String, String)).Key)))
             xWriter.WriteValue(indInter)
             xWriter.WriteEndElement()
         End If
@@ -478,7 +466,6 @@ erro:
             xWriter.WriteStartElement("indIEDest")
             xWriter.WriteValue(9)
             xWriter.WriteEndElement()
-
         Else
             xWriter.WriteStartElement("indIEDest")
             xWriter.WriteValue(1)
@@ -493,7 +480,6 @@ erro:
         xWriter.WriteValue(email)
         xWriter.WriteEndElement()
         xWriter.WriteEndElement()
-
 
         Dim item As String = 1
 
@@ -560,7 +546,6 @@ erro:
             Dim dec_vProd As Decimal
             dec_vProd = CType(vProd, Decimal)
             complemento_vprod = FormatNumber(dec_vProd, 4)
-            'vProd = complemento_vprod.ToString("##.00")
 
             xWriter.WriteStartElement("vProd")
             xWriter.WriteValue(vProd)
@@ -595,7 +580,6 @@ erro:
             ConsultaProduto(linha.Cells(0).Value)
             impvTrotTrib = (linha.Cells(6).Value * aliquotaProdutos) / 100
             impvTrotTrib = impvTrotTrib.ToString("##.00")
-            'impvTrotTrib = Replace(impvTrotTrib, ",", ".")
             xWriter.WriteStartElement("vTotTrib")
 
             xWriter.WriteValue(impvTrotTrib)
@@ -704,13 +688,11 @@ erro:
         xWriter.WriteValue("0.00")
         xWriter.WriteEndElement()
 
-
         xWriter.WriteStartElement("vFCPSTRet")
         xWriter.WriteValue("0.00")
         xWriter.WriteEndElement()
 
         Dim TotalNf As Decimal
-        'TotalNf = Replace(TotalNf, ",", ".")
         TotalNf = FrmNotaFiscalEletronica.nTotalNFe.Value
         TotalNf = FormatCurrency(TotalNf, 2)
         xWriter.WriteStartElement("vProd")
@@ -757,9 +739,6 @@ erro:
         xWriter.WriteValue(TotalNf)
         xWriter.WriteEndElement()
 
-        'Dim totalimposto As Decimal
-
-        'totalimposto = totalImpostos
         aliqTotal = aliqTotal.ToString("##.00")
         xWriter.WriteStartElement("vTotTrib")
         xWriter.WriteValue(aliqTotal)
@@ -843,7 +822,6 @@ erro:
         xWriter.WriteValue(FrmNotaFiscalEletronica.FormaPagamento)
         xWriter.WriteEndElement()
 
-        'total = Replace(total, ",", ".")
         If FrmNotaFiscalEletronica.FormaPagamento = 90 Then
             xWriter.WriteStartElement("vPag")
             xWriter.WriteValue("0.00")
@@ -858,14 +836,32 @@ erro:
         xWriter.WriteStartElement("infAdic")
         xWriter.WriteStartElement("infCpl")
         xWriter.WriteValue(CStr(InfAdicional))
-        'xWriter.WriteEndElement()
 
         xWriter.WriteEndElement()
         xWriter.WriteEndElement()
         xWriter.Close()
         GerarDanfe("C:\Unimake\UniNFe\14396397000197\Envio\35190714887258000166550010000000081461798812-procNFe.xml", numeroNota + ".pdf")
+        GravaBanco(numeroNota, chaveAcesso)
     End Sub
+    Private Sub GravaBanco(numnota As String, chaveAcesso As String)
+        Dim sql As String
+        sql = "INSERT INTO NOTAFISCAL (COLABORADOR,CODFORMAPAGTO,NUMNOTA,CAMINHOXML,CAMINHOPDF,CHAVEACESSO) VALUES
+                                          (@COLABORADOR,@CODFORMAPAGTO,@NUMNOTA,@CAMINHOXML,@CAMINHOPDF,@CHAVEACESSO)"
 
+        comandoLocal = New FbCommand(sql, conexaoLocal)
+
+        comandoLocal.Parameters.AddWithValue("@COLABORADOR", FrmNotaFiscalEletronica.txtNomeCliente.Text)
+        comandoLocal.Parameters.AddWithValue("@CODFORMAPAGTO", FrmNotaFiscalEletronica.FormaPagamento)
+        comandoLocal.Parameters.AddWithValue("@NUMNOTA", numnota)
+        comandoLocal.Parameters.AddWithValue("@CAMINHOXML", FrmNotaFiscalEletronica.caminhoXml)
+        comandoLocal.Parameters.AddWithValue("@CAMINHOPDF", FrmNotaFiscalEletronica.caminhoPdf)
+        comandoLocal.Parameters.AddWithValue("@CHAVEACESSO", chaveAcesso)
+
+        conexaoLocal.Close()
+        conexaoLocal.Open()
+        comandoLocal.ExecuteNonQuery()
+        conexaoLocal.Close()
+    End Sub
 
     Public Sub GerarDanfe(ByVal xml As String, ByVal arquivo As String)
         Dim gerar = LerIni("Danfe", "GerarDanfe")
@@ -879,7 +875,7 @@ erro:
             Dim danfe = New Danfe(modelo)
             danfe.Gerar()
 
-            Dim diretorio As String = Path.Combine("C:\NOTAS", DateTime.Now.ToString("yyyyMM"))
+            Dim diretorio As String = Path.Combine(Environment.CurrentDirectory + "\DANFE", DateTime.Now.ToString("yyyyMM"))
 
             Directory.CreateDirectory(diretorio)
 
